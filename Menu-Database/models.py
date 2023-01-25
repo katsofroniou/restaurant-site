@@ -3,7 +3,9 @@ from sqlalchemy import Column, Integer, String, Boolean
 
 Base = declarative_base()
 
-class MenuItems(Base):
+class oaxaca(Base):
+    
+    # Creates a new table and assigns new columns
     __tablename__ = 'dishes'
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String)
@@ -18,3 +20,4 @@ class MenuItems(Base):
             allergens='{}', kcal='{}', course='{}', vegan='{}')>"\
                 .format(self.id, self.name, self.description, \
                     self.allergens, self.kcal, self.course, self.vegan)
+                
