@@ -1,2 +1,6 @@
 # Virtual enviroment folder
 dbenv
+Menu-Database/__pycache__/config.cpython-311.pyc
+Menu-Database/__pycache__/database.cpython-311.pyc
+Menu-Database/__pycache__/insert.cpython-311.pyc
+Menu-Database/__pycache__/models.cpython-311.pyc
