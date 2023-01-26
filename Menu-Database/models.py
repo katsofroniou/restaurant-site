@@ -1,5 +1,5 @@
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, Boolean
+from sqlalchemy import Column, Integer, String, Boolean, Float
 
 Base = declarative_base()
 
@@ -13,7 +13,10 @@ class oaxaca(Base):
     allergens = Column(String)
     kcal = Column(Integer)
     course = Column(String) # Starter, main, dessert, side, drink
+    price = Column(Float)
+    vegetarian = Column(Boolean)
     vegan = Column(Boolean)
+    
     
     def __repr__(self):
         return "<MenuItems(id='{}', name='{}', description='{}', \
