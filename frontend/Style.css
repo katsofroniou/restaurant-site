@@ -97,3 +97,14 @@ h1{
     justify-content: center;
     color: cadetblue;
 }
+
+#menu_div{
+    display: block;
+}
+
+.menu_table{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+}
