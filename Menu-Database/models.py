@@ -20,7 +20,9 @@ class oaxaca(Base):
     
     def __repr__(self):
         return "<MenuItems(id='{}', name='{}', description='{}', \
-            allergens='{}', kcal='{}', course='{}', vegan='{}')>"\
+            allergens='{}', kcal='{}', course='{}', price='{}'\
+            vegetarian='{}', vegan='{}')>"\
                 .format(self.id, self.name, self.description, \
-                    self.allergens, self.kcal, self.course, self.vegan)
+                    self.allergens, self.kcal, self.course, \
+                        self.price, self.vegetarian, self.vegan)
                 
