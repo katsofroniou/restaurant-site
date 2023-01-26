@@ -1,0 +1,247 @@
+[
+    {
+        "name": "Free Range Pork Pibil",
+        "description": "Slow-cooked in citrus and spices, with pink pickled onions, in three soft corn tortillas",
+        "allergens": [
+            "Milk",
+            "Gluten",
+            "Wheat",
+            "Eggs"
+        ],
+        "calories": 286,
+        "course": "Main",
+        "price": 12.00,
+        "vegetarian": false,
+        "vegan": false
+    },
+    {
+        "name": "Free Range Chicken & Avocado",
+        "description": "With ancho rub, guacamole and green tomatillo salsa, in two soft corn tortillas",
+        "allergens": [
+            "Milk",
+            "Gluten",
+            "Eggs",
+            "Fish"
+        ],
+        "calories": 366,
+        "course": "Main",
+        "price": 12.00,
+        "vegetarian": false,
+        "vegan": false
+    },
+    {
+        "name": "Ancho Mushroom",
+        "description": "With jalapeno mayo, beetroot crisps and dressed slaw, in two soft corn tortillas",
+        "allergens": [
+            "Eggs",
+            "Wheat",
+            "Gluten",
+            "Milk"
+        ],
+        "calories": 239,
+        "course": "Main",
+        "price": 12.00,
+        "vegetarian": true,
+        "vegan": false
+    },
+    {
+        "name": "Slow-Cooked Beef Brisket",
+        "description": "With mild spices and black beans, in three soft corn tortillas",
+        "allergens": [
+            "Eggs",
+            "Wheat",
+            "Gluten",
+            "Milk"
+        ],
+        "calories": 270,
+        "course": "Main",
+        "price": 12.00,
+        "vegetarian": false,
+        "vegan": false
+    },
+    {
+        "name": "Grilled Chicken Club",
+        "description": "With avocado, lettuce, melted cheese and chipotle mayo",
+        "allergens": [
+            "Gluten",
+            "Wheat",
+            "Crustaceans",
+            "Eggs",
+            "Milk"
+        ],
+        "calories": 552,
+        "course": "Main",
+        "price": 15.00,
+        "vegetarian": false,
+        "vegan": false
+    },
+    {
+        "name": "Trealy Farm Chorizo",
+        "description": "With Mexican-style chorizo, crushed organic potato and cheese",
+        "allergens": [
+            "Gluten",
+            "Crustaceans",
+            "Milk"
+        ],
+        "calories": 480,
+        "course": "Main",
+        "price": 15.00,
+        "vegetarian": false,
+        "vegan": false
+    },
+    {
+        "name": "Black Bean & Three Cheese",
+        "description": "With smoky beans and avocado leaf",
+        "allergens": [
+            "Gluten",
+            "Crustaceans",
+            "Milk"
+        ],
+        "calories": 397,
+        "course": "Main",
+        "price": 15.00,
+        "vegetarian": true,
+        "vegan": false
+    },
+    {
+        "name": "Allioli Mushroom Club",
+        "description": "With melted cheese, lettuce and jalapeno mayo",
+        "allergens": [
+            "Gluten",
+            "Eggs",
+            "Milk"
+        ],
+        "calories": 580,
+        "course": "Main",
+        "price": 15.00,
+        "vegetarian": true,
+        "vegan": false
+    },
+    {
+        "name": "Sweet Potato & Feta Taquito",
+        "description": "With caramelised onion, salsas and chipotle mayo in a crisp blue corn tortilla",
+        "allergens": [
+            "Eggs",
+            "Milk",
+            "Soya"
+        ],
+        "calories": 258,
+        "course": "Platter",
+        "price": 18.00,
+        "vegetarian": true,
+        "vegan": false
+    },
+    {
+        "name": "Zesty Bean & Feta Tostadas",
+        "description": "Chickpeas, borlotti beans and organic peas with fresh tomato salsa",
+        "allergens": [
+            "Milk"
+        ],
+        "calories": 258,
+        "course": "Platter",
+        "price": 18.00,
+        "vegetarian": true,
+        "vegan": false
+    },
+    {
+        "name": "Crispy Cauliflower Bites",
+        "description": "Crispy buttermilk-battered florets, with roast jalapeno allioli",
+        "allergens": [
+            "Gluten",
+            "Eggs",
+            "Wheat",
+            "Milk"
+        ],
+        "calories": 662,
+        "course": "Platter",
+        "price": 18.00,
+        "vegetarian": true,
+        "vegan": false
+    },
+    {
+        "name": "Organic Squash & Crumbled Feta Tostadas",
+        "description": "Riverford Organic squash topped with cashew nut mole and pomegranate seeds",
+        "allergens": [
+            "Milk",
+            "Nuts"
+        ],
+        "calories": 271,
+        "course": "Platter",
+        "price": 18.00,
+        "vegetarian": true,
+        "vegan": false
+    },
+    {
+        "name": "Margarita",
+        "description": "A classic cocktail made with tequila, lime juice, and triple sec",
+        "allergens": [
+            "None"
+        ],
+        "calories": 230,
+        "course": "Drinks",
+        "price": 18.00,
+        "vegetarian": true,
+        "vegan": true
+    },
+    {
+        "name": "Michelada",
+        "description": "A popular Mexican beer cocktail made with beer, lime juice, and various spices and sauces",
+        "allergens": [
+            "None"
+        ],
+        "calories": 150,
+        "course": "Drinks",
+        "price": 18.00,
+        "vegetarian": true,
+        "vegan": true
+    },
+    {
+        "name": "Tequila Sunrise",
+        "description": "A cocktail made with tequila, orange juice, and grenadine syrup",
+        "allergens": [
+            "None"
+        ],
+        "calories": 200,
+        "course": "Drinks",
+        "price": 18.00,
+        "vegetarian": true,
+        "vegan": true
+    },
+    {
+        "name": "Horchata",
+        "description": "A sweet, milky drink made from ground rice, cinnamon, and vanilla",
+        "allergens": [
+            "Milk"
+        ],
+        "calories": 150,
+        "course": "Drinks",
+        "price": 18.00,
+        "vegetarian": true,
+        "vegan": false
+    },
+    {
+        "name": "Mexican Coca-Cola",
+        "description": "A sweeter version of the classic cola, made with cane sugar instead of high-fructose corn syrup",
+        "allergens": [
+            "None"
+        ],
+        "calories": 150,
+        "price": 18.00,
+        "course": "Drinks",
+        "vegetarian": true,
+        "vegan": true
+    },
+    {
+        "name": "Atole",
+        "description": "A traditional Mexican hot drink made with masa, milk, and sweeteners",
+        "allergens": [
+            "Gluten",
+            "Milk"
+        ],
+        "calories": 200,
+        "course": "Drinks",
+        "price": 18.00,
+        "vegetarian": true,
+        "vegan": false
+    }
+]
