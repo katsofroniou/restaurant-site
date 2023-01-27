@@ -131,3 +131,10 @@ h1{
 .menu_button:hover {
     background-color: #2c974b;
   }
+
+.calorie_menu_table{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+}
