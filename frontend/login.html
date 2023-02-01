@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="Style.css"/>
+
+</head>
+<body>
+    <h1>OAXACA</h1>
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="/" id="navbar__logo">OAXACA</a>
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar__menu">
+                <li class="navbar__item">
+                    <a href="Index.html" class="navbar__links">
+                        Home
+                    </a>
+                </li>
+                <li class="navbar__item">
+                    <a href="Menu.html" class="navbar__links">
+                        Menu
+                    </a>
+                </li>
+                <li class="navbar__btn">
+                    <a href="login.html" class="button">
+                        Sign In
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav> 
+    <h2>Login</h2>
+    <div class="container">
+        <form class = "form" id="login">
+            <div class="form_mesage-error">Incorrect credentials</div>
+            <div class="form_input-group">
+                <input type="text" class="form_input" autofocus placeholder="Username or Email">
+                <div class="form_input-error-message">This is an Emessage</div>
+            </div>
+            <div class="form_input-group">
+                <input type="password" class="form_input" autofocus placeholder="Password">
+                <div class="form_input-error-message"></div>
+            </div>
+            <button class="form_button" type="submit">Login</button>
+            <p class="form_text">
+                <a href="/" class="form_link">Forgot Password?</a>
+            </p>
+            <p class="form_text">
+                <a id="linkCreateAccount" class="form_link">Sign Up?</a>
+            </p>
+        </form>
+    </div>
+
+</body>
+</html>
