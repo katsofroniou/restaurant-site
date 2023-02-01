@@ -1,8 +1,10 @@
+import { NavLink } from 'react-router-dom';
 import './App.css';
 
 const App = () => (
   <div className="App">
     <h1>OAXACA</h1>
+    <Navigation />
     <nav class="navbar">
       <div class="navbar__container">
         <a href="/" id="navbar__logo">OAXACA</a>
@@ -75,4 +77,13 @@ const App = () => (
   </div>
 );
 
+const Navigation = () => (
+  <nav>
+    <ul>
+      <li><NavLink exact activeClassName="current" to='/'>Home</NavLink></li>
+      <li><NavLink exact activeClassName="current" to='/Menu'>Menu</NavLink></li>
+      {/*<li><Navlink exact activeClassName="current" to='/signin'>Sign in</Navlink></li>//*/}
+    </ul>
+  </nav>
+);
 export default App;
