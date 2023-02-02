@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, Switch, Route } from 'react-router-dom';
 import './App.css';
 
 const App = () => (
@@ -86,4 +86,12 @@ const Navigation = () => (
     </ul>
   </nav>
 );
+
+const Main = () => (
+  <switch>
+    <Route path='/' component={Home}></Route>
+    <Route path='/Menu' component={Menu}></Route>
+  </switch>
+);
+
 export default App;
