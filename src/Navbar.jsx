@@ -16,7 +16,7 @@ function Navbar () {
                     <Link to='/Menu' class="navbar_links">Menu</Link>
                 </li>
                 <li class="navbar_btn">
-                        <Link to='/NotFound' class="navbar_button">Sign in</Link>
+                        <Link to='/Login' class="navbar_button">Sign in</Link>
                 </li>
             </ul>
         </nav>
