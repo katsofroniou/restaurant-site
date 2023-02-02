@@ -87,6 +87,12 @@ const Navigation = () => (
   </nav>
 );
 
+const Home = () => (
+  <div className='Home'>
+    <h1>Testing website routing works</h1>
+  </div>
+);
+
 const Main = () => (
   <switch>
     <Route path='/' component={Home}></Route>
