@@ -1,8 +1,12 @@
 import React from "react";
+import "../styling/Menu.css";
 
 function Menu () {
     return (
-        <h1>This will contain the menu.</h1>
+        <>
+            <button class="menu_button">Show Callories and Allergens</button>
+            <button class="menu_button">call waiter</button>
+        </>  
     );
 }
 
