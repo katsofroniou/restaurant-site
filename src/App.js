@@ -5,7 +5,7 @@ const App = () => (
   <div className="App">
     <h1>OAXACA</h1>
     <Navigation />
-    <nav class="navbar">
+    {/*<nav class="navbar">
       <div class="navbar__container">
         <a href="/" id="navbar__logo">OAXACA</a>
         <div class="navbar__toggle" id="mobile-menu">
@@ -73,7 +73,7 @@ const App = () => (
           <td>Example Cost</td>
         </tr>
       </table>
-    </div>
+    </div>*/}
   </div>
 );
 
