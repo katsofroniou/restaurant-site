@@ -6,6 +6,7 @@ function Navbar () {
     return (
         <nav class="navbar">
             <div class="navbar_container">
+                <p id="navbar_logo">OAXACA</p>
             </div>
             <ul class="navbar_menu">
                 <li class="navbar_item">
