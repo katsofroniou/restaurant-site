@@ -10,19 +10,13 @@ function Navbar () {
             </div>
             <ul class="navbar_menu">
                 <li class="navbar_item">
-                    <div class="navbar_links">
-                        <Link to='/'>Home</Link> 
-                    </div>
+                    <Link to='/' class="navbar_links">Home</Link> 
                 </li>
                 <li class="navbar_item">
-                    <div class="navbar_links">
-                        <Link to='/Menu'>Menu</Link>
-                    </div>
+                    <Link to='/Menu' class="navbar_links">Menu</Link>
                 </li>
                 <li class="navbar_btn">
-                    <div class="navbar_button">
-                        <Link to='/NotFound'>Sign in</Link>
-                    </div>
+                        <Link to='/NotFound' class="navbar_button">Sign in</Link>
                 </li>
             </ul>
         </nav>
