@@ -5,6 +5,7 @@ import "../styling/Login.css";
 function Login(){
     return (
     <>
+    <div class="torso">
         <div class="form_container">
             <form class = "form" id="login">
                 <h2 class="form_title">Login</h2>
@@ -53,6 +54,7 @@ function Login(){
                 </p>
             </form>
         </div>
+    </div>
     </>
 
     );
