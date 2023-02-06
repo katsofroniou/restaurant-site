@@ -9,6 +9,8 @@ import reportWebVitals from './reportWebVitals';
 
 export default function App() {
   return(
+    //To add a page to the WebApp please route it as follows: <Route path="name" element={<Name />} />
+    //Please note: Add the newly added page before the NotFound Page route as this is the 404 page not found route and should be the last one
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
