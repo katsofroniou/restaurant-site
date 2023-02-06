@@ -4,6 +4,7 @@ import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import Menu from "./pages/Menu";
 import Login from "./pages/Login";
+import Waiter from "./pages/Waiter";
 import NotFound from "./pages/NotFound";
 import reportWebVitals from './reportWebVitals';
 
@@ -17,6 +18,7 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="menu" element={<Menu />} />
           <Route path="login" element={<Login/>} />
+          <Route path="waiter" element={<Waiter />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
