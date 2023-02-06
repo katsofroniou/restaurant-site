@@ -9,4 +9,4 @@ Run `git pull` in the terminal to ensure you have the latest versions of each fi
 4. Connect to the psql database in *another new terminal window* using this command `psql -h localhost -p 9999 -U group13 CS2810/group13`
 5. The password is available in the important information channel of the discord server, please look there for it when connecting
 6. You can now run commands to view the database and do test queries using it if needed
-7. Run databases.py and make sure that no errors occur
+7. Run main.py and make sure that no errors occur
