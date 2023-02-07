@@ -24,7 +24,7 @@ function Login(){
                     <a href="/" class="form_link">Forgot Password?</a>
                 </p>
                 <p class="form_text">
-                    <a href="/" id="linkCreateAccount" class="form_link">Sign Up?</a>
+                    <a href="/" id="linkCreateAccount" class="form_link">Sign Up</a>
                 </p>
             </form>
 

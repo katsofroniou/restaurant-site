@@ -6,7 +6,6 @@ import "../styling/Layout.css";
 const Layout = () => {
     return (
         <>
-            <h1 id="title">OAXACA</h1>
             <Navbar />
             <Outlet />
         </>
