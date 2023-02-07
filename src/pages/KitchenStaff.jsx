@@ -1,4 +1,5 @@
 import React from "react";
+import "../styling/KitchenStaff.css";
 
 function KitchenStaff () {
     return (
