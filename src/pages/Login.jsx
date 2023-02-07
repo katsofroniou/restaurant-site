@@ -1,20 +1,22 @@
 import react from "react";
+import React,{useState} from "react";
 import "../styling/Login.css";
 
 
 function Login(){
 
-    const toggleHidden = (e) =>{
-        e.preventDefault()
-        e.classList.remove("form-hidden")
-        //e.classList.add("form-hidden")
-
+    const [show,setShow] = useState();
+    var hidden = show ? "form form-hidden" : "form";
+    var hidden2 = show ? "form": "form form-hidden";
+    function toggleShow(){
+        setShow(!show);
     }
+        
     return (
     <>
     <div class="torso">
         <div class="form_container">
-            <form class = "form" id="login">
+            <form class = {hidden} id="login">
                 <h2 class="form_title">Login</h2>
 
                 <div class="form_message form_message-error"></div>
@@ -31,11 +33,11 @@ function Login(){
                     <a href="" class="form_link">Forgot Password?</a>
                 </p>
                 <p class="form_text">
-                    <button onClick={toggleHidden} class = "form_link" id="linkCreateAccount">Sign Up?</button>
+                    <a onClick={toggleShow} class = "form_link" id="linkCreateAccount">Sign Up?</a>
                 </p>
             </form>
 
-            <form class = "form form-hidden" id="createAccount">
+             <form class = {hidden2} id="createAccount">
                 <h2 class="form_title">Create Account</h2>
 
                 <div class="form_message-error"></div>
@@ -55,9 +57,9 @@ function Login(){
                     <input type="text" class="form_input" autofocus placeholder="Confirm password"/>
                     <div class="form_input-error-message"></div>
                 </div>
-                <button class="form_button" type="submit">Login</button>
+                <button class="form_button" type="submit">Create Account</button>
                 <p class="form_text">
-                    <button  onClick={toggleHidden}  class = "form_link" id="linkLogin">Already have an account? Sign in</button>
+                    <a onClick={toggleShow}  class = "form_link" id="linkLogin">Already have an account? Sign in</a>
                 </p>
             </form>
         </div>
@@ -67,7 +69,7 @@ function Login(){
     );
 }
 
-/*
+
 function setErrorMessage(formElement, type, message){
     const messageElement = formElement.querySelector(".form_message");
     messageElement.textContent=message;
@@ -83,39 +85,6 @@ function clearInputError(inputElement){
     inputElement.classList.remove("form_input-error");
     inputElement.parentElement.querySelector(".form_input-error-message").textContent = "";
 }
-
-*/
-
-/*document.addEventListener("DOMContentLoaded",() =>{
-    const loginForm = document.querySelector("#login");
-    const createAccountForm = document.querySelector("#createAccount");
-
-    document.querySelector("#linkCreateAccount").addEventListener("click",e =>{
-        e.stopPropagation();
-        createAccountForm.classList.remove("form-hidden");
-        loginForm.classList.add("form-hidden");
-    });
-    document.querySelector("#linkLogin").addEventListener("click", e =>{
-        e.preventDefault();
-        loginForm.classList.remove("form-hidden");
-        createAccountForm.classList.add("form-hidden");
-    });
-
-    loginForm.addEventListener("submit", e =>{
-        e.preventDefault();
-
-        //login code
-        setErrorMessage(loginForm,"error","Invalid username or password");
-    });
-    /*document.querySelectorAll(".form_input").forEach(inputElement =>{
-        inputElement.addEventListener("blur", e =>{
-            // can put in conditions to be met when creating an account
-        });
-    })
-
-    inputElement.addEventListener("input", e => {
-        clearInputError(inputElement);
-    })*/
 
 
 
