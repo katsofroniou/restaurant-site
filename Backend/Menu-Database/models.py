@@ -39,3 +39,9 @@ class Employees(Base):
     address_id = Column(Integer, ForeignKey('addresses.id'), nullable=False)
     currently_employed = Column(Boolean, nullable=False)
     
+class Logins(Base):
+    __tablename__ = 'logins'
+    email = Column(String, primary_key=True, nullable=False)
+    first_name = Column(String, nullable=False)
+    last_name = Column(String, nullable=False)
+    password = Column(String, nullable=False)
