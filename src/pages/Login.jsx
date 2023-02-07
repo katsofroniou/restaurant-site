@@ -3,6 +3,13 @@ import "../styling/Login.css";
 
 
 function Login(){
+
+    const toggleHidden = (e) =>{
+        e.preventDefault()
+        e.classList.remove("form-hidden")
+        //e.classList.add("form-hidden")
+
+    }
     return (
     <>
     <div class="torso">
@@ -21,10 +28,10 @@ function Login(){
                 </div>
                 <button class="form_button" type="submit">Submit</button>
                 <p class="form_text">
-                    <a href="/" class="form_link">Forgot Password?</a>
+                    <a href="" class="form_link">Forgot Password?</a>
                 </p>
                 <p class="form_text">
-                    <a href="/" id="linkCreateAccount" class="form_link">Sign Up?</a>
+                    <button onClick={toggleHidden} class = "form_link" id="linkCreateAccount">Sign Up?</button>
                 </p>
             </form>
 
@@ -50,7 +57,7 @@ function Login(){
                 </div>
                 <button class="form_button" type="submit">Login</button>
                 <p class="form_text">
-                    <a href="/" id="linkLogin" class="form_link">Already have an account? Sign in</a>
+                    <button  onClick={toggleHidden}  class = "form_link" id="linkLogin">Already have an account? Sign in</button>
                 </p>
             </form>
         </div>
@@ -60,6 +67,7 @@ function Login(){
     );
 }
 
+/*
 function setErrorMessage(formElement, type, message){
     const messageElement = formElement.querySelector(".form_message");
     messageElement.textContent=message;
@@ -76,14 +84,16 @@ function clearInputError(inputElement){
     inputElement.parentElement.querySelector(".form_input-error-message").textContent = "";
 }
 
-document.addEventListener("DOMContentLoaded",() =>{
+*/
+
+/*document.addEventListener("DOMContentLoaded",() =>{
     const loginForm = document.querySelector("#login");
     const createAccountForm = document.querySelector("#createAccount");
 
     document.querySelector("#linkCreateAccount").addEventListener("click",e =>{
-        e.preventDefault();
-        loginForm.classList.add("form-hidden");
+        e.stopPropagation();
         createAccountForm.classList.remove("form-hidden");
+        loginForm.classList.add("form-hidden");
     });
     document.querySelector("#linkLogin").addEventListener("click", e =>{
         e.preventDefault();
@@ -107,6 +117,6 @@ document.addEventListener("DOMContentLoaded",() =>{
         clearInputError(inputElement);
     })*/
 
-});
+
 
 export default Login;
