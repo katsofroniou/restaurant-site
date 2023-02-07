@@ -1,7 +1,6 @@
 .menu_button {
     appearance: none;
-    background-color:  cadetblue;
-    border: 1px solid rgba(27, 31, 35, .15);
+    background-color:  rgb(0, 0, 0);
     border-radius: 6px;
     box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
     box-sizing: border-box;
