@@ -30,10 +30,10 @@ function Login(){
                 </div>
                 <button class="form_button" type="submit">Submit</button>
                 <p class="form_text">
-                    <a href="" class="form_link">Forgot Password?</a>
+                    <a onClick={toggleShow} class = "form_link" id="linkCreateAccount">Sign Up?</a>
                 </p>
                 <p class="form_text">
-                    <a onClick={toggleShow} class = "form_link" id="linkCreateAccount">Sign Up?</a>
+                    Forgot your password? Ask your employer
                 </p>
             </form>
 
