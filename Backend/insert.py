@@ -14,6 +14,8 @@ def addDishes(Session):
         
         Session.execute(ins)
         
+    Session.commit()
+        
 def addLogin(Session):
     with open('Backend/json-files/logins.json', 'r') as f:
         users = json.load(f)
@@ -24,3 +26,5 @@ def addLogin(Session):
             username=user["username"], password=user["password"])
         
         Session.execute(ins)
+    
+    Session.commit()
