@@ -21,8 +21,8 @@ class Allergens(models.Model):
 
 class Dishes(models.Model):
     BOOLEAN_CHOICES = [
-        ('Y', 'Yes'),
-        ('N', 'No'),
+        (True, 'Yes'),
+        (False, 'No'),
     ]
     
     name = models.CharField(max_length=100, help_text="Enter the item's name")
