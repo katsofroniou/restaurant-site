@@ -3,15 +3,15 @@ from django.urls import reverse
 
 class Allergens(models.Model):
     ALLERGENS_CHOICES = [
-        ('DR', 'Dairy'),
-        ('GL', 'Gluten'),
-        ('EG', 'Eggs'),
-        ('FS', 'Fish'),
-        ('CS', 'Crustacean shellfish'),
-        ('TN', 'Tree nuts'),
-        ('PN', 'Peanuts'),
-        ('WH', 'Wheat'),
-        ('SB', 'Soybeans'),
+        ('Diary', 'Dairy'),
+        ('Gluten', 'Gluten'),
+        ('Egg', 'Eggs'),
+        ('Fish', 'Fish'),
+        ('Crustacean shellfish', 'Crustacean shellfish'),
+        ('Tree nuts', 'Tree nuts'),
+        ('Peanuts', 'Peanuts'),
+        ('Wheat', 'Wheat'),
+        ('Soybeans', 'Soybeans'),
     ]
     
     allergen = models.CharField(max_length=50, help_text="Enter the allergen", choices=ALLERGENS_CHOICES, blank=True)
