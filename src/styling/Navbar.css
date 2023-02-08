@@ -1,0 +1,106 @@
+.navbar{
+    background: rgb(255, 255, 255);
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+}
+
+.navbar_container{
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+    z-index: 1;
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 50px;
+    background-color: white;
+}
+
+#navbar_logo{
+    background-color: cadetblue;
+    background-image:linear-gradient(to top, yellow 0%,cadetblue 100%);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -moz-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 2rem;
+
+}
+
+.navbar_menu{
+    display: flex;
+    align-items: center;
+    list-style: none;
+    text-align: center;
+    background-color: white;
+    width: 1000px;
+    margin-right: 30px;
+
+}
+
+.navbar_item{
+    height: 80px;
+    padding: 25px;
+    background-color: white;
+}
+
+.navbar_links{
+    color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 0 1rem;
+    height: 100%;
+    background-color: white;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.navbar_btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+}
+
+.navbar_button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    padding: 10px 20px;
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    font-size: 30px;
+    font-weight: 600;
+    background: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+.navbar_button:hover{
+    background: rgb(255, 111, 0);
+    transition: all 0.3s ease;   
+}
+
+.navbar_links:hover{
+    color:rgb(255, 111, 0);
+    transition: all 0.3s ease;
+}
