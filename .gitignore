@@ -2,6 +2,8 @@
 
 __pycache__
 migrations
+frontend/node_modules
+venv
 
 # dependencies
 /node_modules
