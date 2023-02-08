@@ -16,6 +16,9 @@ class Allergens(models.Model):
     
     allergen = models.CharField(max_length=50, help_text="Enter the allergen", choices=ALLERGENS_CHOICES, blank=True)
 
+    def __str__(self):
+        return self.allergen
+
 class Dishes(models.Model):
     BOOLEAN_CHOICES = [
         ('Y', 'Yes'),
@@ -31,6 +34,9 @@ class Dishes(models.Model):
     vegetarian = models.BooleanField(choices=BOOLEAN_CHOICES, help_text="Is this item vegetarian?")
     vegan = models.BooleanField(choices=BOOLEAN_CHOICES, help_text="Is this item vegan?")
     available = models.BooleanField(choices=BOOLEAN_CHOICES, help_text= "Is this item in stock" )
+    
+    def __str__(self):
+        return self.name
     
 class Meta:
     ordering = ['id']
