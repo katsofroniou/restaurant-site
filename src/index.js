@@ -6,6 +6,7 @@ import Menu from "./pages/Menu";
 import Login from "./pages/Login";
 import Waiter from "./pages/Waiter";
 import KitchenStaff from "./pages/KitchenStaff";
+import AddItem from "./pages/AddItem";
 import NotFound from "./pages/NotFound";
 import reportWebVitals from './reportWebVitals';
 
@@ -18,9 +19,10 @@ export default function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="menu" element={<Menu />} />
-          <Route path="login" element={<Login/>} />
+          <Route path="login" element={<Login />} />
           <Route path="waiter" element={<Waiter />} />
           <Route path="kitchenstaff" element={<KitchenStaff />} />
+          <Route path="additem" element={<AddItem />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
