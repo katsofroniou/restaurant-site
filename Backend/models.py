@@ -44,4 +44,5 @@ class Logins(Base):
     email = Column(String, primary_key=True, nullable=False)
     first_name = Column(String, nullable=False)
     last_name = Column(String, nullable=False)
+    username = Column(String, nullable=False)
     password = Column(String, nullable=False)
