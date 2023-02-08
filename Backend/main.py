@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from config import DATABASE_URI
 from models import Base
-from insert import addDishes
+from insert import addDishes, addLogin
 
 # Creating  a connection to the database
 engine = create_engine(DATABASE_URI)
@@ -15,3 +15,4 @@ def recreate_database():
 
 recreate_database()
 addDishes(Session)
+addLogin(Session)
