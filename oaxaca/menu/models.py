@@ -32,12 +32,5 @@ class Dishes(models.Model):
     vegan = models.BooleanField(choices=BOOLEAN_CHOICES, help_text="Is this item vegan?")
     available = models.BooleanField(choices=BOOLEAN_CHOICES, help_text= "Is this item in stock" )
     
-class Logins(models.Model):
-    email = models.EmailField(help_text="Enter an email")
-    first_name = models.CharField(max_length=50, help_text="Enter first name")
-    last_name = models.CharField(max_length=50, help_text="Enter surname")
-    username = models.CharField(max_length=15, help_text="Enter a username")
-    password = models.CharField(max_length=20, help_text="Enter a password")
-
 class Meta:
     ordering = ['id']
