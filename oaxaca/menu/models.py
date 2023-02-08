@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 
-class Allergens(models.Model):
+class Allergen(models.Model):
     ALLERGENS_CHOICES = [
         ('Diary', 'Dairy'),
         ('Gluten', 'Gluten'),
@@ -19,7 +19,7 @@ class Allergens(models.Model):
     def __str__(self):
         return self.allergen
 
-class Dishes(models.Model):
+class Dish(models.Model):
     BOOLEAN_CHOICES = [
         (True, 'Yes'),
         (False, 'No'),
@@ -27,7 +27,7 @@ class Dishes(models.Model):
     
     name = models.CharField(max_length=100, help_text="Enter the item's name")
     description = models.CharField(max_length=500, help_text="Write a description of the item")
-    allergens = models.ManyToManyField(Allergens, blank=True)
+    allergens = models.ManyToManyField(Allergen, blank=True)
     kcal = models.IntegerField(help_text="Enter the calories of this item")
     course = models.CharField(max_length=25, help_text="What course this item is for")
     price = models.FloatField(help_text="How much does this item cost?")
