@@ -1,11 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styling/Menu.css";
 
 function Menu () {
+    const [waiterCalled, setWaiterCalled] = useState(false);
+    const handleCallWaiter = () => {
+        fetch('/call-waiter/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({notification_type: "call_waiter"})
+        })
+        .then(response => response.json())
+        .then(data => {
+            setWaiterCalled(true);
+            console.log("Waiter has been called!");
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    };
     return (
         <>
             <button class="menu_button">Show Callories and Allergens</button>
-            <button class="menu_button">call waiter</button>
+            <button class="menu_button">Call Waiter</button> onClick={handleCallWaiter} disabled={waiterCalled}
+                {waiterCalled ? "Waiter Called" : "Call Waiter"}
             <table class="menu_table">
                 <tr>
                     <th>Mains</th>
