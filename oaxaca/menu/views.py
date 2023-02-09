@@ -45,7 +45,7 @@ class DishApiView(APIView):
     def getAvailable(self, request, *arg, **kwargs):
         dishAvailable = Dish.objects.filter(dish = request.Dish.available)
         serializer = DishSerializer(dishAvailable, many=True)
-        return Response(serializer.data, status.HTTP_200_OK)##
+        return Response(serializer.data, status.HTTP_200_OK)
     
     def post(self, request, *args, **kwargs):
         data = {
@@ -67,4 +67,4 @@ class DishApiView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         
         else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)        
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
