@@ -17,12 +17,12 @@ function Navbar () {
                     <li class="navbar_item">
                         <Link to='/Menu' class="navbar_links">Menu</Link>
                     </li>
-                    <li class="navbar_btn">
-                        <Link to='/Login' class="navbar_button">Sign in</Link>
-                    </li>
                     {/*Added just so I can visualise the page as I build it.*/}
                     <li class="navbar_btn">                        
                         <Link to='/KitchenStaff' class="navbar_links">Kitchen</Link>
+                    </li>
+                    <li class="navbar_btn">
+                        <Link to='/Login' class="navbar_button">Sign in</Link>
                     </li>
                 </ul>
             </nav>

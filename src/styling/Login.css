@@ -83,7 +83,9 @@
     color: var(--color-error);
 }
 .form_button{
-    width: 100%;
+    align-items: center;
+    width: 91%;
+    margin-left: 16px;
     padding: 1rem 2rem;
     font-weight: bold;
     font-size: 1.1rem;
@@ -106,7 +108,8 @@
     text-align: center;
     background-color: white;
     color: var(--color-primary);
-    margin: 0.5rem;
+    margin: 1rem;
+    font-size: 18px;
 }
 
 .form_link{
