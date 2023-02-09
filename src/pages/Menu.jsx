@@ -23,8 +23,9 @@ function Menu () {
     return (
         <>
             <button class="menu_button">Show Callories and Allergens</button>
-            <button class="menu_button">Call Waiter</button> onClick={handleCallWaiter} disabled={waiterCalled}
+            <button className="menu_button" onClick={handleCallWaiter} disabled={waiterCalled}>
                 {waiterCalled ? "Waiter Called" : "Call Waiter"}
+            </button>
             <table class="menu_table">
                 <tr>
                     <th>Mains</th>
