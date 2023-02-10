@@ -26,3 +26,14 @@
     margin-right: 35%;
     width: 40%;
 }
+
+#button_link{
+    color: #fff;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 6px 16px;
+    background-color: transparent;
+    text-decoration: none;
+}

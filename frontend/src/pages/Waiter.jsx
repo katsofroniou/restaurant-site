@@ -24,7 +24,7 @@ function Waiter () {
                 </tr>
             </table>
             <button id="addButton">
-                <Link to='/additem'>Add to Menu</Link>
+                <Link to='/additem' id="button_link">Add to Menu</Link>
             </button>
         </>
     );
