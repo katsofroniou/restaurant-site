@@ -45,7 +45,18 @@ class DishDetailApiView(APIView):
         except:
             return None
         
-  
+    def get(self, request, dishVal, *args, **kwargs):
+        dish = self.get_object(dishVal)
+        
+        if not dish:
+            return Response (
+                {"res": "Dish with this name does not exist"},
+                status = status.HTTP_400_BAD_REQUEST
+            )
+            
+        serializer = DishSerializer(dish)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    
     def put(self, request, dishVal, *args, **kwargs):
         dish = self.get_object(dishVal)
         
