@@ -1,4 +1,4 @@
-#add_button {
+.add_button {
     appearance: none;
     background-color:  rgb(0, 0, 0);
     border-radius: 6px;
@@ -16,7 +16,7 @@
     vertical-align: middle;
 }
 
-#add_button:hover {
+.add_button:hover {
     background-color: #2c974b;
 }
 
@@ -27,7 +27,7 @@
     width: 40%;
 }
 
-#button_link{
+.button_link{
     color: #fff;
     display: inline-block;
     font-size: 14px;
