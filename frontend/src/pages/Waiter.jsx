@@ -23,7 +23,7 @@ function Waiter () {
                     <td>Empty Cost</td>  
                 </tr>
             </table>
-            <button id="addButton">
+            <button id="add_button">
                 <Link to='/additem' id="button_link">Add to Menu</Link>
             </button>
         </>
