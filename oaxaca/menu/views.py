@@ -6,6 +6,7 @@ from .serializers import DishSerializer
 
 class DishApiView(APIView):
     permission_classes = [permissions.IsAuthenticated]
+    http_method_names = ['get', 'head']
     
     def getCourse(self, request, *arg, **kwargs):
         dishCourse = Dish.objects.filter(dish = request.Dish.course)
@@ -71,6 +72,7 @@ class DishApiView(APIView):
         
 class DishDetailApiView(APIView):
     permission_classes =  [permissions.IsAuthenticated]
+    http_method_names = ['get', 'head']
     
     def get_object(self, request, dishVal, *args, **kwargs):
         try:
