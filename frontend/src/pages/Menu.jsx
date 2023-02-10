@@ -13,9 +13,9 @@ function Menu () {
                     <th>Cost</th>
                 </tr>
                 <tr>
-                    <td>Example Item</td>
-                    <td>Example Description</td>
-                    <td>Example Cost</td>  
+                    <td>Empty Item</td>
+                    <td>Empty Description</td>
+                    <td>Empty Cost</td>  
                 </tr>
             </table>
             <table class="menu_table">
@@ -25,9 +25,9 @@ function Menu () {
                     <th>Cost</th>
                 </tr>
                 <tr>
-                    <td>Example Item</td>
-                    <td>Example Description</td>
-                    <td>Example Cost</td>  
+                    <td>Empty Item</td>
+                    <td>Empty Description</td>
+                    <td>Empty Cost</td>  
                 </tr>
             </table>
             <table class="menu_table">
@@ -37,9 +37,9 @@ function Menu () {
                     <th>Cost</th>
                 </tr>
                 <tr>
-                    <td>Example Item</td>
-                    <td>Example Description</td>
-                    <td>Example Cost</td>
+                    <td>Empty Item</td>
+                    <td>Empty Description</td>
+                    <td>Empty Cost</td>
                 </tr>
             </table>
         </>  
