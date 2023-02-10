@@ -13,6 +13,7 @@ function Waiter () {
                     <th>Vegan/Vegetarian</th>
                     <th>Allergens</th>
                     <th>Cost</th>
+                    <th>Delete?</th>
                 </tr>
                 <tr>
                     <td>Empty Item</td>
@@ -20,7 +21,10 @@ function Waiter () {
                     <td>Empty Calories</td>
                     <td>Empty Vegan</td>
                     <td>Empty Allergens</td>
-                    <td>Empty Cost</td>  
+                    <td>Empty Cost</td>
+                    <td>
+                        <input type="checkbox"></input>
+                    </td>  
                 </tr>
             </table>
             <button id="add_button">
