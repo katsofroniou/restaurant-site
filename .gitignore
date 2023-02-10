@@ -8,6 +8,10 @@
 # testing
 /coverage
 
+/frontend
+node_modules
+oaxaca
+
 # production
 /build
 
