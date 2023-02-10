@@ -8,7 +8,6 @@ function AddItem () {
             <div class="torso">
                 <div class="form_container">
                     <form id="login">
-                        <div class="form_message form_message-error"></div>
                         <div class="form_input-group">
                             <input type="text" class="form_input" autofocus placeholder="Type" />
                         </div>
