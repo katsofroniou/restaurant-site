@@ -10,18 +10,22 @@ function Waiter () {
                     <th>Type</th>
                     <th>Description</th>
                     <th>Calories</th>
-                    <th>Vegan/Vegetarian</th>
+                    <th>Vegetarian</th>
+                    <th>Vegan</th>
                     <th>Allergens</th>
                     <th>Cost</th>
+                    <th>Available</th>
                     <th>Delete?</th>
                 </tr>
                 <tr>
                     <td>Empty Item</td>
                     <td>Empty Description</td>
                     <td>Empty Calories</td>
+                    <td>Empty Vegetarian</td>
                     <td>Empty Vegan</td>
                     <td>Empty Allergens</td>
                     <td>Empty Cost</td>
+                    <td>Empty Availability</td>
                     <td>
                         <input type="checkbox"></input>
                     </td>  
