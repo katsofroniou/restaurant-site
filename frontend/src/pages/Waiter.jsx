@@ -30,6 +30,9 @@ function Waiter () {
             <button class="add_button">
                 <Link to='/additem' class="button_link">Add to Menu</Link>
             </button>
+            <button class="add_button">
+                <Link to='/waiter' class="button_link">Delete From Menu</Link>
+            </button>
         </>
     );
 }
