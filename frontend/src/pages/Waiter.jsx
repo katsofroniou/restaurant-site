@@ -1,5 +1,5 @@
 import React from "react";
-import {Routes, Route, useNavigate, Navigate} from 'react-router-dom';
+import {Routes, Route, Navigate, Link} from 'react-router-dom';
 import "../styling/Waiter.css";
 
 const navigateToAddItem = () => {
@@ -27,7 +27,9 @@ function Waiter () {
                     <td>Empty Cost</td>  
                 </tr>
             </table>
-            <button id="addButton">Add to Menu</button>
+            <button id="addButton">
+                <Link to='/additem'>Add to Menu</Link>
+            </button>
         </>
     );
 }
