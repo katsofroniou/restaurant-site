@@ -18,13 +18,19 @@ function AddItem () {
                             <input type="number" class="form_input" autofocus placeholder="Calories" />
                         </div>
                         <div class="form_input-group">
-                            <input type="text" class="form_input" autofocus placeholder="Vegan/Vegetarian" />
+                            <input type="text" class="form_input" autofocus placeholder="Vegetarian (y/n)" />
+                        </div>
+                        <div class="form_input-group">
+                            <input type="text" class="form_input" autofocus placeholder="Vegan (y/n)"/>
                         </div>
                         <div class="form_input-group">
                             <input type="text" class="form_input" autofocus placeholder="Allergens" />
                         </div>
                         <div class="form_input-group">
                             <input type="text" class="form_input" autofocus placeholder="Cost" />
+                        </div>
+                        <div class="form_input-group">
+                            <input type="" class="form_input" autofocus placeholder="Available (y/n)" />
                         </div>
                         <button id="add_button">
                             <Link to='/waiter' id="button_link">Add Item to Menu</Link>
