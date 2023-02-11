@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'menu',
+    'corsheaders',
 ]
 
 REST_FRAMEWORK = {
@@ -76,11 +77,11 @@ WSGI_APPLICATION = 'oaxaca.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'CS2810/group13',
-        'USER': 'group13',
-        'PASSWORD': 'ieziet',
+        'NAME': 'Oaxaca',
+        'USER': 'postgres',
+        'PASSWORD': '',
         'HOST': 'localhost',
-        'PORT': '9999',
+        'PORT': '5432',
     }
 }
 
