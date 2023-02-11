@@ -3,7 +3,7 @@ from django.urls import reverse
 
 class Allergen(models.Model):
     ALLERGENS_CHOICES = [
-        ('Diary', 'Dairy'),
+        ('Dairy', 'Dairy'),
         ('Gluten', 'Gluten'),
         ('Egg', 'Eggs'),
         ('Fish', 'Fish'),
