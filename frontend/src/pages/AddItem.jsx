@@ -12,6 +12,7 @@ function AddItem () {
         vegan: '',
         allergens: '',
         price: '',
+        course: '',
         available: ''
       });      
 
@@ -26,7 +27,7 @@ function AddItem () {
         event.preventDefault();
         console.log(formData);
     
-        const allergensArray = formData.allergens.split(',').map(allergen => allergen.trim().charAt(0).toUpperCase() + allergen.trim().slice(1));
+        const allergensArray = formData.allergens ? formData.allergens.split(',').map(allergen => allergen.trim().charAt(0).toUpperCase() + allergen.trim().slice(1)) : [];
         const kcal = parseInt(formData.kcal);
         const price = parseFloat(formData.price);
         const vegetarian = formData.vegetarian.toLowerCase().trim() === 'y' || formData.vegetarian.toLowerCase().trim() === 'yes';
