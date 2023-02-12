@@ -12,6 +12,12 @@ class Allergen(models.Model):
         ('Peanuts', 'Peanuts'),
         ('Wheat', 'Wheat'),
         ('Soybeans', 'Soybeans'),
+        ('Celery', 'Celery'),
+        ('Lupin', 'Lupin'),
+        ('Sesame', 'Sesame'),
+        ('Sulphites', 'Sulphites'),
+        ('Molluscs', 'Molluscs'),
+        ('Mustard', 'Mustard'),
     ]
     
     allergen = models.CharField(max_length=50, choices=ALLERGENS_CHOICES, blank=True, primary_key=True)
