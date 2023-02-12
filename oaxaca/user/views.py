@@ -5,9 +5,9 @@ from .models import User
 from .serializers import UserSerializer
 
 class UserApiView(APIView):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
     
-    def get(self, *args, **kwargs):
+    def get(self, request, *args, **kwargs):
         users = User.objects
         serializer = UserSerializer(users, many=True)
         
@@ -19,6 +19,9 @@ class UserApiView(APIView):
             'last_name': request.data.get('last_name'),
             'username': request.data.get('username'),
             'password': request.data.get('password'),
+            'waiter_permissions': request.data.get('waiter_permissions'),
+            'kitchen_permissions': request.data.get('kitchen_permissions'),
+            'admin_permissions': request.data.get('admin_permissions'),
             'email': request.data.get('email')
         }
         
@@ -32,7 +35,7 @@ class UserApiView(APIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
 class UserDetailApiView(APIView):
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
     
     def get_object(self, user, *args, **kwargs):
         try:
@@ -41,9 +44,9 @@ class UserDetailApiView(APIView):
             return None
         
     def get(self, user, *args, **kwargs):
-        user = self.get_object(user)
+        user_instance = self.get_object(user)
         
-        if not user:
+        if not user_instance:
             return Response(
                 {"res": "User does not exist"},
                 status=status.HTTP_400_BAD_REQUEST
@@ -53,9 +56,9 @@ class UserDetailApiView(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
     
     def put(self, request, user, *args, **kwargs):
-        user = self.get_object(user)
+        user_instance = self.get_object(user)
         
-        if not user:
+        if not user_instance:
             return Response(
                 {"res": "User does not exist"},
                 status=status.HTTP_400_BAD_REQUEST
@@ -66,6 +69,9 @@ class UserDetailApiView(APIView):
             'last_name': request.data.get('last_name'),
             'username': request.data.get('username'),
             'password': request.data.get('password'),
+            'waiter_permissions': request.data.get('waiter_permissions'),
+            'kitchen_permissions': request.data.get('kitchen_permissions'),
+            'admin_permissions': request.data.get('admin_permissions'),
             'email': request.data.get('email')
         }
         
