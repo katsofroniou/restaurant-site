@@ -6,7 +6,7 @@ If you haven't already, create a virtual environment by following these instruct
 
 1. Open a new terminal and navigate to the folder where the .git folder for this project is
 2. Run the command `python -m venv venv`
-3. To activate the command run the command `venv/scripts/activate`
+3. To activate the virtual environment run the command `venv/scripts/activate`
 4. Install the necessary libraries by running `pip install -r requirements.txt`
 
 You will need to be in this virtual environment whenever running any commands for the Django server and React applications.
@@ -15,6 +15,8 @@ To exit the virtual environment when you need to, run `deactivate`
 ## Starting the Django server
 
 There are a few steps to starting the django server.
+
+After opening a new terminal follow these instructions:
 
 1. Firstly, ensure that your virtual environment is active
 2. Navigate to the folder 'oaxaca'
@@ -25,7 +27,7 @@ There are a few steps to starting the django server.
 
 ## Starting the React applications
 
-Before starting, navigate to the folder 'frontend'
+Before starting, navigate to the folder 'frontend' in a new terminal. Then:
 
 1. Run `npm install` to install the necessary node modules
 2. Run `npm start`
