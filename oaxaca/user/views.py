@@ -15,13 +15,8 @@ class UserApiView(APIView):
     
     def post(self, request, *args, **kwargs):
         data = {
-            'first_name': request.data.get('first_name'),
-            'last_name': request.data.get('last_name'),
             'username': request.data.get('username'),
             'password': request.data.get('password'),
-            'waiter_permissions': request.data.get('waiter_permissions'),
-            'kitchen_permissions': request.data.get('kitchen_permissions'),
-            'admin_permissions': request.data.get('admin_permissions'),
             'email': request.data.get('email')
         }
         
@@ -65,13 +60,8 @@ class UserDetailApiView(APIView):
             )
         
         data = {
-            'first_name': request.data.get('first_name'),
-            'last_name': request.data.get('last_name'),
             'username': request.data.get('username'),
             'password': request.data.get('password'),
-            'waiter_permissions': request.data.get('waiter_permissions'),
-            'kitchen_permissions': request.data.get('kitchen_permissions'),
-            'admin_permissions': request.data.get('admin_permissions'),
             'email': request.data.get('email')
         }
         
