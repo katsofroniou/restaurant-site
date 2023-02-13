@@ -5,7 +5,7 @@
 If you haven't already, create a virtual environment by following these instructions:
 
 1. Open a new terminal and navigate to the folder where the .git folder for this project is
-2. Run the command `python -m venv`
+2. Run the command `python -m venv venv`
 3. To activate the command run the command `venv/scripts/activate`
 4. Install the necessary libraries by running `pip install -r requirements.txt`
 
