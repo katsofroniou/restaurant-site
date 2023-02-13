@@ -83,11 +83,11 @@ WSGI_APPLICATION = 'oaxaca.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'Oaxaca',
-        'USER': 'postgres',
-        'PASSWORD': '',
+        'NAME': 'CS2810/group13',
+        'USER': 'group13',
+        'PASSWORD': 'ieziet',
         'HOST': 'localhost',
-        'PORT': '5432',
+        'PORT': '9999',
     }
 }
 
