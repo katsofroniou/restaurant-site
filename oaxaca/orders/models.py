@@ -7,12 +7,12 @@ class Order(models.Model):
         (True, 'Yes'),
         (False, 'No'),
     ]
-
+    tableNumber = models.IntegerField()
     items = models.ManyToManyField(Dish)
     confirmed = models.BooleanField(choices=BOOLEAN_CHOICES, help_text="Yes / No")
     
     def __str__(self):
-        return self.name
+        return self.tableNumber
 
 
 class Meta:
