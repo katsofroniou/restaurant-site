@@ -1,9 +1,38 @@
 import react from "react";
 import React,{useState} from "react";
 import "../styling/Login.css";
-
+import axios from 'axios';
 
 function Login(){
+    const [formData, setFormData] = useState({
+        username: '',
+        email: '',
+        password: ''
+    });
+
+    const handleChange = event => {
+        console.log(formData)
+        setFormData({
+            ...formData,
+            [event.target.name]: event.target.value
+        });
+    }
+
+    const handleSubmit = async event => {
+        event.preventDefault();
+        console.log(formData)
+
+        try {
+            const headers = {
+                'Content-Type': 'application/json'
+            };
+
+            const response = await axios.post('http://127.0.0.1:8000/user/api', formData, { headers });
+            console.log(response.data);
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     const [show,setShow] = useState();
     var hidden = show ? "form form-hidden" : "form";
@@ -42,22 +71,22 @@ function Login(){
 
                 <div class="form_message-error"></div>
                 <div class="form_input-group">
-                    <input type="text" class="form_input" autofocus placeholder="Username"/>
+                    <input type="text" class="form_input" autofocus placeholder="Username" name="username" value={formData.username} onChange={handleChange}/>
                     <div class="form_input-error-message"></div>
                 </div>
                 <div class="form_input-group">
-                    <input type="text" class="form_input" autofocus placeholder="Email"/>
+                    <input type="text" class="form_input" autofocus placeholder="Email" name="email" value={formData.email} onChange={handleChange}/>
                     <div class="form_input-error-message"></div>
                 </div>
                 <div class="form_input-group">
-                    <input type="password" class="form_input" autofocus placeholder="Password"/>
+                    <input type="password" class="form_input" autofocus placeholder="Password" name="password" value={formData.password} onChange={handleChange}/>
                     <div class="form_input-error-message"></div>
                 </div>
                 <div class="form_input-group">
-                    <input type="text" class="form_input" autofocus placeholder="Confirm password"/>
+                    <input type="password" class="form_input" autofocus placeholder="Confirm password" />
                     <div class="form_input-error-message"></div>
                 </div>
-                <button class="form_button" type="submit">Create Account</button>
+                <button class="form_button" type="submit" onClick={handleSubmit}>Create Account</button>
                 <p class="form_text">
                     <a onClick={toggleShow}  class = "form_link" id="linkLogin">Already have an account? Sign in</a>
                 </p>
