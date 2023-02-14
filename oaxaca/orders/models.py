@@ -11,8 +11,8 @@ class Order(models.Model):
     items = models.ManyToManyField(Dish)
     confirmed = models.BooleanField(choices=BOOLEAN_CHOICES, help_text="Yes / No")
     
-    def __int__(self):
-        return self.tableNumber
+    def __str__(self):
+        return str(self.tableNumber)
 
 
 class Meta:
