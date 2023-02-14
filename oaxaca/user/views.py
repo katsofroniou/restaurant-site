@@ -34,7 +34,7 @@ class UserDetailApiView(APIView):
     
     def get_object(self, user, *args, **kwargs):
         try:
-            return User.objects.get(name=user)
+            return User.objects.get(user=user)
         except:
             return None
         
