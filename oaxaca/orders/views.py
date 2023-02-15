@@ -10,8 +10,18 @@ class OrderApiView(APIView):
     def get(self, request, *args, **kwards):
 
     def post(self, request, *args, **kwargs):
+        data = {
+            'tableNumber': request.data.get('tableNumber'),
+            'items': request.data.get('items'),
+            'confirmed': request.data.get('confirmed')
+        }
+
+        serializer = OrderSerializer(data = data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status = status.HTTP_201_CREATED)
         
-    
 
 class OrderDetailApiView(APIView):
     def get_object(self, OrderVal, *args **kwargs):
