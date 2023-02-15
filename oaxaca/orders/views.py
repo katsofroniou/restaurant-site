@@ -31,6 +31,11 @@ class OrderApiView(APIView):
 
 class OrderDetailApiView(APIView):
     def get_object(self, OrderVal, *args, **kwargs):
+        try:
+            return Order.objects.get(name=OrderVal)
+        except:
+            return None
+
 
     def get(self, request, OrderVal, *args, **kwargs):
         order = self.get_object(OrderVal)
