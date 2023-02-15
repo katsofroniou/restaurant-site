@@ -32,7 +32,18 @@ class OrderApiView(APIView):
 class OrderDetailApiView(APIView):
     def get_object(self, OrderVal, *args, **kwargs):
 
-    def get(self, OrderVal, *args, **kwargs):
+    def get(self, request, OrderVal, *args, **kwargs):
+        order = self.get_object(OrderVal)
+        
+        if not order:
+            return Response (
+                {"res": "Order with this name does not exist"},
+                status = status.HTTP_400_BAD_REQUEST
+            )
+            
+        serializer = OrderSerializer(order)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
 
     def put(self, request, OrderVal, *args, **kwargs):
         order = self.get_object(OrderVal)
