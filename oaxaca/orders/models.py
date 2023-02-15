@@ -16,4 +16,4 @@ class Order(models.Model):
 
 
 class Meta:
-    ordering = ['id']
+    ordering = ['tableNumber']
