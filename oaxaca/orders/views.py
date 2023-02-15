@@ -3,7 +3,6 @@ from rest_framework.response import Response
 from rest_framework import status, permissions
 from .models import Order
 from .serializers import OrderSerializer
-from django.urls import reverse
 
 class OrderApiView(APIView):
     permission_classes = [permissions.AllowAny]
@@ -11,6 +10,8 @@ class OrderApiView(APIView):
     def get(self, request, *args, **kwards):
         orders = Order.objects
         serializer = OrderSerializer(orders, many=True)
+
+        return Response(serializer.data, status = status.HTTP_200_OK)
 
     def post(self, request, *args, **kwargs):
         data = {
@@ -30,6 +31,8 @@ class OrderApiView(APIView):
         
 
 class OrderDetailApiView(APIView):
+    permission_classes = [permissions.AllowAny]
+
     def get_object(self, OrderVal, *args, **kwargs):
         try:
             return Order.objects.get(name=OrderVal)
