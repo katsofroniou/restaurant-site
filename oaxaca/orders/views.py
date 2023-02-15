@@ -30,7 +30,7 @@ class OrderApiView(APIView):
         
 
 class OrderDetailApiView(APIView):
-    def get_object(self, OrderVal, *args **kwargs):
+    def get_object(self, OrderVal, *args, **kwargs):
 
     def get(self, OrderVal, *args, **kwargs):
 
