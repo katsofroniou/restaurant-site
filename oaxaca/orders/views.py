@@ -5,11 +5,14 @@ from .models import Order
 from .serializers import OrderSerializer
 
 class OrderApiView(APIView):
+    permission_classes = [permissions.AllowAny]
+
     def get(self, request, *args, **kwards):
+        orders = Order.objects
+        serializer = OrderSerializer(orders, many=True)
 
     def post(self, request, *args, **kwargs):
         
-    
 
 class OrderDetailApiView(APIView):
     def get_object(self, OrderVal, *args **kwargs):
