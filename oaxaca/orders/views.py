@@ -18,7 +18,29 @@ class OrderDetailApiView(APIView):
 
     def get(self, OrderVal, *args, **kwargs):
 
-    def put(self, requst, OrderVal, *args, **kwargs):
+    def put(self, request, OrderVal, *args, **kwargs):
+        order = self.get_object(OrderVal)
+        
+        if not order:
+            return Response (
+                {"res": "Order with this name does not exist"},
+                status = status.HTTP_400_BAD_REQUEST
+            )
+            
+        data = {
+            'tableNumber': request.data.get('tableNumber'),
+            'items': request.data.get('items'),
+            'confirmed': request.data.get('confirmed'),
+        }
+        
+        serializer = OrderSerializer(instance= order, data=data, partial=True)
+        
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status= status.HTTP_200_OK)
+        
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
     
     def delete(self, request, OrderVal, *args, **kwargs):
         order_instance = self.get_object(OrderVal)
