@@ -17,7 +17,8 @@ class UserApiView(APIView):
         data = {
             'username': request.data.get('username'),
             'password': request.data.get('password'),
-            'email': request.data.get('email')
+            'permissions': request.data.get('permissions'),
+            'login': request.data.get('login')
         }
         
         serializer = UserSerializer(data=data)
@@ -62,7 +63,8 @@ class UserDetailApiView(APIView):
         data = {
             'username': request.data.get('username'),
             'password': request.data.get('password'),
-            'email': request.data.get('email')
+            'permissions': request.data.get('permissions'),
+            'login': request.data.get('login')
         }
         
         serializer = UserSerializer(data=data)
