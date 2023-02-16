@@ -18,7 +18,7 @@ function Menu () {
         <>
             <button class="menu_button">Show Calories</button>
             <button class="menu_button">Call waiter</button>
-            
+
             { dish.map((dish, index) => (
                     <table class="menu_table">
                         <tr>
@@ -32,7 +32,7 @@ function Menu () {
                             <td>{dish.name}</td>
                             <td>{dish.description}</td>
                             <td>{dish.course}</td>
-                            <td>{dish.allergens}</td>
+                            <td>{dish.allergens.join(", ")}</td>
                             <td>{dish.price}</td>
                         </tr>
                    </table> 
