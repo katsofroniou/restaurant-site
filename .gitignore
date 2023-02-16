@@ -4,6 +4,7 @@ __pycache__
 migrations
 frontend/node_modules
 venv
+.pytest_cache
 
 # dependencies
 /node_modules
