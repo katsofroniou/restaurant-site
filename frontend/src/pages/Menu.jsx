@@ -33,7 +33,7 @@ function Menu () {
                             <td>{dish.description}</td>
                             <td>{dish.course}</td>
                             <td>{dish.allergens.join(", ")}</td>
-                            <td>{dish.price}</td>
+                            <td>£{dish.price.toLocaleString("en-GB", {minimumFractionDigits:2, maximumFractionDigits:2})}</td>
                         </tr>
                    </table> 
             ))}
