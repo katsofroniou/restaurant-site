@@ -40,12 +40,6 @@ CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
 )
 
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
-    ]
-}
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -84,11 +78,11 @@ WSGI_APPLICATION = 'oaxaca.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'CS2810/group13',
-        'USER': 'group13',
-        'PASSWORD': 'ieziet',
+        'NAME': 'Oaxaca',
+        'USER': 'postgres',
+        'PASSWORD': '',
         'HOST': 'localhost',
-        'PORT': '9999',
+        'PORT': '5432',
     }
 }
 
