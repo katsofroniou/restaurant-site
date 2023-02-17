@@ -41,3 +41,13 @@ class WaiterNotificationView(View):
         else:
             print("Unknown notification received!")
         return HttpResponse("OK")
+    
+class WaiterCancelOrderView(View):
+    def post(self, request):
+        if requests.POST.get('notification_type') == "cancel_order":
+            if request.POST.get("cancel_order_button") == "cancel_order_button":
+                return HttpResonse ("Cancelling order and updating kitchen staff")
+        
+                
+            
+        
