@@ -1,4 +1,3 @@
-
 .torso{
     --color-primary: rgb(236, 180, 137);
     --color-primary-dark: rgb(48, 88, 90);
@@ -94,30 +93,37 @@
     outline: none;
     cursor: pointer;
     background: black;
+    margin-bottom: 10px;
 
 }
+
+.form_button2{
+    width: 91%;
+    margin-left: 16px;
+    padding: 1rem 2rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: rgb(0, 0, 0);
+    border:none;
+    border-radius: var(--border-radius);
+    outline: none;
+    cursor: pointer;
+    background: rgb(255, 255, 255);
+    margin-bottom: 10px;
+    border-radius: 6px;
+    border-color: black;
+
+}
+
+.form_button2:hover{
+    background: black;
+    color: white;
+}
+
 .form_button:hover{
     background: var(--color-primary);
 }
+
 .form_button:active{
     transform: scale(0.98);
-}
-
-.form_text{
-    text-align: center;
-    background-color: white;
-    color: var(--color-primary);
-    margin: 1.5rem;
-}
-
-.form_link{
-    color: var(--color-secondary);
-    background-color: white;
-    text-decoration: none;
-    cursor: pointer;
-}
-.form_link:hover{
-    text-decoration: underline;
-
-    color: rgb(255, 111, 0)
 }

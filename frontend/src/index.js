@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import Menu from "./pages/Menu";
+import Orders from "./pages/Orders";
 import Login from "./pages/Login";
 import Waiter from "./pages/Waiter";
 import KitchenStaff from "./pages/KitchenStaff";
@@ -19,6 +20,7 @@ export default function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="menu" element={<Menu />} />
+          <Route path="orders" element={<Orders />} />
           <Route path="login" element={<Login />} />
           <Route path="waiter" element={<Waiter />} />
           <Route path="kitchenstaff" element={<KitchenStaff />} />

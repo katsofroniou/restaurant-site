@@ -17,6 +17,9 @@ function Navbar () {
                     <li class="navbar_item">
                         <Link to='/Menu' class="navbar_links">Menu</Link>
                     </li>
+                    <li class="navbar_item">
+                        <Link to='/Orders' class="navbar_links">Orders</Link>
+                    </li>
                     <li class="navbar_btn">
                         <Link to='/Login' class="navbar_button">Sign in</Link>
                     </li>
