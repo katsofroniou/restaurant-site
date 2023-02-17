@@ -14,9 +14,11 @@ function Navbar () {
                     <li class="navbar_item">
                         <Link to='/' class="navbar_links">Home</Link>
                     </li>
-                    <li class="navbar_item">
-                        <Link to='/Menu' class="navbar_links">Menu</Link>
-                    </li>
+                    {user.permissions === "customer_permissions" && user.login === true && (
+                        <li class="navbar_item">
+                            <Link to='/Menu' class="navbar_links">Menu</Link>
+                        </li>
+                    )}
                     <li class="navbar_item">
                         <Link to='/Orders' class="navbar_links">Orders</Link>
                     </li>
