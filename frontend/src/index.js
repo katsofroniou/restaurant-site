@@ -49,6 +49,12 @@ export default function App() {
           {user.permissions === "kitchen_permissions" && user.login === true && (
             <Route path="kitchenstaff" element={<KitchenStaff />} />
           )}
+          {user.permissions === "manager_permissions" && user.login === true && (
+            <Route path="manager" element={<Manager />} />
+          )}
+          {user.permissions === "manager_permissions" && user.login === true && (
+            <Route path="adduser" element={<AddUser />} />
+          )}
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
