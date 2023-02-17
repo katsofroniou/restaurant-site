@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import axios from 'axios';
 import "./styling/Navbar.css";
-import Logo from '../src/Images/OaxacaLogo.png
+import Logo from '../src/Images/OaxacaLogo.png'
 
 function Navbar () {
     const [user, setUser] = useState([]);
