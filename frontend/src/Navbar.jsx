@@ -37,6 +37,16 @@ function Navbar () {
                             <Link to='/kitchenstaff' class="navbar_links">Kitchen Staff</Link>
                         </li>
                     )}
+                    {user.permissions === "manager_permissions" && user.login === true && (
+                        <li class="navbar_item">
+                            <Link to='/manager' class="navbar_links">Manage Users</Link>
+                        </li>
+                    )}
+                    {user.permissions === "manager_permissions" && user.login === true && (
+                        <li class="navbar_item">
+                            <Link to='/adduser' class="navbar_links">Add User</Link>
+                        </li>
+                    )}
                     <li class="navbar_btn">
                         <Link to='/Login' class="navbar_button">Sign in</Link>
                     </li>
