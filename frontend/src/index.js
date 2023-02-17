@@ -37,9 +37,18 @@ export default function App() {
           )}
           <Route path="orders" element={<Orders />} />
           <Route path="login" element={<Login />} />
-          <Route path="waiter" element={<Waiter />} />
-          <Route path="kitchenstaff" element={<KitchenStaff />} />
-          <Route path="additem" element={<AddItem />} />
+          {user.permissions === "customer_permissions" && user.login === true && (
+            <Route path="menu" element={<Menu />} />
+          )}
+          {user.permissions === "waiter_permissions" && user.login === true && (
+            <Route path="waiter" element={<Waiter />} />
+          )}
+          {user.permissions === "waiter_permissions" && user.login === true && (
+            <Route path="additem" element={<AddItem />} />
+          )}
+          {user.permissions === "kitchen_permissions" && user.login === true && (
+            <Route path="kitchenstaff" element={<KitchenStaff />} />
+          )}
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
