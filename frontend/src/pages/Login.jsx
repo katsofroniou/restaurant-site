@@ -58,38 +58,6 @@ function Login(){
                     <div class="form_input-error-message"></div>
                 </div>
                 <button class="form_button" type="submit">Submit</button>
-                <p class="form_text">
-                    <a onClick={toggleShow} class = "form_link" id="linkCreateAccount">Sign Up?</a>
-                </p>
-                <p class="form_text">
-                    Forgot your password? Ask your employer
-                </p>
-            </form>
-
-             <form class = {hidden2} id="createAccount">
-                <h2 class="form_title">Create Account</h2>
-
-                <div class="form_message-error"></div>
-                <div class="form_input-group">
-                    <input type="text" class="form_input" autofocus placeholder="Username" name="username" value={formData.username} onChange={handleChange}/>
-                    <div class="form_input-error-message"></div>
-                </div>
-                <div class="form_input-group">
-                    <input type="text" class="form_input" autofocus placeholder="Email" name="email" value={formData.email} onChange={handleChange}/>
-                    <div class="form_input-error-message"></div>
-                </div>
-                <div class="form_input-group">
-                    <input type="password" class="form_input" autofocus placeholder="Password" name="password" value={formData.password} onChange={handleChange}/>
-                    <div class="form_input-error-message"></div>
-                </div>
-                <div class="form_input-group">
-                    <input type="password" class="form_input" autofocus placeholder="Confirm password" />
-                    <div class="form_input-error-message"></div>
-                </div>
-                <button class="form_button" type="submit" onClick={handleSubmit}>Create Account</button>
-                <p class="form_text">
-                    <a onClick={toggleShow}  class = "form_link" id="linkLogin">Already have an account? Sign in</a>
-                </p>
             </form>
         </div>
     </div>
