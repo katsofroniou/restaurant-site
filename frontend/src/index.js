@@ -1,5 +1,7 @@
+import { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import axios from 'axios';
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import Menu from "./pages/Menu";
@@ -12,6 +14,17 @@ import NotFound from "./pages/NotFound";
 import reportWebVitals from './reportWebVitals';
 
 export default function App() {
+  const [user, setUser] = useState([])
+
+  const getUser = async () => {
+    const response = await axios.get('http://127.0.0.1:8000/user/api')
+    setUser(response.data)
+  }
+
+  useEffect(() =>{
+    getUser();
+  }, [])
+  
   return(
     //To add a page to the WebApp please route it as follows: <Route path="name" element={<Name />} />
     //Please note: Add the newly added page before the NotFound Page route as this is the 404 page not found route and should be the last one
@@ -19,7 +32,9 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="menu" element={<Menu />} />
+          {user.permissions === "customer_permissions" && user.login === true && (
+            <Route path="menu" element={<Menu />} />
+          )}
           <Route path="orders" element={<Orders />} />
           <Route path="login" element={<Login />} />
           <Route path="waiter" element={<Waiter />} />
