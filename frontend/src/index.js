@@ -10,6 +10,8 @@ import Login from "./pages/Login";
 import Waiter from "./pages/Waiter";
 import KitchenStaff from "./pages/KitchenStaff";
 import AddItem from "./pages/AddItem";
+import Manager from "./pages/Manager";
+import AddUser from "./pages/AddUser";
 import NotFound from "./pages/NotFound";
 import reportWebVitals from './reportWebVitals';
 
