@@ -22,6 +22,21 @@ function Navbar () {
                     <li class="navbar_item">
                         <Link to='/Orders' class="navbar_links">Orders</Link>
                     </li>
+                    {user.permissions === "waiter_permissions" && user.login === true && (
+                        <li class="navbar_item">
+                            <Link to='/waiter' class="navbar_links">Waiter</Link>
+                        </li>
+                    )}
+                    {user.permissions === "waiter_permissions" && user.login === true && (
+                        <li class="navbar_item">
+                            <Link to='/additem' class="navbar_links">Add Items</Link>
+                        </li>
+                    )}
+                    {user.permissions === "kitchen_permissions" && user.login === true && (
+                        <li class="navbar_item">
+                            <Link to='/kitchenstaff' class="navbar_links">Kitchen Staff</Link>
+                        </li>
+                    )}
                     <li class="navbar_btn">
                         <Link to='/Login' class="navbar_button">Sign in</Link>
                     </li>
