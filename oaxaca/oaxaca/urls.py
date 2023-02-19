@@ -19,11 +19,14 @@ from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
 
+from accounts.urls import accounts_urlpatterns
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('menu/', include('menu.urls')),
-    path('user/', include('user.urls')),
     path('orders/', include('orders.urls')),
     path('api-auth/', include('rest_framework.urls')),
     path('', RedirectView.as_view(url='admin', permanent=True)),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+urlpatterns += accounts_urlpatterns
