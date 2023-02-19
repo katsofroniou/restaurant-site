@@ -34,7 +34,8 @@ INSTALLED_APPS = [
     'menu',
     'orders',
     'corsheaders',
-    'djoser'
+    'djoser',
+    'accounts',
 ]
 
 REST_FRAMEWORK = {
