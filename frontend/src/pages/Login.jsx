@@ -1,39 +1,8 @@
 import react from "react";
 import React,{useState} from "react";
 import "../styling/Login.css";
-import axios from 'axios';
 
 function Login(){
-    const [formData, setFormData] = useState({
-        username: '',
-        email: '',
-        password: ''
-    });
-
-    const handleChange = event => {
-        console.log(formData)
-        setFormData({
-            ...formData,
-            [event.target.name]: event.target.value
-        });
-    }
-
-    const handleSubmit = async event => {
-        event.preventDefault();
-        console.log(formData)
-
-        try {
-            const headers = {
-                'Content-Type': 'application/json'
-            };
-
-            const response = await axios.post('http://127.0.0.1:8000/user/api', formData, { headers });
-            console.log(response.data);
-        } catch (error) {
-            console.error(error);
-        }
-    }
-
     const [show,setShow] = useState();
     var hidden = show ? "form form-hidden" : "form";
     var hidden2 = show ? "form": "form form-hidden";
