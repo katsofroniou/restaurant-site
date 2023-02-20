@@ -7,6 +7,8 @@ class Order(models.Model):
         (True, 'Yes'),
         (False, 'No'),
     ]
+
+    orderTime = models.TimeField(auto_now_add=True)
     tableNumber = models.IntegerField(default="0")
     items = models.ManyToManyField(Dish)
     confirmed = models.BooleanField(choices=BOOLEAN_CHOICES, help_text="Yes / No")
@@ -16,4 +18,4 @@ class Order(models.Model):
 
 
 class Meta:
-    ordering = ['tableNumber']
+    ordering = ['orderTime']
