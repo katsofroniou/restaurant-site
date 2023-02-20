@@ -37,8 +37,13 @@ export default function App() {
           {user.permissions === "customer_permissions" && user.login === true && (
             <Route path="menu" element={<Menu />} />
           )}
+          //Temporary routes during login processess work: 
           <Route path="orders" element={<Orders />} />
           <Route path="login" element={<Login />} />
+          <Route path="additem" element={<AddItem />} />
+          <Route path="menu" element={<Menu />} />
+          <Route path="waiter" element={<Waiter />} />
+          <Route path="kitchenstaff" element={<KitchenStaff />} />
           {user.permissions === "customer_permissions" && user.login === true && (
             <Route path="menu" element={<Menu />} />
           )}
