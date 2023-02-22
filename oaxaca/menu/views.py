@@ -5,7 +5,7 @@ from .models import Dish
 from .serializers import DishSerializer
 
 class DishApiView(APIView):
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     
     def get(self, request, *args, **kwargs):
         dishes = Dish.objects
@@ -37,7 +37,7 @@ class DishApiView(APIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
 class DishDetailApiView(APIView):
-    permission_classes =  [permissions.AllowAny]
+    permission_classes =  [permissions.IsAuthenticatedOrReadOnly]
     
     def get_object(self, dishVal, *args, **kwargs):
         try:
