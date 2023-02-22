@@ -36,11 +36,11 @@ export default function App() {
 
   // Define permissions for each page
   const pagePermissions = {
-    orders: ['Waiter', 'Kitchen Staff'],
-    addItem: ['Waiter', 'Kitchen Staff'],
-    menu: ['Waiter', 'Kitchen Staff', 'Customer'],
-    waiter: ['Waiter'],
-    kitchenstaff: ['Kitchen Staff'],
+    orders: ['Waiter', 'Kitchen Staff', 'Admin'],
+    addItem: ['Waiter', 'Kitchen Staff', 'Admin'],
+    menu: ['Waiter', 'Kitchen Staff', 'Customer', 'Admin'],
+    waiter: ['Waiter', 'Admin'],
+    kitchenstaff: ['Kitchen Staff', 'Admin'],
     manager: ['Admin'],
     adduser: ['Admin']
   };

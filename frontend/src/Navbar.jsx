@@ -27,11 +27,10 @@ function Navbar() {
     // Define permissions for each page
     const pagePermissions = {
         orders: ['Waiter', 'Kitchen Staff', 'Admin'],
-        login: ['*'],
-        addItem: ['Waiter', 'Kitchen Staff'],
-        menu: ['Waiter', 'Kitchen Staff', 'Customer'],
-        waiter: ['Waiter'],
-        kitchenstaff: ['Kitchen Staff'],
+        addItem: ['Waiter', 'Kitchen Staff', 'Admin'],
+        menu: ['Waiter', 'Kitchen Staff', 'Customer', 'Admin'],
+        waiter: ['Waiter', 'Admin'],
+        kitchenstaff: ['Kitchen Staff', 'Admin'],
         manager: ['Admin'],
         adduser: ['Admin']
     };
@@ -69,7 +68,7 @@ function Navbar() {
                             <Link to='/waiter' class="navbar_links">Waiter</Link>
                         </li>
                     )}
-                    {(userHasPermission('waiter') || userHasPermission('kitchenstaff') || userHasPermission('manager')) && (
+                    {(userHasPermission('waiter') || userHasPermission('kitchenstaff')) && (
                         <li class="navbar_item">
                             <Link to='/additem' class="navbar_links">Add Items</Link>
                         </li>
