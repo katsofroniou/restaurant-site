@@ -3,6 +3,7 @@ from rest_framework.response import Response
 from rest_framework import status, permissions
 from .models import Order
 from .serializers import OrderSerializer
+from django.shortcuts import render
 
 class OrderApiView(APIView):
     permission_classes = [permissions.AllowAny]
@@ -95,5 +96,10 @@ class OrderDetailApiView(APIView):
             {"res": "Order deleted!"},
             status=status.HTTP_200_OK
         )
+
+def waiterViewOrders(request):
+    orders = Order.objects.order_by('orderTime')
+    context = {'orders': orders}
+    return render(request, 'waiterViewOrders.html', context)
 
 
