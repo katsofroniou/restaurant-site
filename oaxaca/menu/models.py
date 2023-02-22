@@ -26,20 +26,15 @@ class Allergen(models.Model):
         return self.allergen
 
 class Dish(models.Model):
-    BOOLEAN_CHOICES = [
-        (True, 'Yes'),
-        (False, 'No'),
-    ]
-    
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=500)
     allergens = models.ManyToManyField(Allergen, blank=True)
     kcal = models.IntegerField(help_text="e.g. 1200")
     course = models.CharField(max_length=25, help_text="Main, side, dessert, drink")
     price = models.FloatField(help_text="e.g. 2.99")
-    vegetarian = models.BooleanField(choices=BOOLEAN_CHOICES, help_text="Yes / No")
-    vegan = models.BooleanField(choices=BOOLEAN_CHOICES, help_text="Yes / No")
-    available = models.BooleanField(choices=BOOLEAN_CHOICES, help_text= "Yes / No" )
+    vegetarian = models.BooleanField(help_text="Yes / No")
+    vegan = models.BooleanField(help_text="Yes / No")
+    available = models.BooleanField(help_text= "Yes / No" )
     
     def __str__(self):
         return self.name
