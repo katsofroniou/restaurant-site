@@ -8,6 +8,7 @@ class Order(models.Model):
     items = models.ManyToManyField(Dish)
     confirmed = models.BooleanField(help_text="True / False")
     orderReady = models.BooleanField(help_text="True / False")
+    OrderComplete = models.BooleanField(help_text="True / False")
     
     def __str__(self):
         return str(self.orderTime)
