@@ -57,26 +57,26 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          {accessToken && userHasPermission('menu') && (
+          {userHasPermission('menu') && (
             <Route path="menu" element={<Menu />} />
           )}
-          {accessToken && userHasPermission('orders') && (
+          {userHasPermission('orders') && (
             <Route path="orders" element={<Orders />} />
           )}
           <Route path="login" element={<Login />} />
-          {accessToken && userHasPermission('addItem') && (
+          {userHasPermission('addItem') && (
             <Route path="additem" element={<AddItem />} />
           )}
-          {accessToken && userHasPermission('waiter') && (
+          {userHasPermission('waiter') && (
             <Route path="waiter" element={<Waiter />} />
           )}
-          {accessToken && userHasPermission('kitchenstaff') && (
+          {userHasPermission('kitchenstaff') && (
             <Route path="kitchenstaff" element={<KitchenStaff />} />
           )}
-          {accessToken && userHasPermission('manager') && (
+          {userHasPermission('manager') && (
             <Route path="manager" element={<Manager />} />
           )}
-          {accessToken && userHasPermission('adduser') && (
+          {userHasPermission('adduser') && (
             <Route path="adduser" element={<AddUser />} />
           )}
           <Route path="*" element={<NotFound />} />

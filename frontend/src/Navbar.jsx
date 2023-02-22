@@ -56,7 +56,7 @@ function Navbar() {
                     <li class="navbar_item">
                         <Link to='/' class="navbar_links">Home</Link>
                     </li>
-                    {token && userHasPermission('customer') && (
+                    {userHasPermission('customer') && (
                         <li class="navbar_item">
                             <Link to='/Menu' class="navbar_links">Menu</Link>
                         </li>
@@ -64,27 +64,27 @@ function Navbar() {
                     <li class="navbar_item">
                         <Link to='/Orders' class="navbar_links">Orders</Link>
                     </li>
-                    {token && userHasPermission('waiter') && (
+                    {userHasPermission('waiter') && (
                         <li class="navbar_item">
                             <Link to='/waiter' class="navbar_links">Waiter</Link>
                         </li>
                     )}
-                    {token && (userHasPermission('waiter') || userHasPermission('kitchenstaff') || userHasPermission('manager')) && (
+                    {(userHasPermission('waiter') || userHasPermission('kitchenstaff') || userHasPermission('manager')) && (
                         <li class="navbar_item">
                             <Link to='/additem' class="navbar_links">Add Items</Link>
                         </li>
                     )}
-                    {token && userHasPermission('kitchenstaff') && (
+                    {userHasPermission('kitchenstaff') && (
                         <li class="navbar_item">
                             <Link to='/kitchenstaff' class="navbar_links">Kitchen Staff</Link>
                         </li>
                     )}
-                    {token && userHasPermission('manager') && (
+                    {userHasPermission('manager') && (
                         <li class="navbar_item">
                             <Link to='/manager' class="navbar_links">Manage Users</Link>
                         </li>
                     )}
-                    {token && userHasPermission('manager') && (
+                    {userHasPermission('manager') && (
                         <li class="navbar_item">
                             <Link to='/adduser' class="navbar_links">Add User</Link>
                         </li>
