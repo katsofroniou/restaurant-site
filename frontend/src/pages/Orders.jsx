@@ -1,5 +1,5 @@
 import React from "react";
-import "../styling/Orders.css";
+import orderStyle from "../styling/Orders.module.css";
 
 
 // This page will only be visible to waiter and kitchen staff - not to thd customer
@@ -9,26 +9,26 @@ import "../styling/Orders.css";
 function Orders () {
     return(
         <>
-            <div class="torso">
-                <div class="form_container">
-                    <form>
-                        <h2 class="form_title">Pending orders</h2>
+            <div class={orderStyle.torso}>
+                <div class={orderStyle.form_container}>
+                    <form class={orderStyle.form}>
+                        <h2 class={orderStyle.form_title}>Pending orders</h2>
                         <div class="form_message form_message-error"></div>
-                        <button class="form_button" type="submit">Order no. ######</button>
-                        <button class="form_button" type="submit">Order no. ######</button>
-                        <button class="form_button" type="submit">Order no. ######</button>
-                        <button class="form_button" type="submit">Order no. ######</button>
-                        <button class="form_button2" type="submit">Confirm order</button>
+                        <button class={orderStyle.form_button} type="submit">Order no. ######</button>
+                        <button class={orderStyle.form_button} type="submit">Order no. ######</button>
+                        <button class={orderStyle.form_button} type="submit">Order no. ######</button>
+                        <button class={orderStyle.form_button} type="submit">Order no. ######</button>
+                        <button class={orderStyle.form_button} type="submit">Confirm order</button>
                     </form>
                 </div>
-                <div class="form_container">
-                    <form>
-                        <h2 class="form_title">Confirmed orders</h2>
+                <div class={orderStyle.form_container}>
+                    <form class={orderStyle.form}>
+                        <h2 class={orderStyle.form_title}>Confirmed orders</h2>
                         <div class="form_message form_message-error"></div>
-                        <button class="form_button" type="submit">Order no. ######</button>
-                        <button class="form_button" type="submit">Order no. ######</button>
-                        <button class="form_button" type="submit">Order no. ######</button>
-                        <button class="form_button" type="submit">Order no. ######</button>
+                        <button class={orderStyle.form_button} type="submit">Order no. ######</button>
+                        <button class={orderStyle.form_button} type="submit">Order no. ######</button>
+                        <button class={orderStyle.form_button} type="submit">Order no. ######</button>
+                        <button class={orderStyle.form_button} type="submit">Order no. ######</button>
                     </form>
                 </div>
             </div>
