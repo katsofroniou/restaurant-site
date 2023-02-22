@@ -6,7 +6,7 @@ function WaiterOrders() {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    axios.get('/api/waiterViewOrders/')
+    axios.get('http://127.0.0.1:8000/orders/api')
       .then(response => setOrders(response.data))
       .catch(error => console.log(error));
   }, []);
