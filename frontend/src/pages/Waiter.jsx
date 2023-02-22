@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
-import "../styling/Waiter.css";
+import waiterSyle from"../styling/Waiter.module.css";
 import axios from 'axios';
 
 function Waiter () {
@@ -18,7 +18,7 @@ function Waiter () {
     return (
         <>
             
-            <table class="menu_table">
+            <table class={waiterSyle.menu_table}>
                 <tr>
                     <th>Course</th>
                     <th>Dish</th>
@@ -49,11 +49,11 @@ function Waiter () {
                     </tr>
                 ))}
             </table>
-            <button class="add_button">
-                <Link to='/additem' class="button_link">Add to Menu</Link>
+            <button class={waiterSyle.add_button}>
+                <Link to='/additem' class={waiterSyle.button_link}>Add to Menu</Link>
             </button>
-            <button class="add_button">
-                <Link to='/waiter' class="button_link">Delete From Menu</Link>
+            <button class={waiterSyle.add_button}>
+                <Link to='/waiter' class={waiterSyle.button_link}>Delete From Menu</Link>
             </button>
         </>
     );
