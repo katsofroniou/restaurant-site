@@ -57,9 +57,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          {userHasPermission('menu') && (
-            <Route path="menu" element={<Menu />} />
-          )}
+          <Route path="menu" element={<Menu />} />
           {userHasPermission('orders') && (
             <Route path="orders" element={<Orders />} />
           )}
