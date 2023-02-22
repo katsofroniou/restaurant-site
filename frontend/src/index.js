@@ -17,10 +17,9 @@ import reportWebVitals from './reportWebVitals';
 
 export default function App() {
   const [groups, setGroups] = useState([]);
+  const accessToken = localStorage.getItem('access_token');
 
   useEffect(() => {
-    const accessToken = localStorage.getItem('access_token');
-
     axios.get('http://localhost:8000/@me/', {
       headers: {
         Authorization: `Bearer ${accessToken}`
@@ -38,7 +37,6 @@ export default function App() {
   // Define permissions for each page
   const pagePermissions = {
     orders: ['Waiter', 'Kitchen Staff'],
-    login: ['*'],
     addItem: ['Waiter', 'Kitchen Staff'],
     menu: ['Waiter', 'Kitchen Staff', 'Customer'],
     waiter: ['Waiter'],
@@ -59,26 +57,26 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          {token && userHasPermission('menu') && (
+          {accessToken && userHasPermission('menu') && (
             <Route path="menu" element={<Menu />} />
           )}
-          {token && userHasPermission('orders') && (
+          {accessToken && userHasPermission('orders') && (
             <Route path="orders" element={<Orders />} />
           )}
           <Route path="login" element={<Login />} />
-          {token && userHasPermission('addItem') && (
+          {accessToken && userHasPermission('addItem') && (
             <Route path="additem" element={<AddItem />} />
           )}
-          {token && userHasPermission('waiter') && (
+          {accessToken && userHasPermission('waiter') && (
             <Route path="waiter" element={<Waiter />} />
           )}
-          {token && userHasPermission('kitchenstaff') && (
+          {accessToken && userHasPermission('kitchenstaff') && (
             <Route path="kitchenstaff" element={<KitchenStaff />} />
           )}
-          {token && userHasPermission('manager') && (
+          {accessToken && userHasPermission('manager') && (
             <Route path="manager" element={<Manager />} />
           )}
-          {token && userHasPermission('adduser') && (
+          {accessToken && userHasPermission('adduser') && (
             <Route path="adduser" element={<AddUser />} />
           )}
           <Route path="*" element={<NotFound />} />
