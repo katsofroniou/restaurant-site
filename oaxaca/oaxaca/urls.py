@@ -1,3 +1,4 @@
+from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
 from django.views.generic import RedirectView
@@ -21,5 +22,6 @@ urlpatterns = [
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('menu/', include('menu.urls')),
     path('orders/', include('orders.urls')),
-    path('' , include(router.urls))
+    path('' , include(router.urls)),
+    path('users/', include('accounts.urls')),
 ]
