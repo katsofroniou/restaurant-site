@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import "../styling/Menu.css";
+import menuStyle from "../styling/Menu.module.css";
 import axios from 'axios';
 
 function Menu () {
@@ -22,10 +22,10 @@ function Menu () {
 
     return (
         <>
-            <button class="menu_button" onClick={handleToggle}>Show Calories</button>
-            <button class="menu_button">Call waiter</button>
+            <button class={menuStyle.menu_button} onClick={handleToggle}>Show Calories</button>
+            <button class={menuStyle.menu_button}>Call waiter</button>
             
-            <table class="menu_table">
+            <table class={menuStyle.menu_table}>
                 <tr>
                 <th>Dish</th>
                     <th>Description</th>
