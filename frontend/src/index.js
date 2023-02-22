@@ -16,50 +16,69 @@ import NotFound from "./pages/NotFound";
 import reportWebVitals from './reportWebVitals';
 
 export default function App() {
-  const [user, setUser] = useState([])
+  const [groups, setGroups] = useState([]);
 
-  const getUser = async () => {
-    const response = await axios.get('http://127.0.0.1:8000/user/api')
-    setUser(response.data)
-  }
+  useEffect(() => {
+    const accessToken = localStorage.getItem('access_token');
 
-  useEffect(() =>{
-    getUser();
-  }, [])
-  
-  return(
-    //To add a page to the WebApp please route it as follows: <Route path="name" element={<Name />} />
-    //Please note: Add the newly added page before the NotFound Page route as this is the 404 page not found route and should be the last one
+    axios.get('http://localhost:8000/@me/', {
+      headers: {
+        Authorization: `Bearer ${accessToken}`
+      }
+    })
+      .then(response => {
+        const groupNames = response.data.groups.map(group => group.name);
+        setGroups(groupNames);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, []);
+
+  // Define permissions for each page
+  const pagePermissions = {
+    orders: ['Waiter', 'Kitchen Staff'],
+    login: ['*'],
+    addItem: ['Waiter', 'Kitchen Staff'],
+    menu: ['Waiter', 'Kitchen Staff', 'Customer'],
+    waiter: ['Waiter'],
+    kitchenstaff: ['Kitchen Staff'],
+    manager: ['Admin'],
+    adduser: ['Admin']
+  };
+
+  const userHasPermission = (permission) => {
+    // Check if the user has any of the required permissions for the page
+    return pagePermissions[permission].some(p => groups.includes(p));
+  };
+
+  //To add a page to the WebApp please route it as follows: <Route path="name" element={<Name />} />
+  //Please note: Add the newly added page before the NotFound Page route as this is the 404 page not found route and should be the last one
+  return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          {user.permissions === "customer_permissions" && user.login === true && (
+          {token && userHasPermission('menu') && (
             <Route path="menu" element={<Menu />} />
           )}
-          //Temporary routes during login processess work: 
-          <Route path="orders" element={<Orders />} />
+          {token && userHasPermission('orders') && (
+            <Route path="orders" element={<Orders />} />
+          )}
           <Route path="login" element={<Login />} />
-          <Route path="additem" element={<AddItem />} />
-          <Route path="menu" element={<Menu />} />
-          <Route path="waiter" element={<Waiter />} />
-          <Route path="kitchenstaff" element={<KitchenStaff />} />
-          {user.permissions === "customer_permissions" && user.login === true && (
-            <Route path="menu" element={<Menu />} />
-          )}
-          {user.permissions === "waiter_permissions" && user.login === true && (
-            <Route path="waiter" element={<Waiter />} />
-          )}
-          {user.permissions === "waiter_permissions" && user.login === true && (
+          {token && userHasPermission('addItem') && (
             <Route path="additem" element={<AddItem />} />
           )}
-          {user.permissions === "kitchen_permissions" && user.login === true && (
+          {token && userHasPermission('waiter') && (
+            <Route path="waiter" element={<Waiter />} />
+          )}
+          {token && userHasPermission('kitchenstaff') && (
             <Route path="kitchenstaff" element={<KitchenStaff />} />
           )}
-          {user.permissions === "manager_permissions" && user.login === true && (
+          {token && userHasPermission('manager') && (
             <Route path="manager" element={<Manager />} />
           )}
-          {user.permissions === "manager_permissions" && user.login === true && (
+          {token && userHasPermission('adduser') && (
             <Route path="adduser" element={<AddUser />} />
           )}
           <Route path="*" element={<NotFound />} />
