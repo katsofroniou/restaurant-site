@@ -32,9 +32,9 @@ class Dish(models.Model):
     kcal = models.IntegerField(help_text="e.g. 1200")
     course = models.CharField(max_length=25, help_text="Main, side, dessert, drink")
     price = models.FloatField(help_text="e.g. 2.99")
-    vegetarian = models.BooleanField(help_text="Yes / No")
-    vegan = models.BooleanField(help_text="Yes / No")
-    available = models.BooleanField(help_text= "Yes / No" )
+    vegetarian = models.BooleanField(help_text="True / False")
+    vegan = models.BooleanField(help_text="True / False")
+    available = models.BooleanField(help_text="True / False" )
     
     def __str__(self):
         return self.name
