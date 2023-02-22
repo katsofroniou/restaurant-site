@@ -60,9 +60,11 @@ function Navbar() {
                             <Link to='/Menu' class="navbar_links">Menu</Link>
                         </li>
                     )}
+                    {(userHasPermission('waiter') || userHasPermission('kitchenstaff')) && (
                     <li class="navbar_item">
                         <Link to='/Orders' class="navbar_links">Orders</Link>
                     </li>
+                    )}
                     {userHasPermission('waiter') && (
                         <li class="navbar_item">
                             <Link to='/waiter' class="navbar_links">Waiter</Link>
