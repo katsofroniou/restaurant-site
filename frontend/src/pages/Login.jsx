@@ -1,6 +1,6 @@
 import react from "react";
 import React,{useState} from "react";
-import "../styling/Login.css";
+import loginStyle from "../styling/Login.module.css";
 
 function Login(){
     const [show,setShow] = useState();
@@ -12,21 +12,21 @@ function Login(){
         
     return (
     <>
-    <div class="torso">
-        <div class="form_container">
-            <form class = {hidden} id="login">
-                <h2 class="form_title">Login</h2>
+    <div class={loginStyle.torso}>
+        <div class={loginStyle.form_container}>
+            <form class = {loginStyle.form} id="login">
+                <h2 class={loginStyle.form_title}>Login</h2>
 
-                <div class="form_message form_message-error"></div>
-                <div class="form_input-group">
-                    <input type="text" class="form_input" autofocus placeholder="Username or Email"/>
-                    <div class="form_input-error-message"></div>
+                <div class={'${loginStyle.form_message} ${loginStyle.form_message-error}'}></div>
+                <div class={loginStyle["form_input-group"]}>
+                    <input type="text" class={loginStyle.form_input} autofocus placeholder="Username or Email"/>
+                    <div class={loginStyle["form_input-error-message"]}></div>
                 </div>
-                <div class="form_input-group">
-                    <input type="password" class="form_input" autofocus placeholder="Password"/>
-                    <div class="form_input-error-message"></div>
+                <div class={loginStyle["form_input-group"]}>
+                    <input type="password" class={loginStyle.form_input} autofocus placeholder="Password"/>
+                    <div class={loginStyle["form_input-error-message"]}></div>
                 </div>
-                <button class="form_button" type="submit">Submit</button>
+                <button class={loginStyle.form_button} type="submit">Submit</button>
             </form>
         </div>
     </div>
