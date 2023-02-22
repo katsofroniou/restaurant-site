@@ -5,6 +5,7 @@ import axios from 'axios';
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import Menu from "./pages/Menu";
+import Basket from "./pages/Basket";
 import Orders from "./pages/Orders";
 import Login from "./pages/Login";
 import Waiter from "./pages/Waiter";
@@ -61,6 +62,7 @@ export default function App() {
           {userHasPermission('orders') && (
             <Route path="orders" element={<Orders />} />
           )}
+          <Route path="Basket" element={<Basket />} />
           <Route path="login" element={<Login />} />
           {userHasPermission('addItem') && (
             <Route path="additem" element={<AddItem />} />
