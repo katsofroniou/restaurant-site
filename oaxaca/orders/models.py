@@ -12,10 +12,10 @@ class Order(models.Model):
     tableNumber = models.IntegerField(default="0")
     items = models.ManyToManyField(Dish)
     confirmed = models.BooleanField(choices=BOOLEAN_CHOICES, help_text="Yes / No")
+    orderReady = models.BooleanField(choices=BOOLEAN_CHOICES, help_text="Yes / No")
     
     def __str__(self):
-        return str(self.tableNumber)
-
+        return str(self.orderTime)
 
 class Meta:
     ordering = ['orderTime']

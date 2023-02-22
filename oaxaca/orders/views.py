@@ -18,7 +18,8 @@ class OrderApiView(APIView):
             'orderTime': request.data.get('orderTime'),
             'tableNumber': request.data.get('tableNumber'),
             'items': request.data.get('items'),
-            'confirmed': request.data.get('confirmed')
+            'confirmed': request.data.get('confirmed'),
+            'orderReady': request.data.get('orderReady')
         }
 
         serializer = OrderSerializer(data = data)
@@ -68,6 +69,7 @@ class OrderDetailApiView(APIView):
             'tableNumber': request.data.get('tableNumber'),
             'items': request.data.get('items'),
             'confirmed': request.data.get('confirmed'),
+            'orderReady': request.data.get('orderReady')
         }
         
         serializer = OrderSerializer(instance= order, data=data, partial=True)
