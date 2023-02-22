@@ -1,5 +1,6 @@
 import React from "react";
 import orderStyle from "../styling/Orders.module.css";
+import WaiterOrders from "./WaiterOrders";
 
 
 // This page will only be visible to waiter and kitchen staff - not to thd customer
@@ -10,6 +11,7 @@ function Orders () {
     return(
         <>
             <div class={orderStyle.torso}>
+                <WaiterOrders />
                 <div class={orderStyle.form_container}>
                     <form class={orderStyle.form}>
                         <h2 class={orderStyle.form_title}>Pending orders</h2>

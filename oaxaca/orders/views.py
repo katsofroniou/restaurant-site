@@ -4,6 +4,7 @@ from rest_framework import status, permissions
 from .models import Order
 from .serializers import OrderSerializer
 from django.shortcuts import render
+from django.http import JsonResponse
 
 class OrderApiView(APIView):
     permission_classes = [permissions.AllowAny]
@@ -99,7 +100,5 @@ class OrderDetailApiView(APIView):
 
 def waiterViewOrders(request):
     orders = Order.objects.order_by('orderTime')
-    context = {'orders': orders}
-    return render(request, 'waiterViewOrders.html', context)
-
-
+    serializer = OrderSerializer(orders, many=True)
+    return JsonResponse(serializer.data, safe=False)
