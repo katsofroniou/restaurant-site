@@ -10,11 +10,9 @@ function Navbar() {
     const [groups, setGroups] = useState([]);
 
     useEffect(() => {
-        const accessToken = localStorage.getItem('access_token');
-
         axios.get('http://localhost:8000/@me/', {
             headers: {
-                Authorization: `Bearer ${accessToken}`
+                Authorization: `Bearer ${token}`
             }
         })
             .then(response => {
