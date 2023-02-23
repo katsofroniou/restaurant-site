@@ -28,8 +28,8 @@ function WaiterOrders() {
         {orders.map(order => (
           <tr key={order.id}>
             <td>{order.orderTime.substring(0,8)}</td>
+            <td>{order.id}</td>
             <td>{order.tableNumber}</td>
-            <td>{order.items}</td>
             <td><input type= "checkbox"></input></td>
             <td><input type= "checkbox"></input></td>
           </tr>
