@@ -33,14 +33,15 @@ function Navbar() {
 
     // Define permissions for each page
     const pagePermissions = {
-        orders: ['Waiter', 'Kitchen Staff', 'Admin'],
+        orders: ['Waiter', 'Kitchen Staff'],
         addItem: ['Waiter', 'Kitchen Staff', 'Admin'],
-        waiter: ['Waiter', 'Admin'],
-        basket: ['Customer', 'Admin'],
-        kitchenstaff: ['Kitchen Staff', 'Admin'],
+        menu: ['Waiter', 'Kitchen Staff', 'Customer', 'Admin'],
+        basket: ['Customer'],
+        waiter: ['Waiter'],
+        kitchenstaff: ['Kitchen Staff'],
         manager: ['Admin'],
         adduser: ['Admin']
-    };
+      };
 
     const userHasPermission = (permission) => {
         // Check if the user has any of the required permissions for the page
