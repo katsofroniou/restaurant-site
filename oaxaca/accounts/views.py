@@ -1,10 +1,11 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status, permissions
 from accounts.serializers import UserSerializer
 from django.contrib.auth.models import User
 
 class UserCreate(APIView):
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     def post(self, request, format='json'):
         serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
