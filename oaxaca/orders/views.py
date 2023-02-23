@@ -7,7 +7,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 
 class OrderApiView(APIView):
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get(self, request, *args, **kwards):
         orders = Order.objects
@@ -37,7 +37,7 @@ class OrderApiView(APIView):
         
 
 class OrderDetailApiView(APIView):
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get_object(self, OrderVal, *args, **kwargs):
         try:
