@@ -28,8 +28,8 @@ function Navbar() {
     const pagePermissions = {
         orders: ['Waiter', 'Kitchen Staff', 'Admin'],
         addItem: ['Waiter', 'Kitchen Staff', 'Admin'],
-        menu: ['Waiter', 'Kitchen Staff', 'Customer', 'Admin'],
         waiter: ['Waiter', 'Admin'],
+        basket: ['Customer', 'Admin'],
         kitchenstaff: ['Kitchen Staff', 'Admin'],
         manager: ['Admin'],
         adduser: ['Admin']
@@ -55,27 +55,25 @@ function Navbar() {
                     <li class="navbar_item">
                         <Link to='/' class="navbar_links">Home</Link>
                     </li>
-                    {userHasPermission('customer') && (
-                        <li class="navbar_item">
-                            <Link to='/Menu' class="navbar_links">Menu</Link>
-                        </li>
-                    )}
-                    {userHasPermission('customer') && (
+                    <li class="navbar_item">
+                        <Link to='/Menu' class="navbar_links">Menu</Link>
+                    </li>
+                    {userHasPermission('basket') && (
                         <li class="navbar_item">
                             <Link to='/Basket' class="navbar_links">Basket</Link>
                         </li>
                     )}
-                    {(userHasPermission('waiter') || userHasPermission('kitchenstaff')) && (
-                    <li class="navbar_item">
-                        <Link to='/Orders' class="navbar_links">Orders</Link>
-                    </li>
+                    {(userHasPermission('orders') || userHasPermission('kitchenstaff')) && (
+                        <li class="navbar_item">
+                            <Link to='/Orders' class="navbar_links">Orders</Link>
+                        </li>
                     )}
                     {userHasPermission('waiter') && (
                         <li class="navbar_item">
                             <Link to='/waiter' class="navbar_links">Waiter</Link>
                         </li>
                     )}
-                    {(userHasPermission('waiter') || userHasPermission('kitchenstaff')) && (
+                    {userHasPermission('addItem') && (
                         <li class="navbar_item">
                             <Link to='/additem' class="navbar_links">Add Items</Link>
                         </li>
@@ -90,7 +88,7 @@ function Navbar() {
                             <Link to='/manager' class="navbar_links">Manage Users</Link>
                         </li>
                     )}
-                    {userHasPermission('manager') && (
+                    {userHasPermission('adduser') && (
                         <li class="navbar_item">
                             <Link to='/adduser' class="navbar_links">Add User</Link>
                         </li>
