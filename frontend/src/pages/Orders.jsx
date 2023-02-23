@@ -3,9 +3,7 @@ import orderStyle from "../styling/Orders.module.css";
 import WaiterOrders from "./WaiterOrders";
 
 
-// This page will only be visible to waiter and kitchen staff - not to thd customer
-// Buttons just represent order stack
-// Ive got no idea how to turn the orange box inside the containers white
+// This page will only be visible to waiter and kitchen staff - not to the customer
 
 function Orders () {
     return(

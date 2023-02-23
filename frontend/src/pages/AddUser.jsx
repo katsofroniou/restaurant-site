@@ -45,7 +45,7 @@ function AddUser () {
         <>
             <div class="torso">
                 <div class="form_container">
-                    <form class={hidden2} id="createAccount">
+                    <form id="createAccount">
                         <h2 class="form_title">Create Account</h2>
 
                         <div class="form_message-error"></div>
@@ -66,9 +66,6 @@ function AddUser () {
                             <div class="form_input-error-message"></div>
                         </div>
                         <button class="form_button" type="submit" onClick={handleSubmit}>Create Account</button>
-                        <p class="form_text">
-                            <a onClick={toggleShow} class="form_link" id="linkLogin">Already have an account? Sign in</a>
-                        </p>
                     </form> 
                 </div>
             </div>

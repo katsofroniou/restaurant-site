@@ -46,9 +46,12 @@ function AddItem () {
 
         console.log(formDataWithCorrectTypes);
 
+        const access_token = localStorage.getItem('access_token');
+
         try {
             const headers = {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${access_token}`
             };
             const response = await axios.post('http://127.0.0.1:8000/menu/api', formDataWithCorrectTypes, { headers });
             console.log(response.data);

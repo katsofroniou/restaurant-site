@@ -5,6 +5,7 @@ import axios from 'axios';
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import Menu from "./pages/Menu";
+import Basket from "./pages/Basket";
 import Orders from "./pages/Orders";
 import Login from "./pages/Login";
 import Waiter from "./pages/Waiter";
@@ -16,50 +17,69 @@ import NotFound from "./pages/NotFound";
 import reportWebVitals from './reportWebVitals';
 
 export default function App() {
-  const [user, setUser] = useState([])
+  const [groups, setGroups] = useState([]);
+  const accessToken = localStorage.getItem('access_token');
 
-  const getUser = async () => {
-    const response = await axios.get('http://127.0.0.1:8000/user/api')
-    setUser(response.data)
-  }
+  useEffect(() => {
+    axios.get('http://localhost:8000/@me/', {
+      headers: {
+        Authorization: `Bearer ${accessToken}`
+      }
+    })
+      .then(response => {
+        const groupNames = response.data.groups.map(group => group.name);
+        setGroups(groupNames);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, []);
 
-  useEffect(() =>{
-    getUser();
-  }, [])
-  
-  return(
-    //To add a page to the WebApp please route it as follows: <Route path="name" element={<Name />} />
-    //Please note: Add the newly added page before the NotFound Page route as this is the 404 page not found route and should be the last one
+  // Define permissions for each page
+  const pagePermissions = {
+    orders: ['Waiter', 'Kitchen Staff', 'Admin'],
+    addItem: ['Waiter', 'Kitchen Staff', 'Admin'],
+    menu: ['Waiter', 'Kitchen Staff', 'Customer', 'Admin'],
+    basket: ['Customer', 'Admin'],
+    waiter: ['Waiter', 'Admin'],
+    kitchenstaff: ['Kitchen Staff', 'Admin'],
+    manager: ['Admin'],
+    adduser: ['Admin']
+  };
+
+  const userHasPermission = (permission) => {
+    // Check if the user has any of the required permissions for the page
+    return pagePermissions[permission].some(p => groups.includes(p));
+  };
+
+  //To add a page to the WebApp please route it as follows: <Route path="name" element={<Name />} />
+  //Please note: Add the newly added page before the NotFound Page route as this is the 404 page not found route and should be the last one
+  return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          {user.permissions === "customer_permissions" && user.login === true && (
-            <Route path="menu" element={<Menu />} />
-          )}
-          //Temporary routes during login processess work: 
-          <Route path="orders" element={<Orders />} />
-          <Route path="login" element={<Login />} />
-          <Route path="additem" element={<AddItem />} />
           <Route path="menu" element={<Menu />} />
-          <Route path="waiter" element={<Waiter />} />
-          <Route path="kitchenstaff" element={<KitchenStaff />} />
-          {user.permissions === "customer_permissions" && user.login === true && (
-            <Route path="menu" element={<Menu />} />
+          {userHasPermission('orders') && (
+            <Route path="orders" element={<Orders />} />
           )}
-          {user.permissions === "waiter_permissions" && user.login === true && (
-            <Route path="waiter" element={<Waiter />} />
+          {userHasPermission('basket') && (
+            <Route path="Basket" element={<Basket />} />
           )}
-          {user.permissions === "waiter_permissions" && user.login === true && (
+          <Route path="login" element={<Login />} />
+          {userHasPermission('addItem') && (
             <Route path="additem" element={<AddItem />} />
           )}
-          {user.permissions === "kitchen_permissions" && user.login === true && (
+          {userHasPermission('waiter') && (
+            <Route path="waiter" element={<Waiter />} />
+          )}
+          {userHasPermission('kitchenstaff') && (
             <Route path="kitchenstaff" element={<KitchenStaff />} />
           )}
-          {user.permissions === "manager_permissions" && user.login === true && (
+          {userHasPermission('manager') && (
             <Route path="manager" element={<Manager />} />
           )}
-          {user.permissions === "manager_permissions" && user.login === true && (
+          {userHasPermission('adduser') && (
             <Route path="adduser" element={<AddUser />} />
           )}
           <Route path="*" element={<NotFound />} />
