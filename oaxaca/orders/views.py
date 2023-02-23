@@ -22,7 +22,7 @@ class OrderApiView(APIView):
             'items': request.data.get('items'),
             'confirmed': request.data.get('confirmed'),
             'orderReady': request.data.get('orderReady'),
-            'orderComplete': request.data.get('orderComplete')
+            'OrderComplete': request.data.get('OrderComplete')
         }
 
         serializer = OrderSerializer(data = data)
@@ -73,7 +73,7 @@ class OrderDetailApiView(APIView):
             'items': request.data.get('items'),
             'confirmed': request.data.get('confirmed'),
             'orderReady': request.data.get('orderReady'),
-            'orderComplete': request.data.get('orderComplete')
+            'OrderComplete': request.data.get('OrderComplete')
         }
         
         serializer = OrderSerializer(instance= order, data=data, partial=True)
