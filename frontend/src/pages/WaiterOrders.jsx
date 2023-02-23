@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Table } from 'react-bootstrap';
+import orderStyle from "../styling/Orders.module.css";
 
 function WaiterOrders() {
   const [orders, setOrders] = useState([]);
@@ -12,12 +13,13 @@ function WaiterOrders() {
   }, []);
 
   return (
-    <Table>
+    
+    <Table className={orderStyle.orderTable}>
       <thead>
         <tr>
           <th>Order Time</th>
+          <th>Order ID</th>
           <th>Table Number</th>
-          <th>Items</th>
           <th>Confirmed</th>
           <th>Order Ready</th>
         </tr>
@@ -28,8 +30,8 @@ function WaiterOrders() {
             <td>{order.orderTime}</td>
             <td>{order.tableNumber}</td>
             <td>{order.items}</td>
-            <td>{order.confirmed ? 'Yes' : 'No'}</td>
-            <td>{order.orderReady ? 'Yes' : 'No'}</td>
+            <td><input type= "checkbox"></input></td>
+            <td><input type= "checkbox"></input></td>
           </tr>
         ))}
       </tbody>
