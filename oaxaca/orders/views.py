@@ -17,6 +17,7 @@ class OrderApiView(APIView):
 
     def post(self, request, *args, **kwargs):
         data = {
+            'id': request.data.get('id'),
             'orderTime': request.data.get('orderTime'),
             'tableNumber': request.data.get('tableNumber'),
             'items': request.data.get('items'),
@@ -68,6 +69,7 @@ class OrderDetailApiView(APIView):
             )
             
         data = {
+            'id': request.data.get('id'),
             'orderTime': request.data.get('orderTime'),
             'tableNumber': request.data.get('tableNumber'),
             'items': request.data.get('items'),
