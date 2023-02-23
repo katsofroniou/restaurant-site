@@ -40,7 +40,7 @@ export default function App() {
     orders: ['Waiter', 'Kitchen Staff', 'Admin'],
     addItem: ['Waiter', 'Kitchen Staff', 'Admin'],
     menu: ['Waiter', 'Kitchen Staff', 'Customer', 'Admin'],
-    basket: ['Waiter', 'Kitchen Staff', 'Customer', 'Admin'],
+    basket: ['Customer', 'Admin'],
     waiter: ['Waiter', 'Admin'],
     kitchenstaff: ['Kitchen Staff', 'Admin'],
     manager: ['Admin'],
@@ -63,7 +63,9 @@ export default function App() {
           {userHasPermission('orders') && (
             <Route path="orders" element={<Orders />} />
           )}
-          <Route path="Basket" element={<Basket />} />
+          {userHasPermission('basket') && (
+            <Route path="Basket" element={<Basket />} />
+          )}
           <Route path="login" element={<Login />} />
           {userHasPermission('addItem') && (
             <Route path="additem" element={<AddItem />} />
