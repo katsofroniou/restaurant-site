@@ -6,11 +6,19 @@ If you haven't already, create a virtual environment by following these instruct
 
 1. Open a new terminal and navigate to the folder where the .git folder for this project is
 2. Run the command `python -m venv venv`
-3. To activate the virtual environment run the command `venv/scripts/activate`
+3. To activate the virtual environment run the command `venv\scripts\activate`
 4. Install the necessary libraries by running `pip install -r requirements.txt`
 
 You will need to be in this virtual environment whenever running any commands for the Django server and React applications.
 To exit the virtual environment when you need to, run `deactivate`
+
+## SSH Tunneling
+
+To allow your device to connect to the database, you need to first set up ssh tunneling to it
+
+1. Open a new terminal and run the command `ssh -L 9999:teachdb:5432 USERNAME@linux.cim.rhul.ac.uk`
+2. DO NOT close this terminal! You won't be able to use the Django apis otherwise!
+3. That's it :)
 
 ## Starting the Django server
 
