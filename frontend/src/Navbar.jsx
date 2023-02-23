@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { BrowserRouter, Route, Link } from "react-router-dom";
+import { BrowserRouter, Route, Link, redirect} from "react-router-dom";
 import axios from 'axios';
 import "./styling/Navbar.css";
 import Logo from '../src/Images/OaxacaLogo.png'
@@ -8,6 +8,13 @@ import Logo from '../src/Images/OaxacaLogo.png'
 function Navbar() {
     const token = localStorage.getItem('access_token');
     const [groups, setGroups] = useState([]);
+
+    const handleLogOut = () => {
+        localStorage.removeItem('access_token');
+        localStorage.removeItem('refresh_token');
+
+        return window.location = "/Login";
+    }
 
     useEffect(() => {
         axios.get('http://localhost:8000/@me/', {
@@ -100,7 +107,7 @@ function Navbar() {
                     )}
                     {token && (
                         <li class="navbar_btn">
-                            <Link to='Login' class="navbar_button">Log out</Link>
+                            <Link to='/Login' onClick={handleLogOut} class="navbar_button">Log Out</Link>
                         </li>
                     )}
                 </ul>
