@@ -99,9 +99,11 @@ function Navbar() {
                         </li>
                     )}
                     //condition: logged in?
-                    <li class="navbar_btn">
-                        <Link to='Login' class="navbar_button">Log out</Link>
-                    </li>
+                    {token && (
+                        <li class="navbar_btn">
+                            <Link to='Login' class="navbar_button">Log out</Link>
+                        </li>
+                    )}
                 </ul>
             </nav>
         </>
