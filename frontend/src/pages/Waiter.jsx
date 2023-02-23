@@ -1,13 +1,76 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
-import "../styling/Waiter.css";
+import waiterSyle from "../styling/Waiter.module.css";
+import axios from 'axios';
 
-function Waiter () {
+function Waiter() {
+    const [dish, SetDish] = useState([])
+    const [selectedItems, setSelectedItems] = useState({});
+
+    const getDish = async () => {
+        const response = await axios.get('http://127.0.0.1:8000/menu/api')
+        SetDish(response.data)
+    }
+
+    useEffect(() => {
+        getDish();
+    }, [])
+
+    const handleItemSelect = (selectedDish) => {
+        setSelectedItems(prevState => ({
+            ...prevState,
+            [selectedDish.name]: !prevState[selectedDish.name],
+        }));
+    };
+
+    const handleDeleteClick = async () => {
+        // Get the access_token from local storage
+        const access_token = localStorage.getItem('access_token');
+
+        // If access_token is null or empty, the user is not authenticated
+        if (!access_token) {
+            console.log('User not authenticated');
+            return;
+        }
+
+        // Delete the selected items
+        const deleteItems = [];
+
+        Object.keys(selectedItems).forEach((name) => {
+            if (selectedItems[name]) {
+                deleteItems.push(name);
+            }
+        });
+
+        if (deleteItems.length > 0) {
+            try {
+                await Promise.all(deleteItems.map(dish => {
+                    return axios({
+                        method: 'DELETE',
+                        url: `http://127.0.0.1:8000/menu/api/${dish}`,
+                        headers: {
+                            'Authorization': `Bearer ${access_token}`
+                        },
+                    });
+                }));
+
+                // Update the state to remove the deleted items
+                const newDish = dish.filter((d) => !deleteItems.includes(d.name));
+                SetDish(newDish);
+
+            } catch (error) {
+                console.error(error);
+            }
+        }
+    };
+
     return (
         <>
-            <table class="menu_table">
+
+            <table class={waiterSyle.menu_table}>
                 <tr>
-                    <th>Type</th>
+                    <th>Course</th>
+                    <th>Dish</th>
                     <th>Description</th>
                     <th>Calories</th>
                     <th>Vegetarian</th>
@@ -17,25 +80,46 @@ function Waiter () {
                     <th>Available</th>
                     <th>Delete?</th>
                 </tr>
-                <tr>
-                    <td>Empty Item</td>
-                    <td>Empty Description</td>
-                    <td>Empty Calories</td>
-                    <td>Empty Vegetarian</td>
-                    <td>Empty Vegan</td>
-                    <td>Empty Allergens</td>
-                    <td>Empty Cost</td>
-                    <td>Empty Availability</td>
-                    <td>
-                        <input type="checkbox"></input>
-                    </td>  
-                </tr>
+                {dish.map((dish, index) => (
+                    <tr>
+                        <td>{dish.course}</td>
+                        <td>{dish.name}</td>
+                        <td>{dish.description}</td>
+                        <td>{dish.kcal}</td>
+                        {dish.vegetarian === true && <td>Yes</td>}
+                        {dish.vegetarian === false && <td>No</td>}
+                        {dish.vegan === true && <td>Yes</td>}
+                        {dish.vegan === false && <td>No</td>}
+                        <td>{dish.allergens.join(", ")}</td>
+                        <td>£{dish.price.toLocaleString("en-GB", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                        {dish.available === true && <td>Yes</td>}
+                        {dish.available === false && <td>No</td>}
+                        <td>
+                            <input
+                                type="checkbox"
+                                checked={selectedItems[dish.name] || false}
+                                onChange={() => handleItemSelect(dish)}
+                            />
+                        </td>
+                    </tr>
+                ))}
             </table>
-            <button class="add_button">
-                <Link to='/additem' class="button_link">Add to Menu</Link>
+
+            <table className="tableRequest">
+                <thead>
+                    <tr>
+                    <th>Table num</th>
+                    <th>Assistance Needed</th>
+                    <th>Completed?</th>
+                    </tr>
+                </thead>
+            </table>
+
+            <button class={waiterSyle.add_button}>
+                <Link to='/additem' class={waiterSyle.button_link}>Add to Menu</Link>
             </button>
-            <button class="add_button">
-                <Link to='/waiter' class="button_link">Delete From Menu</Link>
+            <button className={waiterSyle.add_button} onClick={handleDeleteClick}>
+                <Link to='/waiter' class={waiterSyle.button_link}>Delete From Menu</Link>
             </button>
         </>
     );

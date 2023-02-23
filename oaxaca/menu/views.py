@@ -5,7 +5,7 @@ from .models import Dish
 from .serializers import DishSerializer
 
 class DishApiView(APIView):
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     
     def get(self, request, *args, **kwargs):
         dishes = Dish.objects
@@ -36,8 +36,28 @@ class DishApiView(APIView):
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
+    def delete(self, request, *args, **kwargs):
+        items = request.query_params.getlist('items')
+        if not items:
+            return Response(
+                {"res": "No items to delete"},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        
+        deleted_count, _ = Dish.objects.filter(name__in=items).delete()
+        if deleted_count == 0:
+            return Response(
+                {"res": "No items deleted"},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+        
+        return Response(
+            {"res": f"Deleted {deleted_count} items"},
+            status=status.HTTP_200_OK
+        )
+
 class DishDetailApiView(APIView):
-    permission_classes =  [permissions.AllowAny]
+    permission_classes =  [permissions.IsAuthenticatedOrReadOnly]
     
     def get_object(self, dishVal, *args, **kwargs):
         try:

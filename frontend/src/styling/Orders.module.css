@@ -1,0 +1,68 @@
+.torso{
+    --color-primary: rgb(236, 180, 137);
+    --color-primary-dark: rgb(48, 88, 90);
+    --color-secondary: rgb(0, 0, 0);
+    --color-error: red;
+    --border-radius: 4px;
+
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    background: var(--color-primary);
+    background-size: cover;
+}
+
+.orderTable{
+    margin-top: 20px;
+    border: 1px solid;
+    border-collapse: collapse;
+    width: auto;
+    text-align: center;
+    padding: 0.25rem;
+    overflow:auto;
+}
+td{
+    text-align: center;
+    padding: 0.2rem;
+    border: 1px solid;
+}
+
+th{
+    align-items: center;
+    height: 50px;
+    border: 1px solid;
+    text-align: center;
+    padding: 0.5rem;
+}
+
+tr:hover td{
+    background-color: rgba(95, 18, 190, 0.273);
+    transition: all 0.4s ease;
+}
+
+.button{
+    width: 5%;
+    height: 3%;
+    margin-left: 4px;
+    margin-top: 1px;
+    padding: 0rem 0rem;
+    font-weight: bold;
+    font-size: 0.55rem;
+    color: white;
+    border:none;
+    border-radius: var(--border-radius);
+    outline: none;
+    cursor: pointer;
+    background: black;
+
+}
+.button:hover{
+    background:green;
+}
+.button:active{
+    transform: scale(0.98);
+}
