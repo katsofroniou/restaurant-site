@@ -10,7 +10,7 @@ function Orders () {
         <>
             <div class={orderStyle.torso}>
                 <WaiterOrders />
-                
+                <button class={orderStyle.button} type = "submit" >Cancel Order</button>
             </div>
         </>
     );

@@ -43,3 +43,26 @@ tr:hover td{
     background-color: rgba(95, 18, 190, 0.273);
     transition: all 0.4s ease;
 }
+
+.button{
+    width: 5%;
+    height: 3%;
+    margin-left: 4px;
+    margin-top: 1px;
+    padding: 0rem 0rem;
+    font-weight: bold;
+    font-size: 0.55rem;
+    color: white;
+    border:none;
+    border-radius: var(--border-radius);
+    outline: none;
+    cursor: pointer;
+    background: black;
+
+}
+.button:hover{
+    background:green;
+}
+.button:active{
+    transform: scale(0.98);
+}
