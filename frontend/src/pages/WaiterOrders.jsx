@@ -5,6 +5,7 @@ import orderStyle from "../styling/Orders.module.css";
 
 function WaiterOrders() {
   const [orders, setOrders] = useState([]);
+  const[selectedRow,setSelectedRow] = useState(-1);
 
   useEffect(() => {
     axios.get('http://127.0.0.1:8000/orders/api')
@@ -26,9 +27,9 @@ function WaiterOrders() {
       </thead>
       <tbody>
         {orders.map(order => (
-          <tr key={order.id}>
+          <tr key={order.id} onClick={() => setSelectedRow(order.id)} className={"clickable-row".concat(selectedRow === order.id ? "selected":"")}>
             <td>{order.orderTime.substring(0,8)}</td>
-            <td>{order.id}</td>
+            <td onClick={() => console.log('cell %{order.id} was clicked') }>{order.id}</td>
             <td>{order.tableNumber}</td>
             <td><input type= "checkbox"></input></td>
             <td><input type= "checkbox"></input></td>
