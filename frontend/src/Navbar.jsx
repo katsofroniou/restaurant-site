@@ -95,9 +95,13 @@ function Navbar() {
                     )}
                     {!token && (
                         <li class="navbar_btn">
-                            <Link to='/Login' class="navbar_button">Sign in</Link>
+                            <Link to='/Login' class="navbar_button">Log in</Link>
                         </li>
                     )}
+                    //condition: logged in?
+                    <li class="navbar_btn">
+                        <Link to='Login' class="navbar_button">Log out</Link>
+                    </li>
                 </ul>
             </nav>
         </>
