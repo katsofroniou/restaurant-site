@@ -10,27 +10,7 @@ function Orders () {
         <>
             <div class={orderStyle.torso}>
                 <WaiterOrders />
-                <div class={orderStyle.form_container}>
-                    <form class={orderStyle.form}>
-                        <h2 class={orderStyle.form_title}>Pending orders</h2>
-                        <div class="form_message form_message-error"></div>
-                        <button class={orderStyle.form_button} type="submit">Order no. ######</button>
-                        <button class={orderStyle.form_button} type="submit">Order no. ######</button>
-                        <button class={orderStyle.form_button} type="submit">Order no. ######</button>
-                        <button class={orderStyle.form_button} type="submit">Order no. ######</button>
-                        <button class={orderStyle.form_button} type="submit">Confirm order</button>
-                    </form>
-                </div>
-                <div class={orderStyle.form_container}>
-                    <form class={orderStyle.form}>
-                        <h2 class={orderStyle.form_title}>Confirmed orders</h2>
-                        <div class="form_message form_message-error"></div>
-                        <button class={orderStyle.form_button} type="submit">Order no. ######</button>
-                        <button class={orderStyle.form_button} type="submit">Order no. ######</button>
-                        <button class={orderStyle.form_button} type="submit">Order no. ######</button>
-                        <button class={orderStyle.form_button} type="submit">Order no. ######</button>
-                    </form>
-                </div>
+                
             </div>
         </>
     );

@@ -104,6 +104,17 @@ function Waiter() {
                     </tr>
                 ))}
             </table>
+
+            <table className="tableRequest">
+                <thead>
+                    <tr>
+                    <th>Table num</th>
+                    <th>Assistance Needed</th>
+                    <th>Completed?</th>
+                    </tr>
+                </thead>
+            </table>
+
             <button class={waiterSyle.add_button}>
                 <Link to='/additem' class={waiterSyle.button_link}>Add to Menu</Link>
             </button>
