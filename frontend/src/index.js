@@ -40,6 +40,7 @@ export default function App() {
     orders: ['Waiter', 'Kitchen Staff', 'Admin'],
     addItem: ['Waiter', 'Kitchen Staff', 'Admin'],
     menu: ['Waiter', 'Kitchen Staff', 'Customer', 'Admin'],
+    basket: ['Waiter', 'Kitchen Staff', 'Customer', 'Admin'],
     waiter: ['Waiter', 'Admin'],
     kitchenstaff: ['Kitchen Staff', 'Admin'],
     manager: ['Admin'],
