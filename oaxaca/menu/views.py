@@ -3,15 +3,17 @@ from rest_framework.response import Response
 from rest_framework import status, permissions
 from .models import Dish
 from .serializers import DishSerializer
+from django.db import models
 
 class DishApiView(APIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     
     def get(self, request, *args, **kwargs):
-        dishes = Dish.objects
+        search_term = request.query_params.get('search', '')
+        dishes = Dish.objects.filter(name__icontains=search_term)
         serializer = DishSerializer(dishes, many=True)
-        
-        return Response(serializer.data, status=status.HTTP_200_OK)
+    
+        return Response(serializer.data, status=status.HTTP_200_OK)  
     
     
     def post(self, request, *args, **kwargs):

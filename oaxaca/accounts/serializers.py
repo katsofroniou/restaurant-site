@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 
 VALID_GROUPS = ["Kitchen Staff", "Waiter", "Customer"]
 
@@ -17,7 +17,7 @@ class UserSerializer(serializers.ModelSerializer):
     
     password = serializers.CharField(min_length=8, write_only=True)
     
-    group = group = serializers.CharField(required=True)
+    group = serializers.CharField(default='Customer')
     
     def validate_group(self, value):
         if value not in VALID_GROUPS:
@@ -27,6 +27,11 @@ class UserSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         user = User.objects.create_user(validated_data['username'], validated_data['email'],
              validated_data['password'])
+        
+        group_name = validated_data['group']
+        group = Group.objects.get(name=group_name)
+        user.groups.add(group)
+        
         return user
 
     class Meta:
