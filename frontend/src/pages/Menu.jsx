@@ -44,9 +44,6 @@ function Menu() {
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
-                <button className={menuStyle.search_button} onClick={handleSearch}>
-                    Search
-                </button>
             </div>
             <button class={menuStyle.menu_button} onClick={handleToggle}>Show Calories</button>
             <button class={menuStyle.menu_button}>Call waiter</button>
