@@ -4,20 +4,34 @@ import axios from 'axios';
 
 function Menu() {
     const [dish, setDish] = useState([])
-
-    const getDish = async () => {
-        const response = await axios.get('http://127.0.0.1:8000/menu/api')
-        setDish(response.data)
-    }
+    const [searchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
-        getDish();
+        getDishFiltered();
     }, [])
 
     const [calories, setCalories] = useState(false);
 
+    const getDishFiltered = async () => {
+        let url = 'http://127.0.0.1:8000/menu/api';
+        const params = {};
+        if (searchTerm) {
+          params['search'] = searchTerm;
+        }
+        const response = await axios.get(url, { params });
+        setDish(response.data);
+    };
+
+    useEffect(() => {
+        getDishFiltered();
+    }, [searchTerm]);
+
     const handleToggle = () => {
         setCalories((current) => !current);
+    };
+
+    const handleSearch = () => {
+        getDishFiltered();
     };
 
     return (
