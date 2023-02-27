@@ -4,6 +4,7 @@ import OaxacaApp from "./app";
 
 export default function App() {
   return (
+    //For routing to pages please go to app.jsx
     <OaxacaApp />
   );
 }
