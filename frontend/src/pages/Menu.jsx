@@ -40,7 +40,6 @@ function Menu() {
                 <input
                     type="text"
                     placeholder="Search..."
-                    className={menuStyle.search_input}
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
