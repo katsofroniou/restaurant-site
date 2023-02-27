@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from 'axios';
+//Page Imports:
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import Menu from "./pages/Menu";
@@ -52,6 +53,7 @@ function OaxacaApp() {
 
     //To add a page to the WebApp please route it as follows: <Route path="name" element={<Name />} />
     //Please note: Add the newly added page before the NotFound Page route as this is the 404 page not found route and should be the last one
+    //Also make sure you make it visible to the right permissions and add it to navbar as necessary
     return (
         <BrowserRouter>
             <Routes>
