@@ -2,7 +2,7 @@ import React from "react";
 import "../styling/Orders.css";
 import axios from 'axios';
 import { Table } from 'react-bootstrap';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 
 // This page will only be visible to waiter and kitchen staff - not to the customer
