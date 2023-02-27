@@ -59,7 +59,7 @@ function AddItem () {
             console.error(error);
         }
     };      
-    //CHECK IF YOU CAN GET RID OF LOGIN ID LINE 67 
+    
     return (
         <>
             <div class="additem_torso">
