@@ -22,7 +22,7 @@ class Allergen(models.Model):
     ]
     
     # Creates allergen column in table
-    allergen = models.CharField(choices=ALLERGENS_CHOICES, blank=True, primary_key=True)
+    allergen = models.CharField(max_length=50, choices=ALLERGENS_CHOICES, blank=True, primary_key=True)
 
     def __str__(self):
         return self.allergen
