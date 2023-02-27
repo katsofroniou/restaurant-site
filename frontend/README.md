@@ -8,6 +8,7 @@ After which you can import any other necessary imports. Do not add unnecessary a
 
 Then create a function in the .jsx file.
 Example:
+``` javascript
 function functionname() {
     return(
         <>
@@ -15,7 +16,9 @@ function functionname() {
         </>
     );
 }
+
 export default functionname;
+```
 
 Your function name should be the same as your page name.
 Now the jsx file exists and is set up for you to code in.
@@ -25,12 +28,16 @@ To add new pages and make them visible you need to import them and route to them
 Import them below all the currently available pages, but before the notfound import as this should always remain the last page imported.
 
 To import the new page into app.jsx:
+``` javascript
 import "functionname" from "./pages/pagename";
+```
 
 The way you route to pages is as follows:
+``` javascript
 {userHasPermission('pagename') && (
     <Route path="pagename" element={<whatyoucalledthefunctioninthejsxfile />} />
 )}
+```
 Also to make sure you have added the permission (check const pagePermissions)
 Finally make sure that you put the route to the page before the notfound route as this must remain the last route.
 
@@ -39,13 +46,19 @@ Finally make sure that you put the route to the page before the notfound route a
 Our css is modular. Import and name your css file as follows:
 If your .jsx file is named FileName.jsx your css file should be named FileName.css
 To import the css in the .jsx file:
+``` javascript
 import "../styling/FileName.css";
+```
 
 # CSS class/id Naming 
 
 We have an issue where all the css files are imported and will conflict if we do not keep class/id names unique.
 As such the naming convention will be as follows:
-pagename_classname
+``` css
+.pagename_classname{
+
+}
+```
 Your class name can be whatever you wish it to be as long as it makes sense and is preceded by the page name.
 
 # Giving elements classes and ids
@@ -57,6 +70,10 @@ React can and will on occasion throw errors if unused styling classes are used.
 
 If you need to style all of a certain element on a page, please give it a class and follow naming conventions to avoid conflicts with the same element being used in another page.
  
+# Creating a .jsx file with a function to be called by other pages
+
+If you need to create a function that'll be called in another jsx file you can do so and call it what you need to. 
+However, only do this if the function is one that will be called on multiple pages as otherwise this is inefficient and unnecessary.
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
