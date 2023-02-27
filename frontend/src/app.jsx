@@ -1,6 +1,4 @@
-//imports
 import { useEffect, useState } from "react";
-import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from 'axios';
 import Layout from "./pages/Layout";
@@ -15,7 +13,6 @@ import AddItem from "./pages/AddItem";
 import Manager from "./pages/Manager";
 import AddUser from "./pages/AddUser";
 import NotFound from "./pages/NotFound";
-import reportWebVitals from './reportWebVitals';
 
 function OaxacaApp() {
     const [groups, setGroups] = useState([]);
