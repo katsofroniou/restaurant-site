@@ -26,7 +26,7 @@ function Manager () {
 
     const handleDeleteUserClick = async () => {
         // Get the access_token from local storage
-        const access_token = localStorage.getItem('access_token');
+        const access_token = localStorage.getUser('access_token');
 
         // If access_token is null or empty, the user is not authenticated
         if (!access_token) {
@@ -82,7 +82,7 @@ function Manager () {
                             <input
                                 type="checkbox"
                                 checked={selectedUser[user.name] || false}
-                                onChange={() => handleItemSelect(user)}
+                                onChange={() => handleUserSelect(user)}
                             />
                         </td>
                     </tr>
