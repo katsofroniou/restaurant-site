@@ -1,3 +1,62 @@
+# Creating a new page's jsx file
+Create your .jsx file and name it pagename.jsx where pagename is replaced by the name of your page.
+Import react: 
+import React from "react";
+
+Then import your css. How to name and import your css is covered later in this README
+After which you can import any other necessary imports. Do not add unnecessary and unused imports.
+
+Then create a function in the .jsx file.
+Example:
+function functionname() {
+    return(
+        <>
+            (this will be where any html elements will be housed)
+        </>
+    );
+}
+export default functionname;
+
+Your function name should be the same as your page name.
+Now the jsx file exists and is set up for you to code in.
+
+# Adding new pages to the app and routing them
+To add new pages and make them visible you need to import them and route to them using the app.jsx file.
+Import them below all the currently available pages, but before the notfound import as this should always remain the last page imported.
+
+To import the new page into app.jsx:
+import "functionname" from "./pages/pagename";
+
+The way you route to pages is as follows:
+{userHasPermission('pagename') && (
+    <Route path="pagename" element={<whatyoucalledthefunctioninthejsxfile />} />
+)}
+Also to make sure you have added the permission (check const pagePermissions)
+Finally make sure that you put the route to the page before the notfound route as this must remain the last route.
+
+# CSS File Naming and Importing
+
+Our css is modular. Import and name your css file as follows:
+If your .jsx file is named FileName.jsx your css file should be named FileName.css
+To import the css in the .jsx file:
+import "../styling/FileName.css";
+
+# CSS class/id Naming 
+
+We have an issue where all the css files are imported and will conflict if we do not keep class/id names unique.
+As such the naming convention will be as follows:
+pagename_classname
+Your class name can be whatever you wish it to be as long as it makes sense and is preceded by the page name.
+
+# Giving elements classes and ids
+
+Please only give elements in your jsx code classes and ids if you need them for the code to work or you need them for styling reasons.
+React can and will on occasion throw errors if unused styling classes are used.
+
+# Styling by element
+
+If you need to style all of a certain element on a page, please give it a class and follow naming conventions to avoid conflicts with the same element being used in another page.
+ 
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
