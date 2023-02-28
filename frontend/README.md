@@ -38,6 +38,7 @@ The way you route to pages is as follows:
     <Route path="pagename" element={<whatyoucalledthefunctioninthejsxfile />} />
 )}
 ```
+The path is what appears in the browser URL.
 Also to make sure you have added the permission (check const pagePermissions)
 Finally make sure that you put the route to the page before the notfound route as this must remain the last route.
 
@@ -74,6 +75,8 @@ If you need to style all of a certain element on a page, please give it a class 
 
 If you need to create a function that'll be called in another jsx file you can do so and call it what you need to. 
 However, only do this if the function is one that will be called on multiple pages as otherwise this is inefficient and unnecessary.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
