@@ -1,4 +1,4 @@
-.torso{
+.order_torso{
     --color-primary: rgb(236, 180, 137);
     --color-primary-dark: rgb(48, 88, 90);
     --color-secondary: rgb(0, 0, 0);
@@ -16,7 +16,7 @@
     background-size: cover;
 }
 
-.orderTable{
+.order_Table{
     margin-top: 20px;
     border: 1px solid;
     border-collapse: collapse;
@@ -25,6 +25,8 @@
     padding: 0.25rem;
     overflow:auto;
 }
+
+/*These need to be updated to fit naming convention */
 td{
     text-align: center;
     padding: 0.2rem;
@@ -44,7 +46,7 @@ tr:hover td{
     transition: all 0.4s ease;
 }
 
-.button{
+.order_button{
     width: 5%;
     height: 3%;
     margin-left: 4px;
@@ -60,9 +62,9 @@ tr:hover td{
     background: black;
 
 }
-.button:hover{
+.order_button:hover{
     background:green;
 }
-.button:active{
+.order_button:active{
     transform: scale(0.98);
 }

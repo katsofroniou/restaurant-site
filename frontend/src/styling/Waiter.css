@@ -1,4 +1,4 @@
-.add_button {
+.waiter_add_button {
     appearance: none;
     background-color:  rgb(0, 0, 0);
     border-radius: 6px;
@@ -16,18 +16,18 @@
     vertical-align: middle;
 }
 
-.add_button:hover {
+.waiter_add_button:hover {
     background-color: #2c974b;
 }
 
-.menu_table{
+.waiter_menu_table{
     display: block;
     margin-left: 35%;
     margin-right: 35%;
     width: 40%;
 }
 
-.button_link{
+.waiter_button_link{
     color: #fff;
     display: inline-block;
     font-size: 14px;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import addItemStyle from "../styling/AddItem.module.css";
+import "../styling/AddItem.css";
 
 function AddItem () {
     const [formData, setFormData] = useState({
@@ -59,41 +59,41 @@ function AddItem () {
             console.error(error);
         }
     };      
-
+    
     return (
         <>
-            <div class={addItemStyle.torso}>
-                <div class={addItemStyle.form_container}>
-                    <form class={addItemStyle.form}id="login" onSubmit={handleSubmit}>
-                        <div class="form_input-group">
-                            <input type="text" class={addItemStyle.form_input} autoFocus name="name" value={formData.name} onChange={handleChange} placeholder="Name" />
+            <div class="additem_torso">
+                <div class="additem_form_container">
+                    <form class="additem_form" id="login" onSubmit={handleSubmit}>
+                        <div>
+                            <input type="text" class="additem_form_input" autoFocus name="name" value={formData.name} onChange={handleChange} placeholder="Name" />
                         </div>
-                        <div class="form_input-group">
-                            <input type="text" class={addItemStyle.form_input} autoFocus name="description" value={formData.description} onChange={handleChange} placeholder="Description" />
+                        <div>
+                            <input type="text" class="additem_form_input" autoFocus name="description" value={formData.description} onChange={handleChange} placeholder="Description" />
                         </div>
-                        <div class="form_input-group">
-                            <input type="number" class={addItemStyle.form_input} autoFocus name="kcal" value={formData.kcal} onChange={handleChange}  placeholder="Calories" />
+                        <div>
+                            <input type="number" class="additem_form_input" autoFocus name="kcal" value={formData.kcal} onChange={handleChange}  placeholder="Calories" />
                         </div>
-                        <div class="form_input-group">
-                            <input type="text" class={addItemStyle.form_input} autoFocus name="vegetarian" value={formData.vegetarian} onChange={handleChange}  placeholder="Vegetarian (y/n)" />
+                        <div>
+                            <input type="text" class="additem_form_input" autoFocus name="vegetarian" value={formData.vegetarian} onChange={handleChange}  placeholder="Vegetarian (y/n)" />
                         </div>
-                        <div class="form_input-group">
-                            <input type="text" class={addItemStyle.form_input} autoFocus name="vegan" value={formData.vegan} onChange={handleChange} placeholder="Vegan (y/n)"/>
+                        <div>
+                            <input type="text" class="additem_form_input" autoFocus name="vegan" value={formData.vegan} onChange={handleChange} placeholder="Vegan (y/n)"/>
                         </div>
-                        <div class="form_input-group">
-                            <input type="text" class={addItemStyle.form_input} autoFocus name="allergens" value={formData.allergens} onChange={handleChange} placeholder="Allergens" />
+                        <div>
+                            <input type="text" class="additem_form_input" autoFocus name="allergens" value={formData.allergens} onChange={handleChange} placeholder="Allergens" />
                         </div>
-                        <div class="form_input-group">
-                            <input type="text" class={addItemStyle.form_input} autoFocus name="price" value={formData.price} onChange={handleChange} placeholder="Cost" />
+                        <div>
+                            <input type="text" class="additem_form_input" autoFocus name="price" value={formData.price} onChange={handleChange} placeholder="Cost" />
                         </div>
-                        <div class="form_input-group">
-                            <input type="text" class={addItemStyle.form_input} autoFocus name="course" value={formData.course} onChange={handleChange} placeholder="Course" />
+                        <div>
+                            <input type="text" class="additem_form_input" autoFocus name="course" value={formData.course} onChange={handleChange} placeholder="Course" />
                         </div>
-                        <div class="form_input-group">
-                            <input type="" class={addItemStyle.form_input} autoFocus name="available" value={formData.available} onChange={handleChange} placeholder="Available (y/n)" />
+                        <div>
+                            <input type="" class="additem_form_input" autoFocus name="available" value={formData.available} onChange={handleChange} placeholder="Available (y/n)" />
                         </div>
-                        <button class={addItemStyle.add_button} onClick={handleSubmit}>
-                            <Link to='/waiter' id="button_link" class={addItemStyle.button_link}>Add Item to Menu</Link>
+                        <button class="additem_add_button" onClick={handleSubmit}>
+                            <Link to='/waiter' class="additem_button_link">Add Item to Menu</Link>
                         </button>
                     </form>
                 </div>

@@ -1,7 +1,8 @@
 from django.db import models
-from django.urls import reverse
 
+# Defines allergens table in database
 class Allergen(models.Model):
+    # Creates choices for allergens field
     ALLERGENS_CHOICES = [
         ('Dairy', 'Dairy'),
         ('Gluten', 'Gluten'),
@@ -20,11 +21,13 @@ class Allergen(models.Model):
         ('Mustard', 'Mustard'),
     ]
     
+    # Creates allergen column in table
     allergen = models.CharField(max_length=50, choices=ALLERGENS_CHOICES, blank=True, primary_key=True)
 
     def __str__(self):
         return self.allergen
 
+# Defines Dish table in database
 class Dish(models.Model):
     name = models.CharField(max_length=100)
     description = models.CharField(max_length=500)
@@ -40,4 +43,5 @@ class Dish(models.Model):
         return self.name
     
 class Meta:
+    # Orders dishes by their id
     ordering = ['id']
