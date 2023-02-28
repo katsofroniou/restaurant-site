@@ -18,5 +18,11 @@ class UserCreate(APIView):
             user = serializer.save()
             if user:
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
-
+            
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    def get(self, request, *args, **kwargs):
+        user = User.objects
+        serializer = UserSerializer(user, many=True)
+        
+        return Response(serializer.data, status=status.HTTP_200_OK)
