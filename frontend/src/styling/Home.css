@@ -1,3 +1,33 @@
-.home_header{
-    line-height: 100px;
+
+.infoBoxContainer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 50px;
+
+    width: 300px;
+        height: 300px;
+        background-color: rgba(255, 255, 255, 0);
+        margin: 0 auto;
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translate(-50%, -50%);
 }
+
+.infoBox {
+    width: 500px;
+    height: 600px;
+    background-color: #ffffff;
+    margin: 20px;
+    padding: 20%;
+    border-radius: 10px;
+
+  }
+
+  .title{
+    margin-top: -8.5em;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0);
+    font-size: 36px;
+  }
