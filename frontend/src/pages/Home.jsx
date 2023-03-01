@@ -1,10 +1,12 @@
 import React from "react";
 import "../styling/Home.css";
+import image from '../Images/homepage_image2.png'
+
 
 function Home () {
     return(
         <>
-            <h1 class="home_header">Home page</h1>
+            <img style={{ width: 1440, height: 860 }} src={image}></img> 
         </>
     );
 }
