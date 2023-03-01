@@ -9,7 +9,7 @@ from django.http import JsonResponse
 class OrderApiView(APIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
-    def get(self, request, *args, **kwards):
+    def get(self, request, *args, **kwargs):
         orders = Order.objects
         serializer = OrderSerializer(orders, many=True)
 
