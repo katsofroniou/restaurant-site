@@ -10,7 +10,7 @@ class OrderApiView(APIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get(self, request, *args, **kwards):
-        search_term = request.query_params.get('search', '')
+        orders = Order.objects
         serializer = OrderSerializer(orders, many=True)
 
         return Response(serializer.data, status = status.HTTP_200_OK)
