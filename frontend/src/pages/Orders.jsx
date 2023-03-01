@@ -16,6 +16,11 @@ function Orders() {
             .then(response => setOrders(response.data))
             .catch(error => console.log(error));
     }, []);
+
+    const handleCancelOrder = () => {
+
+    };
+    
     return (
         <>
             <div class="order_torso">
@@ -27,6 +32,7 @@ function Orders() {
                             <th>Table Number</th>
                             <th>Confirmed</th>
                             <th>Order Ready</th>
+                            <th>Cancel Order</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,6 +43,13 @@ function Orders() {
                                 <td>{order.tableNumber}</td>
                                 <td><input type="checkbox"></input></td>
                                 <td><input type="checkbox"></input></td>
+                                <td>
+                                    <input 
+                                        type="checkbox" 
+                                        checked={selectedRow[order.id] || false}
+                                        onChange={() => handleCancelOrder(order)}
+                                    />
+                                </td>
                             </tr>
                         ))}
                     </tbody>
