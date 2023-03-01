@@ -101,8 +101,3 @@ class OrderDetailApiView(APIView):
             {"res": "Order deleted!"},
             status=status.HTTP_200_OK
         )
-
-def waiterViewOrders(request):
-    orders = Order.objects.order_by('orderTime')
-    serializer = OrderSerializer(orders, many=True)
-    return JsonResponse(serializer.data, safe=False)
