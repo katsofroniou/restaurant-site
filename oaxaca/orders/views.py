@@ -59,7 +59,7 @@ class OrderDetailApiView(APIView):
 
     def get_object(self, OrderVal, *args, **kwargs):
         try:
-            return Order.objects.get(name=OrderVal)
+            return Order.objects.get(id=OrderVal)
         except:
             return None
 
