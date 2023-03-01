@@ -61,6 +61,7 @@ function Menu() {
             </div>
             <button class="menu_button" onClick={handleToggle}>Show Calories</button>
             <button class="menu_button">Call waiter</button>
+            <button class="menu_button">Add To Basket</button>
 
             <table class="menu_table">
                 <tr>
