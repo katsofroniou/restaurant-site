@@ -13,14 +13,20 @@ function Home () {
               <div className="infoBox">
                 <img style={{ width: 300, height: 250,}} src={image2}></img> 
                 <h3 className="title">WELCOME</h3>
+                <p className="description"> this will be some general text</p>
+                <button className="button" type="submit">MORE</button>
               </div>
               <div className="infoBox">
                 <img style={{ width: 300, height: 250 }} src={image2}></img> 
                 <h3 className="title">ABOUT</h3>
+                <p className="description"> this will be some general text</p>
+                <button className="button" type="submit">MORE</button>
               </div>
               <div className="infoBox">
                 <img style={{ width: 300, height: 250 }} src={image2}></img> 
                 <h3 className="title">WELCOME</h3>
+                <p className="description"> this will be some general text</p>
+                <button className="button" type="submit">MORE</button>
               </div>
             </div>
         </>
