@@ -22,9 +22,8 @@
 
 .waiter_menu_table{
     display: block;
-    margin-left: 35%;
-    margin-right: 35%;
-    width: 40%;
+    height: auto;
+    width: auto;
 }
 
 .waiter_button_link{
