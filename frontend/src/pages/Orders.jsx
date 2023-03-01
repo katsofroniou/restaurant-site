@@ -17,10 +17,13 @@ function Orders() {
             .catch(error => console.log(error));
     }, []);
 
-    const handleCancelOrder = () => {
-
+    const handleOrderSelect = (selectedOrder) => {
+        setSelectedRow(prevState => ({
+            ...prevState,
+            [selectedOrder.id]: !prevState[selectedOrder.id],
+        }));
     };
-    
+
     return (
         <>
             <div class="order_torso">
@@ -47,7 +50,7 @@ function Orders() {
                                     <input 
                                         type="checkbox" 
                                         checked={selectedRow[order.id] || false}
-                                        onChange={() => handleCancelOrder(order)}
+                                        onChange={() => handleOrderSelect(order)}
                                     />
                                 </td>
                             </tr>
