@@ -35,6 +35,25 @@ class OrderApiView(APIView):
         else:
             return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
         
+    def delete(self, request, *args, **kwargs):
+        items = request.query_params.getlist('items')
+        if not items:
+            return Response(
+                {"res": "No items to delete"},
+                status = status.HTTP_400_BAD_REQUEST
+            )
+        
+        deleted_count, _ = Order.objects.filter(name_in=items).delete()
+        if deleted_count == 0:
+            return Response(
+                {"res": "No items deleted"},
+                status = status.HTTP_400_BAD_REQUEST
+            )
+            return Response(
+                {"res": f"Deleted {deleted_count} items"},
+                status = status.HTTP_200_OK
+            )
+    
     def patch(self, request, *args, **kwargs):
         data = {
             'dish': request.data.get('dish'),
@@ -46,14 +65,13 @@ class OrderApiView(APIView):
             'quantity': request.data.get('quantity')
         }
 
-        
 
 class OrderDetailApiView(APIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get_object(self, OrderVal, *args, **kwargs):
         try:
-            return Order.objects.get(name=OrderVal)
+            return Order.objects.get(id=OrderVal)
         except:
             return None
 
