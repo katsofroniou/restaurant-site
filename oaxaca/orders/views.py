@@ -53,6 +53,18 @@ class OrderApiView(APIView):
                 {"res": f"Deleted {deleted_count} items"},
                 status = status.HTTP_200_OK
             )
+    
+    def patch(self, request, *args, **kwargs):
+        data = {
+            'dish': request.data.get('dish'),
+            'description': request.data.get('description'),
+            'course': request.data.get('course'),
+            'allergens': request.data.get('allergens'),
+            'vegan/vegetarian': request.data.get('vegan/vegetarian'),
+            'cost': request.data.get('cost'),
+            'quantity': request.data.get('quantity')
+        }
+
 
 class OrderDetailApiView(APIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
