@@ -8,6 +8,8 @@ function Basket() {
     ["marshmallow", 6, 0.1],
   ]);
 
+  const totalPrice = basketItems.reduce((acc, item) => acc + item[1] * item[2], 0);
+
   const removeItem = (index) => {
     const updatedItems = [
       ...basketItems.slice(0, index),
@@ -63,6 +65,15 @@ function Basket() {
           ))}
         </tbody>
       </table>
+
+      <table class="basket-total-table">
+        <thead>
+          <tr>
+            <th class="total-price-container">Total - £{totalPrice.toFixed(2)}</th>
+          </tr>
+        </thead>
+      </table>
+
     </>
   );
 }
