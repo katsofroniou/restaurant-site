@@ -1,4 +1,5 @@
-.basket-table {
+.basket-table,
+.basket-total-table {
     border-collapse: collapse;
     width: auto;
     margin: 0 auto;
@@ -17,7 +18,8 @@
     background-color: #f2f2f2;
 }
 
-.quantity-buttons, .price-container {
+.quantity-buttons,
+.price-container {
     text-align: center;
 }
 
@@ -65,4 +67,19 @@
 .basket-container {
     display: flex;
     justify-content: center;
+}
+
+.basket-table th:nth-child(4),
+.basket-table td:nth-child(4) {
+    width: 100px;
+}
+
+.basket-table th:nth-child(1),
+.basket-table td:nth-child(1),
+.basket-table th:nth-child(2),
+.basket-table td:nth-child(2),
+.basket-table th:nth-child(3),
+.basket-table td:nth-child(3) {
+    width: calc((50% - 100px) / 3);
+    text-align: center;
 }
