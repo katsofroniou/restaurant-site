@@ -49,10 +49,10 @@ class OrderApiView(APIView):
                 {"res": "No items deleted"},
                 status = status.HTTP_400_BAD_REQUEST
             )
-            return Response(
-                {"res": f"Deleted {deleted_count} items"},
-                status = status.HTTP_200_OK
-            )
+        return Response(
+            {"res": f"Deleted {deleted_count} items"},
+            status = status.HTTP_200_OK
+        )
     
     def patch(self, request, *args, **kwargs):
         data = {
