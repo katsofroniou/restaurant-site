@@ -1,3 +1,16 @@
+.basket-header {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    color: #ff6347;
+    letter-spacing: 0.2rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 0.5rem;
+}
+
 .basket-table,
 .basket-total-table {
     border-collapse: collapse;

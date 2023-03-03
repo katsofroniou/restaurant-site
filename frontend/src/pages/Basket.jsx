@@ -34,7 +34,7 @@ function Basket() {
 
   return (
     <>
-      <h1 className="header">Basket</h1>
+      <h1 className="basket-header">Your Basket</h1>
       <table className="basket-table">
         <thead>
           <tr>
