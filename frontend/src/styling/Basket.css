@@ -1,15 +1,16 @@
-.basket-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+.remove-btn {
+    border: none;
+    background-color: #ff6347;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
 }
 
-.basket-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
-    border-bottom: 1px solid #ddd;
+.remove-btn:hover {
+    background-color: #cc3227;
 }
 
 .item-info {
@@ -30,19 +31,4 @@
 .item-price {
     font-size: 1.2rem;
     font-weight: bold;
-}
-
-.remove-btn {
-    border: none;
-    background-color: #ff6347;
-    color: #fff;
-    padding: 0.5rem 1rem;
-    font-size: 0.8rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-
-.remove-btn:hover {
-    background-color: #cc3227;
 }
