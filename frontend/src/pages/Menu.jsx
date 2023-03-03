@@ -52,20 +52,20 @@ function Menu() {
     return (
         <>
             <div className="menu-container">
-                <div className="search-bar">
+                <div class="search-bar">
                     <input
                         type="text"
                         placeholder="Search..."
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
+                    <div class="menu-button-container">
+                        <button class="menu_button" onClick={handleToggle}>Show Calories</button>
+                        <button class="menu_button">Call waiter</button>
+                        <button class="menu_button">Add To Basket</button>
+                    </div>
                 </div>
 
-                <div className="menu-button-container">
-                    <button class="menu_button" onClick={handleToggle}>Show Calories</button>
-                    <button class="menu_button">Call waiter</button>
-                    <button class="menu_button">Add To Basket</button>
-                </div>
 
                 <table class="menu_table">
                     <tr>

@@ -1,18 +1,24 @@
 .menu_button {
-    border: none;
+    border: 2px solid #ff6347;
+    border-radius: 25px;
     background-color: #ff6347;
     color: #fff;
-    padding: 0.5rem 1rem;
+    padding: 1rem 1rem;
     font-size: 0.8rem;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.2s;
-    margin-right: 1rem;
+    margin-right: 0.75rem;
 }
 
 .menu_button:hover {
-    background-color: #cc3227;
+    background-color: #ff7a62;
 }
+
+.menu-button-container {
+    display: flex;
+}
+
 
 .menu-container {
     margin-left: 5%;
@@ -81,6 +87,9 @@
 }
 
 .search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding-bottom: 1rem;
 }
 
@@ -92,7 +101,7 @@
     transition: all 0.2s;
     background-color: #fff;
     color: #000;
-    width: 50%;
+    width: 22.5%;
 }
 
 .search-bar input[type="text"]:focus {
