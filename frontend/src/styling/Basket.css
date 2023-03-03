@@ -64,7 +64,8 @@
     transition: all 0.2s;
 }
 
-.remove-btn:hover {
+.remove-btn:hover,
+.place-order-button:hover {
     background-color: #cc3227;
 }
 
