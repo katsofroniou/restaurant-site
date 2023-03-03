@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from 'axios';
+
+
 //Page Imports:
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
@@ -15,9 +17,25 @@ import Manager from "./pages/Manager";
 import AddUser from "./pages/AddUser";
 import NotFound from "./pages/NotFound";
 
+
 function OaxacaApp() {
-    const [groups, setGroups] = useState([]);
-    const accessToken = localStorage.getItem('access_token');
+    // const [username, setUsername] = useState("");
+    // const [user, setUser] = useState("");
+
+     const [groups, setGroups] = useState([]);
+     const accessToken = localStorage.getItem('access_token');
+
+    // const[socket, setSocket] = useState(null);
+    
+    // useEffect(() => {
+    //     setSocket(io('http://localhost:5000'));
+        
+    // },[]);
+
+    // useEffect(() => {
+    //     socket?.emit("newUser", user);
+        
+    // },[socket, user]);
 
     useEffect(() => {
         axios.get('http://localhost:8000/@me/', {

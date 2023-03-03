@@ -1,13 +1,30 @@
 import react from "react";
-import React,{useState} from "react";
+import React,{useEffect, useState,useRef} from "react";
 import loginStyle from "../styling/Login.module.css";
 import axios from 'axios'
+import { io } from "socket.io-client";
+
 
 function Login() {
   const [show, setShow] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [user, setUser] = useState("");
+
   const [errorMessage, setErrorMessage] = useState('');
+
+  
+  const socket = useRef();
+
+  useEffect(() => {
+      socket.current=io('http://localhost:5000');
+      
+  },[]);
+
+  useEffect(() => {
+      socket?.current.emit("newUser", user);
+      
+  },[socket, user]);
 
   function toggleShow() {
     setShow(!show);
@@ -21,6 +38,8 @@ function Login() {
       })
       .then(response => {
         localStorage.setItem('access_token', response.data.access);
+        setUser(username, response.data.access);
+        
         localStorage.setItem('refresh_token', response.data.refresh);
         {/* 
             const accessToken = localStorage.getItem('access_token')
