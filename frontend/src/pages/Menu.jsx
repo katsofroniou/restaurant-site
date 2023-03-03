@@ -51,48 +51,53 @@ function Menu() {
 
     return (
         <>
-            <div>
-                <input
-                    type="text"
-                    placeholder="Search..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                />
-            </div>
-            <button class="menu_button" onClick={handleToggle}>Show Calories</button>
-            <button class="menu_button">Call waiter</button>
-            <button class="menu_button">Add To Basket</button>
+            <div className="menu-container">
+                <div className="search-bar">
+                    <input
+                        type="text"
+                        placeholder="Search..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                </div>
 
-            <table class="menu_table">
-                <tr>
-                    <th>Dish</th>
-                    <th>Description</th>
-                    <th>Course</th>
-                    <th>Allergens</th>
-                    <th>Vegan/Vegetarian</th>
-                    {calories && <th>Calories</th>}
-                    <th>Cost</th>
-                    <th>Quantity</th>
-                </tr>
-                {dish.map((dish, index) => (
+                <div className="menu-button-container">
+                    <button class="menu_button" onClick={handleToggle}>Show Calories</button>
+                    <button class="menu_button">Call waiter</button>
+                    <button class="menu_button">Add To Basket</button>
+                </div>
+
+                <table class="menu_table">
                     <tr>
-                        <td>{dish.name}</td>
-                        <td>{dish.description}</td>
-                        <td>{dish.course}</td>
-                        <td>{dish.allergens.join(", ")}</td>
-                        {dish.vegan === true && <td>Vegan</td>}
-                        {dish.vegetarian === true && dish.vegan === false && <td>Vegetarian</td>}
-                        {dish.vegetarian === false && <td>N/A</td>}
-                        {calories && <td>{dish.kcal}</td>}
-                        <td>£{dish.price.toLocaleString("en-GB", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
-                        <td>
-                            <button onClick={() => handleDecrease(index)}>-</button>
-                            <span>{quantity[index]}</span>
-                            <button onClick={() => handleIncrease(index)}>+</button>
-                        </td>
+                        <th>Dish</th>
+                        <th>Description</th>
+                        <th>Course</th>
+                        <th>Allergens</th>
+                        <th>Vegan/Vegetarian</th>
+                        {calories && <th>Calories</th>}
+                        <th>Cost</th>
+                        <th>Quantity</th>
                     </tr>
-                ))}
-            </table>
+                    {dish.map((dish, index) => (
+                        <tr>
+                            <td>{dish.name}</td>
+                            <td>{dish.description}</td>
+                            <td>{dish.course}</td>
+                            <td>{dish.allergens.join(", ")}</td>
+                            {dish.vegan === true && <td>Vegan</td>}
+                            {dish.vegetarian === true && dish.vegan === false && <td>Vegetarian</td>}
+                            {dish.vegetarian === false && <td>N/A</td>}
+                            {calories && <td>{dish.kcal}</td>}
+                            <td>£{dish.price.toLocaleString("en-GB", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                            <td>
+                                <button onClick={() => handleDecrease(index)}>-</button>
+                                <span>{quantity[index]}</span>
+                                <button onClick={() => handleIncrease(index)}>+</button>
+                            </td>
+                        </tr>
+                    ))}
+                </table>
+            </div>
         </>
     );
 }
