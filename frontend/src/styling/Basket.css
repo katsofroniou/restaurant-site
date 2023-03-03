@@ -32,3 +32,17 @@
     font-size: 1.2rem;
     font-weight: bold;
 }
+
+.basket-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.basket-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+}
