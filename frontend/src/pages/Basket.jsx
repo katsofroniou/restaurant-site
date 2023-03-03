@@ -53,8 +53,8 @@ function Basket() {
                   <button className="quantity-btn" onClick={() => increaseQuantity(index)}>+</button>
                 </div>
               </td>
-              <td>£{item[2].toFixed(2)}</td>
-              <td>
+              <td className="price-container">£{item[2].toFixed(2)}</td>
+              <td className="remove-btn-container">
                 <button className="remove-btn" onClick={() => removeItem(index)}>
                   Remove Item
                 </button>
