@@ -4,8 +4,8 @@ import "../styling/Basket.css";
 
 function Basket() {
   const [basketItems, setBasketItems] = useState([
-    ["chocolate", 5, 5],
-    ["marshmallow", 6, 0.6],
+    ["chocolate", 5, 1],
+    ["marshmallow", 6, 0.1],
   ]);
 
   const removeItem = (index) => {
@@ -53,7 +53,7 @@ function Basket() {
                   <button className="quantity-btn" onClick={() => increaseQuantity(index)}>+</button>
                 </div>
               </td>
-              <td className="price-container">£{item[2].toFixed(2)}</td>
+              <td className="price-container">£{(item[2] * item[1]).toFixed(2)}</td>
               <td className="remove-btn-container">
                 <button className="remove-btn" onClick={() => removeItem(index)}>
                   Remove Item
