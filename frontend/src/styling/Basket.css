@@ -1,3 +1,42 @@
+.basket-table {
+    border-collapse: collapse;
+    width: auto;
+    margin: 0 auto;
+    table-layout: fixed;
+    min-width: 50%;
+}
+
+.basket-table th,
+.basket-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.basket-table th {
+    text-align: center;
+    background-color: #f2f2f2;
+}
+
+.quantity-buttons, .price-container {
+    text-align: center;
+}
+
+.quantity-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    margin: 0 0.5rem;
+    cursor: pointer;
+}
+
+.quantity-btn:hover {
+    border-color: #aaa;
+}
+
 .remove-btn {
     border: none;
     background-color: #ff6347;
@@ -13,36 +52,17 @@
     background-color: #cc3227;
 }
 
-.item-info {
-    display: flex;
-    flex-direction: column;
-    margin-right: 1rem;
+.remove-btn-container {
+    justify-content: center;
+    text-align: center;
 }
 
-.item-name {
-    font-size: 1.2rem;
+.basket-table td.item-price {
     font-weight: bold;
+    text-align: center;
 }
 
-.item-quantity {
-    font-size: 0.8rem;
-}
-
-.item-price {
-    font-size: 1.2rem;
-    font-weight: bold;
-}
-
-.basket-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.basket-item {
+.basket-container {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
-    border-bottom: 1px solid #ddd;
+    justify-content: center;
 }
