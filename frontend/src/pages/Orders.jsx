@@ -76,6 +76,7 @@ function Orders() {
                             <th>Table Number</th>
                             <th>Confirmed</th>
                             <th>Order Ready</th>
+                            <th>Order Complete</th>
                             <th>Cancel Order</th>
                         </tr>
                     </thead>
@@ -85,6 +86,7 @@ function Orders() {
                                 <td>{order.orderTime.substring(0, 8)}</td>
                                 <td onClick={() => console.log('cell %{order.id} was clicked')}>{order.id}</td>
                                 <td>{order.tableNumber}</td>
+                                <td><input type="checkbox"></input></td>
                                 <td><input type="checkbox"></input></td>
                                 <td><input type="checkbox"></input></td>
                                 <td>
