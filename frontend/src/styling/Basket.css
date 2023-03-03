@@ -39,7 +39,8 @@
     border-color: #aaa;
 }
 
-.remove-btn {
+.remove-btn,
+.place-order-button {
     border: none;
     background-color: #ff6347;
     color: #fff;
@@ -69,10 +70,11 @@
     justify-content: center;
 }
 
-.basket-total-table {
+.basket-total-table,
+.basket-container {
     width: 50%;
     margin-top: 1rem;
-    
+
     color: #fff;
 }
 
@@ -83,8 +85,11 @@
 }
 
 .total-price-container {
-    text-align: left;
-    padding-right: 1rem;
+    text-align: right;
+}
+
+.place-order-button {
+    margin-top: 1rem;
 }
 
 .basket-table th:nth-child(4),
