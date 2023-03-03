@@ -33,7 +33,7 @@ function Basket() {
   };
 
   return (
-    <>
+    <div className="table-wrapper">
       <h1 className="basket-header">Your Basket</h1>
       <table className="basket-table">
         <thead>
@@ -79,7 +79,7 @@ function Basket() {
         </thead>
       </table>
 
-    </>
+    </div>
   );
 }
 

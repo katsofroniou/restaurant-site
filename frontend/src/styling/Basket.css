@@ -11,13 +11,25 @@
     padding-bottom: 0.5rem;
 }
 
+.table-wrapper {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+@media (min-width: 1024px) {
+    .table-wrapper {
+        margin-left: 25%;
+        margin-right: 25%;
+    }
+}
+
 .basket-table,
 .basket-total-table {
     border-collapse: collapse;
     width: auto;
     margin: 0 auto;
     table-layout: fixed;
-    min-width: 50%;
+    width: 100%;
 }
 
 .basket-table th,
@@ -86,7 +98,6 @@
 
 .basket-total-table,
 .basket-container {
-    width: 50%;
     margin-top: 1rem;
 
     color: #fff;
@@ -119,4 +130,12 @@
 .basket-table td:nth-child(3) {
     width: calc((50% - 100px) / 3);
     text-align: center;
+}
+
+* {
+    transition: all 250ms ease;
+    -webkit-transition: all 250ms ease;
+    -moz-transition: all 250ms ease;
+    -o-transition: all 250ms ease;
+    -ms-transition: all 250ms ease;  
 }
