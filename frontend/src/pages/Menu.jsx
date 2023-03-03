@@ -90,9 +90,9 @@ function Menu() {
                             {calories && <td>{dish.kcal}</td>}
                             <td>£{dish.price.toLocaleString("en-GB", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
                             <td>
-                                <button onClick={() => handleDecrease(index)}>-</button>
-                                <span>{quantity[index]}</span>
                                 <button onClick={() => handleIncrease(index)}>+</button>
+                                <span>{quantity[index]}</span>
+                                <button onClick={() => handleDecrease(index)}>-</button>
                             </td>
                         </tr>
                     ))}
