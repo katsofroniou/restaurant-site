@@ -50,9 +50,9 @@ function Basket() {
               <td>{item[0]}</td>
               <td>
                 <div className="quantity-buttons">
-                  <button className="quantity-btn" onClick={() => decreaseQuantity(index)}>-</button>
-                  <span className="item-quantity">{item[1]}</span>
                   <button className="quantity-btn" onClick={() => increaseQuantity(index)}>+</button>
+                  <span className="item-quantity">{item[1]}</span>
+                  <button className="quantity-btn" onClick={() => decreaseQuantity(index)}>-</button>
                 </div>
               </td>
               <td className="price-container">£{(item[2] * item[1]).toFixed(2)}</td>
@@ -70,6 +70,11 @@ function Basket() {
         <thead>
           <tr>
             <th class="total-price-container">Total - £{totalPrice.toFixed(2)}</th>
+          </tr>
+          <tr>
+            <td class="total-price-container">
+              <button class="place-order-button">Place Order</button>
+            </td>
           </tr>
         </thead>
       </table>
