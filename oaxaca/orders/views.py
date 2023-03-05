@@ -10,7 +10,7 @@ import requests
 class OrderApiView(APIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
-    def get(self, request, *args, **kwards):
+    def get(self, request, *args, **kwargs):
         orders = Order.objects
         serializer = OrderSerializer(orders, many=True)
 
@@ -50,12 +50,22 @@ class OrderApiView(APIView):
                 {"res": "No items deleted"},
                 status = status.HTTP_400_BAD_REQUEST
             )
-            return Response(
-                {"res": f"Deleted {deleted_count} items"},
-                status = status.HTTP_200_OK
-            )
-       
-        
+        return Response(
+            {"res": f"Deleted {deleted_count} items"},
+            status = status.HTTP_200_OK
+        )
+    
+    def patch(self, request, *args, **kwargs):
+        data = {
+            'dish': request.data.get('dish'),
+            'description': request.data.get('description'),
+            'course': request.data.get('course'),
+            'allergens': request.data.get('allergens'),
+            'vegan/vegetarian': request.data.get('vegan/vegetarian'),
+            'cost': request.data.get('cost'),
+            'quantity': request.data.get('quantity')
+        }
+
 
 class OrderDetailApiView(APIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
@@ -122,8 +132,3 @@ class OrderDetailApiView(APIView):
             {"res": "Order deleted!"},
             status=status.HTTP_200_OK
         )
-
-def waiterViewOrders(request):
-    orders = Order.objects.order_by('orderTime')
-    serializer = OrderSerializer(orders, many=True)
-    return JsonResponse(serializer.data, safe=False)

@@ -1,28 +1,123 @@
-.menu_button {
-    appearance: none;
-    background-color:  rgb(0, 0, 0);
-    border-radius: 6px;
-    box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
-    box-sizing: border-box;
-    color: #fff;
-    display: inline-block;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 20px;
-    padding: 6px 16px;
-    position: relative;
+.menu-header {
+    font-size: 2rem;
+    font-weight: bold;
     text-align: center;
-    touch-action: manipulation;
-    vertical-align: middle;
+    text-transform: uppercase;
+    color: #ff6347;
+    letter-spacing: 0.2rem;
+    margin-top: 2%;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+.menu_button {
+    border: 2px solid #ff6347;
+    border-radius: 25px;
+    background-color: #ff6347;
+    color: #fff;
+    padding: 1rem 1rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-right: 0.25rem;
 }
 
 .menu_button:hover {
-    background-color: #2c974b;
+    background-color: #ff7a62;
 }
 
-.menu_table{
-    display: block;
-    margin-left: 15%;
-    margin-right: 35%;
-    width: 80%;
+.menu-button-container {
+    display: flex;
+}
+
+
+.menu-container {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 2%;
+}
+
+@media (min-width: 1024px) {
+    .table-wrapper {
+        margin-left: 25%;
+        margin-right: 25%;
+    }
+}
+
+.menu_table {
+    border-collapse: collapse;
+    width: auto;
+    margin: 0 auto;
+    table-layout: fixed;
+    width: 100%;
+    padding: 0 1rem;
+    text-align: center;
+}
+
+.menu_table th,
+.menu_table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.menu_table th {
+    text-align: center;
+    background-color: #f2f2f2;
+}
+
+.menu_table td {
+    text-align: center;
+}
+
+.menu_table td>button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    margin: 0 0.5rem;
+    cursor: pointer;
+}
+
+.menu_table td>button:hover {
+    border-color: #aaa;
+}
+
+.menu_table td>span {
+    margin: 0 0.5rem;
+}
+
+* {
+    transition: all 250ms ease;
+    -webkit-transition: all 250ms ease;
+    -moz-transition: all 250ms ease;
+    -o-transition: all 250ms ease;
+    -ms-transition: all 250ms ease;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 1%;
+}
+
+.search-bar input[type="text"] {
+    border: 2px solid #ff6347;
+    border-radius: 25px;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    transition: all 0.2s;
+    background-color: #fff;
+    color: #000;
+    width: 22.5%;
+}
+
+.search-bar input[type="text"]:focus {
+    outline: none;
+    border-color: #cc3227;
 }
