@@ -59,6 +59,9 @@ function Menu() {
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                     />
+
+                    <h1 className="menu-header">Menu</h1>
+
                     <div class="menu-button-container">
                         <button class="menu_button" onClick={handleToggle}>Show Calories</button>
                         <button class="menu_button">Call waiter</button>

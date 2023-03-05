@@ -1,3 +1,15 @@
+.menu-header {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    color: #ff6347;
+    letter-spacing: 0.2rem;
+    margin-top: 2%;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+}
+
 .menu_button {
     border: 2px solid #ff6347;
     border-radius: 25px;
@@ -8,7 +20,7 @@
     font-weight: bold;
     cursor: pointer;
     transition: all 0.2s;
-    margin-right: 0.75rem;
+    margin-right: 0.25rem;
 }
 
 .menu_button:hover {
@@ -90,7 +102,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: 1rem;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 1%;
 }
 
 .search-bar input[type="text"] {
