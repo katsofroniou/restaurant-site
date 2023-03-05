@@ -19,6 +19,20 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CHANNEL_LAYERS = {
+    'default': {
+
+        ### Method 2: Via local Redis
+        # 'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        # 'CONFIG': {
+        #      "hosts": [('127.0.0.1', 6379)],
+        # },
+
+        ### Method 3: Via In-memory channel layer
+        ## Using this method.
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    },
+}
 # Application definition
 
 INSTALLED_APPS = [
@@ -31,6 +45,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'menu',
     'orders',
+    'channels',
+    'notification',
 ]
 
 REST_FRAMEWORK = {
@@ -83,7 +99,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'oaxaca.wsgi.application'
+ASGI_APPLICATION = 'oaxaca.asgi.application'
 
 
 # Database
