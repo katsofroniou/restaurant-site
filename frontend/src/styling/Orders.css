@@ -26,7 +26,6 @@
     overflow:auto;
 }
 
-/*These need to be updated to fit naming convention */
 .order_td{
     text-align: center;
     padding: 0.2rem;
@@ -64,9 +63,22 @@ tr:hover td.order_td{
     vertical-align: middle;
 
 }
+
+.order_buttonlink{
+    color: #fff;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 6px 16px;
+    background-color: transparent;
+    text-decoration: none;
+}
+
 .order_button:hover{
     background:green;
 }
+
 .order_button:active{
     transform: scale(0.98);
 }
