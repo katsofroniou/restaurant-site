@@ -1,6 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from 'axios';
+import useWebSocket from 'react-use-websocket';
+import { w3cwebsocket as W3CWebSocket } from "websocket";
+
 //Page Imports:
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
@@ -15,9 +18,33 @@ import Manager from "./pages/Manager";
 import AddUser from "./pages/AddUser";
 import NotFound from "./pages/NotFound";
 
+const accessToken = localStorage.getItem('access_token');
+const WS_URL = 'ws://127.0.0.1:8000/';
+const client = new W3CWebSocket(WS_URL);
+
 function OaxacaApp() {
+
     const [groups, setGroups] = useState([]);
-    const accessToken = localStorage.getItem('access_token');
+
+    useEffect(() => {
+          client.onopen = () => {
+            console.log('WebSocket Client Connected');
+          };
+          client.onmessage = (message) => {
+            console.log(message);
+          };
+        }, []
+      )
+
+    /*useWebSocket(WS_URL, {
+        onOpen: () => {
+          console.log('WebSocket connection established.');
+        }
+      });*/
+    
+    
+      
+ 
 
     useEffect(() => {
         axios.get('http://localhost:8000/@me/', {
