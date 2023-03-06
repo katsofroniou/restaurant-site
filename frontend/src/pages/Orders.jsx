@@ -41,6 +41,7 @@ function Orders() {
         // delete selected orders
         const deleteOrders = [];
 
+        
         Object.keys(selectedRow).forEach((id) => {
             if (selectedRow[id]) {
                 deleteOrders.push(id);
@@ -86,17 +87,17 @@ function Orders() {
                         </tr>
                     </thead>
                     <tbody>
-                        {orders.map(order => (
-                            <tr key={order.id} onClick={() => setSelectedRow(order.id)} className={"clickable-row".concat(selectedRow === order.id ? "selected" : "")}>
+                        {orders.map((order, index) => (
+                            <tr>
                                 <td class="order_td">{order.orderTime.substring(0, 8)}</td>
-                                <td class="order_td" onClick={() => console.log('cell %{order.id} was clicked')}>{order.id}</td>
+                                <td class="order_td">{order.id}</td>
                                 <td class="order_td">{order.tableNumber}</td>
                                 <td class="order_td"><input type="checkbox"></input></td>
                                 <td class="order_td"><input type="checkbox"></input></td>
                                 <td class="order_td"><input type="checkbox"></input></td>
                                 <td class="order_td">
-                                    <input 
-                                        type="checkbox" 
+                                    <input
+                                        type="checkbox"
                                         checked={selectedRow[order.id] || false}
                                         onChange={() => handleOrderSelect(order)}
                                     />
@@ -105,7 +106,9 @@ function Orders() {
                         ))}
                     </tbody>
                 </Table>
-                <button class="order_button" type="submit" onClick={handleCancelClick}>Cancel Order</button>
+                <button class="order_button" type="submit" onClick={handleCancelClick}>
+                    <Link to='/orders' class="order_buttonlink">Delete order</Link>
+                </button>
             </div>
         </>
     );
