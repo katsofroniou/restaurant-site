@@ -92,9 +92,12 @@ function Orders() {
                                 <td class="order_td">{order.orderTime.substring(0, 8)}</td>
                                 <td class="order_td">{order.id}</td>
                                 <td class="order_td">{order.tableNumber}</td>
-                                <td class="order_td"><input type="checkbox"></input></td>
-                                <td class="order_td"><input type="checkbox"></input></td>
-                                <td class="order_td"><input type="checkbox"></input></td>
+                                {order.confirmed === true && <td class="order_td">Confirmed</td>}
+                                {order.confirmed === false && <td class="order_td">Unconfirmed</td>}
+                                {order.orderReady === true && <td class="order_td">Ready</td>}
+                                {order.orderReady === false && <td class="order_td">Not Ready</td>}
+                                {order.OrderComplete === true && <td class="order_td">Complete</td>}
+                                {order.OrderComplete === false && <td class="order_td">Not Complete</td>}
                                 <td class="order_td">
                                     <input
                                         type="checkbox"
