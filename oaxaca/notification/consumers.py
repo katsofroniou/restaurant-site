@@ -6,11 +6,14 @@ from notification.models import Notification
 
 class NotificationConsumer(WebsocketConsumer):
     def connect(self):
-        self.group_name = 'notifications'
+        self.room_name = self.scope['url_route']['kwargs']['room_name']
+        self.room_group_name = 'notification_%s' % self.room_name
+
+        #self.group_name = 'notifications'
 
         # Join notification group
         async_to_sync(self.channel_layer.group_add)(
-            self.group_name,
+            self.room_group_name,
             self.channel_name
         )
 
@@ -19,13 +22,24 @@ class NotificationConsumer(WebsocketConsumer):
     def disconnect(self, close_code):
         # Leave notification group
         async_to_sync(self.channel_layer.group_discard)(
-            self.group_name,
+            self.room_group_name,
             self.channel_name
         )
 
     def receive(self, text_data):
-        # Handle incoming websocket messages (not used in this example)
-        pass
+# Receive message from WebSocket
+        text_data_json = json.loads(text_data)
+        text = text_data_json['text']
+        sender = text_data_json['sender']
+        # Send message to room group
+        async_to_sync(self.channel_layer.group_send)(
+            self.room_group_name,
+            {
+                'type': 'chat_message',
+                'message': text,
+                'sender': sender
+            }
+        )       
 
     def notify(self, event):
         # Send notification to client

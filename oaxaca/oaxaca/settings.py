@@ -23,14 +23,16 @@ CHANNEL_LAYERS = {
     'default': {
 
         ### Method 2: Via local Redis
-        # 'BACKEND': 'channels_redis.core.RedisChannelLayer',
-        # 'CONFIG': {
-        #      "hosts": [('127.0.0.1', 6379)],
-        # },
+         #'BACKEND': 'channels_redis.core.RedisChannelLayer',
+         #'CONFIG': {
+          #    "hosts": [('127.0.0.1', 6379)],
+         #},
 
         ### Method 3: Via In-memory channel layer
         ## Using this method.
         "BACKEND": "channels.layers.InMemoryChannelLayer"
+        
+        
     },
 }
 # Application definition
@@ -69,6 +71,7 @@ CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
     'http://127.0.0.1:3000'
 )
+AUTH_USER_MODEL = 'auth.User'
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -99,8 +102,8 @@ TEMPLATES = [
     },
 ]
 
-ASGI_APPLICATION = 'oaxaca.asgi.application'
-
+ASGI_APPLICATION = 'notification.routing.application'
+WSGI_APPLICATION = 'oaxaca.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
