@@ -8,6 +8,7 @@ import axios from 'axios';
 function UpdateOrders() {
     const [orders, setOrders] = useState([]);
     const [selectedItems, setSelectedItems] = useState({});
+    const [selectedConfirmedItems, setselectedConfirmedItems] = useState({});
 
     const getOrder = async () => {
         const response = await axios.get('http://127.0.0.1:8000/orders/api')
@@ -19,7 +20,7 @@ function UpdateOrders() {
     }, [])
 
     const handleConfirmSelect = (selectedOrder) => {
-        setSelectedItems(prevState => ({
+        setselectedConfirmedItems(prevState => ({
             ...prevState,
             [selectedOrder.confirmed]: !prevState[selectedOrder.confirmed],
         }));
@@ -52,8 +53,8 @@ function UpdateOrders() {
         // Update the selected items
         const updateItems = [];
 
-        Object.keys(selectedItems).forEach((confirmed) => {
-            if (selectedItems[confirmed]) {
+        Object.keys(selectedConfirmedItems).forEach((confirmed) => {
+            if (selectedConfirmedItems[confirmed]) {
                 updateItems.push(confirmed);
             }
         });
@@ -111,7 +112,7 @@ function UpdateOrders() {
                                 <td class="updateOrder_td">
                                     <input 
                                         type = "checkbox"
-                                        checked = {selectedItems[order.confirmed] || false}
+                                        checked = {selectedConfirmedItems[order.confirmed] || false}
                                         onChange = {() => handleConfirmSelect(order)}
                                     />
                                 </td>
