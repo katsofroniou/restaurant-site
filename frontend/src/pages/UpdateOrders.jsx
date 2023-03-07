@@ -7,8 +7,9 @@ import axios from 'axios';
 
 function UpdateOrders() {
     const [orders, setOrders] = useState([]);
-    const [selectedItems, setSelectedItems] = useState({});
-    const [selectedConfirmedItems, setselectedConfirmedItems] = useState({});
+    const [selectedConfirmedItems, setSelectedConfirmedItems] = useState({});
+    const [selectedReadyItems, setSelectedReadyItems] = useState({});
+    const [selectedCompleteItems, setSelectedCompleteItems] = useState({});
 
     const getOrder = async () => {
         const response = await axios.get('http://127.0.0.1:8000/orders/api')
@@ -20,21 +21,21 @@ function UpdateOrders() {
     }, [])
 
     const handleConfirmSelect = (selectedOrder) => {
-        setselectedConfirmedItems(prevState => ({
+        setSelectedConfirmedItems(prevState => ({
             ...prevState,
             [selectedOrder.confirmed]: !prevState[selectedOrder.confirmed],
         }));
     };
     
     const handleReadySelect = (selectedOrder) => {
-        setSelectedItems(prevState => ({
+        setSelectedReadyItems(prevState => ({
             ...prevState,
             [selectedOrder.orderReady]: !prevState[selectedOrder.orderReady],
         }));
     };
 
     const handleCompleteSelect = (selectedOrder) => {
-        setSelectedItems(prevState => ({
+        setSelectedCompleteItems(prevState => ({
             ...prevState,
             [selectedOrder.OrderComplete]: !prevState[selectedOrder.OrderComplete],
         }));
@@ -59,14 +60,14 @@ function UpdateOrders() {
             }
         });
 
-        Object.keys(selectedItems).forEach((orderReady) => {
-            if (selectedItems[orderReady]) {
+        Object.keys(selectedReadyItems).forEach((orderReady) => {
+            if (selectedReadyItems[orderReady]) {
                 updateItems.push(orderReady);
             }
         });
         
-        Object.keys(selectedItems).forEach((OrderComplete) => {
-            if (selectedItems[OrderComplete]) {
+        Object.keys(selectedCompleteItems).forEach((OrderComplete) => {
+            if (selectedCompleteItems[OrderComplete]) {
                 updateItems.push(OrderComplete);
             }
         });
@@ -121,7 +122,7 @@ function UpdateOrders() {
                                 <td class="updateOrder_td">
                                     <input 
                                         type = "checkbox"
-                                        checked = {selectedItems[order.orderReady] || false}
+                                        checked = {selectedReadyItems[order.orderReady] || false}
                                         onChange = {() => handleReadySelect(order)}
                                     />
                                 </td>
@@ -130,7 +131,7 @@ function UpdateOrders() {
                                 <td class="updateOrder_td">
                                     <input
                                         type = "checkbox"
-                                        checked = {selectedItems[order.OrderComplete] || false}
+                                        checked = {selectedCompleteItems[order.OrderComplete] || false}
                                         onChange = {() => handleCompleteSelect(order)} 
                                     />
                                 </td>
