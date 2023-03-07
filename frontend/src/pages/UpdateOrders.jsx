@@ -78,7 +78,7 @@ function UpdateOrders() {
             try {
                 await Promise.all(updateConfirmed.map(order => {
                     return axios({
-                        method: 'POST',
+                        method: 'PUT',
                         url: `http://127.0.0.1:8000/orders/api/${order}`,
                         headers: {
                             'Authorization' : `Bearer ${access_token}`
@@ -94,7 +94,7 @@ function UpdateOrders() {
             try {
                 await Promise.all(updateReady.map(order => {
                     return axios({
-                        method: 'POST',
+                        method: 'PUT',
                         url: `http://127.0.0.1:8000/orders/api/${order}`,
                         headers: {
                             'Authorization' : `Bearer ${access_token}`
@@ -110,7 +110,7 @@ function UpdateOrders() {
             try {
                 await Promise.all(updateComplete.map(order => {
                     return axios({
-                        method: 'POST',
+                        method: 'PUT',
                         url: `http://127.0.0.1:8000/orders/api/${order}`,
                         headers: {
                             'Authorization' : `Bearer ${access_token}`
