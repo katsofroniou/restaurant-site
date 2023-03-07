@@ -1,8 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from 'axios';
-import useWebSocket from 'react-use-websocket';
-import { w3cwebsocket as W3CWebSocket } from "websocket";
+import useWebSocket, { ReadyState } from "react-use-websocket";
 
 //Page Imports:
 import Layout from "./pages/Layout";
@@ -19,33 +18,35 @@ import AddUser from "./pages/AddUser";
 import NotFound from "./pages/NotFound";
 
 const accessToken = localStorage.getItem('access_token');
-const WS_URL = 'ws://127.0.0.1:8000/';
-const client = new W3CWebSocket(WS_URL);
+//const WS_URL = 'ws://127.0.0.1:8000/';
+//const client = new W3CWebSocket(WS_URL);
 
 function OaxacaApp() {
 
     const [groups, setGroups] = useState([]);
-
-    useEffect(() => {
-          client.onopen = () => {
-            console.log('WebSocket Client Connected');
-          };
-          client.onmessage = (message) => {
-            console.log(message);
-          };
-        }, []
-      )
-
-    /*useWebSocket(WS_URL, {
+    
+    // npm install react-use-websocket
+    // will put in readme when feature is complete
+    const { readyState } = useWebSocket("ws://127.0.0.1:8000/", {
         onOpen: () => {
-          console.log('WebSocket connection established.');
+            console.log("Connected!");
+        },
+        onClose: () => {
+            console.log("Disconnected!");
         }
-      });*/
-    
-    
-      
- 
+    });
 
+    //Debugging code to view websocket connection state
+    const connectionStatus = {
+        [ReadyState.CONNECTING]: "Connecting",
+        [ReadyState.OPEN]: "Open",
+        [ReadyState.CLOSING]: "Closing",
+        [ReadyState.CLOSED]: "Closed",
+        [ReadyState.UNINSTANTIATED]: "Uninstantiated"
+    }[readyState];
+          
+ 
+      
     useEffect(() => {
         axios.get('http://localhost:8000/@me/', {
             headers: {
@@ -83,6 +84,10 @@ function OaxacaApp() {
     //Also make sure you make it visible to the right permissions and add it to navbar as necessary
     return (
         <BrowserRouter>
+        <div className="div">
+            {/*code for testing connection*/}
+            <span> websocket {connectionStatus} </span>
+        </div>
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<Home />} />
