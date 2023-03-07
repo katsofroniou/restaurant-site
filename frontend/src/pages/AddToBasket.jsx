@@ -11,6 +11,18 @@ function MenuItem({ name, price }) {
       setDishes(name, price, quantity);
       setQuantity(0);
     }
-  
+    
+    return (
+        <tr>
+          <td>{name}</td>
+          <td>${price}</td>
+          <td>
+            <input type="number" value={quantity} onChange={e => setQuantity(e.target.value)} />
+          </td>
+          <td>
+            <button onClick={addToBasket}>Add to basket</button>
+          </td>
+        </tr>
+      );
   }
   
