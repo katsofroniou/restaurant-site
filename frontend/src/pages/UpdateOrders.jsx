@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
+import { Table } from 'react-bootstrap';
 import "../styling/UpdateOrders.css";
 import axios from 'axios';
 
@@ -84,7 +85,67 @@ function UpdateOrders() {
                 console.error(error);
             }
         }
-    }
+    };
+
+    return (
+        <>
+            <div class="updateOrder_torso">
+                <Table class="updateOrder_Table">
+                    <thead>
+                        <th class="updateOrder_th">Order ID</th>
+                        <th class="updateOrder_th">Table Number</th>
+                        <th class="updateOrder_th">Confirmed</th>
+                        <th class="updateOrder_th">Update Confirmed?</th>
+                        <th class="updateOrder_th">Order Ready</th>
+                        <th class="updateOrder_th">Update Ready?</th>
+                        <th class="updateOrder_th">Order Complete</th>
+                        <th class="updateOrder_th">Update Complete?</th>
+                    </thead>
+                    <tbody>
+                        {orders.map((order, index) => (
+                            <tr>
+                                <td class="updateOrder_td">{order.id}</td>
+                                <td class="updateOrder_td">{order.tableNumber}</td>
+                                {order.confirmed === true && <td class="updateOrder_td">Confirmed</td>}
+                                {order.confirmed === false && <td class="updateOrder_td">Unconfirmed</td>}
+                                <td class="updateOrder_td">
+                                    <input 
+                                        type = "checkbox"
+                                        checked = {selectedItems[order.confirmed] || false}
+                                        onChange = {() => handleConfirmSelect(order)}
+                                    />
+                                </td>
+                                {order.orderReady === true && <td class="updateOrder_td">Ready</td>}
+                                {order.orderReady === false && <td class="updateOrder_td">Not Ready</td>}
+                                <td class="updateOrder_td">
+                                    <input 
+                                        type = "checkbox"
+                                        checked = {selectedItems[order.orderReady] || false}
+                                        onChange = {() => handleReadySelect(order)}
+                                    />
+                                </td>
+                                {order.OrderComplete === true && <td class="updateOrder_td">Complete</td>}
+                                {order.OrderComplete === false && <td class="updateOrder_td">Not Complete</td>}
+                                <td class="updateOrder_td">
+                                    <input
+                                        type = "checkbox"
+                                        checked = {selectedItems[order.OrderComplete] || false}
+                                        onChange = {() => handleCompleteSelect(order)} 
+                                    />
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </Table>
+                <button class="updateOrder_button" onClick={handleUpdateClick}>
+                    <Link to='/orders' class="updateOrder_buttonlink">Update Order</Link>
+                </button>
+                <button class="updateOrder_button">
+                    <Link to='/orders' class="updateOrder_buttonlink">Return Without Updating</Link>
+                </button>
+            </div>
+        </>
+    );
 }
 
 export default UpdateOrders;
