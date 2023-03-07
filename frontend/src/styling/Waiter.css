@@ -1,0 +1,39 @@
+.waiter_add_button {
+    appearance: none;
+    background-color:  rgb(0, 0, 0);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+    box-sizing: border-box;
+    color: #fff;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 6px 16px;
+    position: relative;
+    text-align: center;
+    touch-action: manipulation;
+    vertical-align: middle;
+}
+
+.waiter_add_button:hover {
+    background-color: #2c974b;
+}
+
+.waiter_menu_table{
+    display: block;
+    margin-left: 35%;
+    margin-right: 35%;
+    width: 40%;
+}
+
+.waiter_button_link{
+    color: #fff;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 6px 16px;
+    background-color: transparent;
+    text-decoration: none;
+}
