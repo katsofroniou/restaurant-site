@@ -34,6 +34,7 @@ function Navbar() {
     // Define permissions for each page
     const pagePermissions = {
         orders: ['Waiter', 'Kitchen Staff'],
+        updateorders: ['Waiter', 'Kitchen Staff'],
         addItem: ['Waiter', 'Kitchen Staff', 'Admin'],
         menu: ['Waiter', 'Kitchen Staff', 'Customer', 'Admin'],
         basket: ['Customer'],
