@@ -17,13 +17,26 @@ function UpdateOrders() {
         getOrder();
     }, [])
 
-    const handleItemSelect = (selectedOrder) => {
+    const handleConfirmSelect = (selectedOrder) => {
         setSelectedItems(prevState => ({
             ...prevState,
-            [selectedOrder.id]: !prevState[selectedOrder.id],
+            [selectedOrder.confirmed]: !prevState[selectedOrder.confirmed],
         }));
     };
     
+    const handleReadySelect = (selectedOrder) => {
+        setSelectedItems(prevState => ({
+            ...prevState,
+            [selectedOrder.orderReady]: !prevState[selectedOrder.orderReady],
+        }));
+    };
+
+    const handleCompleteSelect = (selectedOrder) => {
+        setSelectedItems(prevState => ({
+            ...prevState,
+            [selectedOrder.OrderComplete]: !prevState[selectedOrder.OrderComplete],
+        }));
+    };
 }
 
 export default UpdateOrders;
