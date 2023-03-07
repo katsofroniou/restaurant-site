@@ -1,45 +1,33 @@
 import json
-from channels.generic.websocket import WebsocketConsumer
+from channels.generic.websocket import JsonWebsocketConsumer
 from asgiref.sync import async_to_sync
 from django.core import serializers
 from notification.models import Notification
 
-class NotificationConsumer(WebsocketConsumer):
+class NotificationConsumer(JsonWebsocketConsumer):
+    def __init__(self, *args, **kwargs):
+        super().__init__(args, kwargs)
+        self.room_name = None
+
     def connect(self):
-        self.room_name = self.scope['url_route']['kwargs']['room_name']
-        self.room_group_name = 'notification_%s' % self.room_name
-
-        #self.group_name = 'notifications'
-
-        # Join notification group
-        async_to_sync(self.channel_layer.group_add)(
-            self.room_group_name,
-            self.channel_name
-        )
-
+        print("Connected!")
+        self.room_name = "home"
         self.accept()
-
-    def disconnect(self, close_code):
-        # Leave notification group
-        async_to_sync(self.channel_layer.group_discard)(
-            self.room_group_name,
-            self.channel_name
+        self.send_json(
+            {
+                "type": "welcome_message",
+                "message": "Hey there! You've successfully connected!",
+            }
         )
 
-    def receive(self, text_data):
-# Receive message from WebSocket
-        text_data_json = json.loads(text_data)
-        text = text_data_json['text']
-        sender = text_data_json['sender']
-        # Send message to room group
-        async_to_sync(self.channel_layer.group_send)(
-            self.room_group_name,
-            {
-                'type': 'chat_message',
-                'message': text,
-                'sender': sender
-            }
-        )       
+    def disconnect(self, code):
+        print("Disconnected!")
+        return super().disconnect(code)
+
+    def receive_json(self, content, **kwargs):
+        # Receive message from WebSocket
+        print(content)
+        return super().receive_json(content, **kwargs)
 
     def notify(self, event):
         # Send notification to client

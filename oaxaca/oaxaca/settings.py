@@ -17,6 +17,7 @@ SECRET_KEY = 'django-insecure-)_c4pvy*f+e+x=hwl5^4o1p5!ct#4yc=8a5x%2vn(onf8ioazu
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
 ALLOWED_HOSTS = []
 
 CHANNEL_LAYERS = {
@@ -30,7 +31,7 @@ CHANNEL_LAYERS = {
 
         ### Method 3: Via In-memory channel layer
         ## Using this method.
-        "BACKEND": "channels.layers.InMemoryChannelLayer"
+        "BACKEND": "channels.layers.InMemoryChannelLayer",
         
         
     },
@@ -38,6 +39,8 @@ CHANNEL_LAYERS = {
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -47,8 +50,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'menu',
     'orders',
-    'channels',
     'notification',
+    'oaxaca',
 ]
 
 REST_FRAMEWORK = {
@@ -71,7 +74,6 @@ CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
     'http://127.0.0.1:3000'
 )
-AUTH_USER_MODEL = 'auth.User'
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -102,8 +104,7 @@ TEMPLATES = [
     },
 ]
 
-ASGI_APPLICATION = 'notification.routing.application'
-WSGI_APPLICATION = 'oaxaca.wsgi.application'
+ASGI_APPLICATION = 'oaxaca.asgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
