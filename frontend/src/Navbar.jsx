@@ -71,9 +71,9 @@ function Navbar() {
                             <Link to='/Basket' class="navbar_links">Basket</Link>
                         </li>
                     )}
-                    {(userHasPermission('orders') || userHasPermission('kitchenstaff')) && (
+                    {userHasPermission('kitchenorders') && (
                         <li class="navbar_item">
-                            <Link to='/Orders' class="navbar_links">Orders</Link>
+                            <Link to='/kitchenorders' class="navbar_links">Orders</Link>
                         </li>
                     )}
                     {userHasPermission('waiter') && (
