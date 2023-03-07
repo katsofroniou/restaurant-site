@@ -52,32 +52,66 @@ function UpdateOrders() {
         }
 
         // Update the selected items
-        const updateItems = [];
+        const updateConfirmed = [];
+        const updateReady = [];
+        const updateComplete = [];
 
         Object.keys(selectedConfirmedItems).forEach((confirmed) => {
             if (selectedConfirmedItems[confirmed]) {
-                updateItems.push(confirmed);
+                updateConfirmed.push(confirmed);
             }
         });
 
         Object.keys(selectedReadyItems).forEach((orderReady) => {
             if (selectedReadyItems[orderReady]) {
-                updateItems.push(orderReady);
+                updateReady.push(orderReady);
             }
         });
         
         Object.keys(selectedCompleteItems).forEach((OrderComplete) => {
             if (selectedCompleteItems[OrderComplete]) {
-                updateItems.push(OrderComplete);
+                updateComplete.push(OrderComplete);
             }
         });
 
-        if (updateItems.length > 0) {
+        if (updateConfirmed.length > 0) {
             try {
-                await Promise.all(updateItems.map(orders => {
+                await Promise.all(updateConfirmed.map(order => {
                     return axios({
                         method: 'POST',
-                        url: `http://127.0.0.1:8000/orders/api/${orders}`,
+                        url: `http://127.0.0.1:8000/orders/api/${order}`,
+                        headers: {
+                            'Authorization' : `Bearer ${access_token}`
+                        },
+                    });
+                }));
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        if (updateReady.length > 0) {
+            try {
+                await Promise.all(updateReady.map(order => {
+                    return axios({
+                        method: 'POST',
+                        url: `http://127.0.0.1:8000/orders/api/${order}`,
+                        headers: {
+                            'Authorization' : `Bearer ${access_token}`
+                        },
+                    });
+                }));
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        if (updateComplete.length > 0) {
+            try {
+                await Promise.all(updateComplete.map(order => {
+                    return axios({
+                        method: 'POST',
+                        url: `http://127.0.0.1:8000/orders/api/${order}`,
                         headers: {
                             'Authorization' : `Bearer ${access_token}`
                         },
