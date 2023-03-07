@@ -5,3 +5,7 @@
     font-family: Arial;
     background-color: rgb(236, 180, 137);
 }
+html, body, #root{
+    width: 100%;
+    height: 100%;
+}

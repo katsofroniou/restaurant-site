@@ -5,6 +5,7 @@ migrations
 frontend/node_modules
 venv
 .pytest_cache
+socket/node_modules
 
 # dependencies
 /node_modules

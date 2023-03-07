@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from 'axios';
+
+
 //Page Imports:
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
@@ -14,10 +16,27 @@ import AddItem from "./pages/AddItem";
 import Manager from "./pages/Manager";
 import AddUser from "./pages/AddUser";
 import NotFound from "./pages/NotFound";
+import KitchenOrders from "./pages/KitchenOrders";
+
 
 function OaxacaApp() {
-    const [groups, setGroups] = useState([]);
-    const accessToken = localStorage.getItem('access_token');
+    // const [username, setUsername] = useState("");
+    // const [user, setUser] = useState("");
+
+     const [groups, setGroups] = useState([]);
+     const accessToken = localStorage.getItem('access_token');
+
+    // const[socket, setSocket] = useState(null);
+    
+    // useEffect(() => {
+    //     setSocket(io('http://localhost:5000'));
+        
+    // },[]);
+
+    // useEffect(() => {
+    //     socket?.emit("newUser", user);
+        
+    // },[socket, user]);
 
     useEffect(() => {
         axios.get('http://localhost:8000/@me/', {
@@ -43,7 +62,8 @@ function OaxacaApp() {
         waiter: ['Waiter'],
         kitchenstaff: ['Kitchen Staff'],
         manager: ['Admin'],
-        adduser: ['Admin']
+        adduser: ['Admin'],
+        kitchenorders: ['Kitchen Staff']
     };
 
     const userHasPermission = (permission) => {
@@ -81,6 +101,9 @@ function OaxacaApp() {
                     )}
                     {userHasPermission('adduser') && (
                         <Route path="adduser" element={<AddUser />} />
+                    )}
+                    {userHasPermission('kitchenorders') && (
+                        <Route path="kitchenorders" element={<KitchenOrders />} />
                     )}
                     <Route path="*" element={<NotFound />} />
                 </Route>
