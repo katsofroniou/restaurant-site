@@ -16,6 +16,7 @@ import AddItem from "./pages/AddItem";
 import Manager from "./pages/Manager";
 import AddUser from "./pages/AddUser";
 import NotFound from "./pages/NotFound";
+import KitchenOrders from "./pages/KitchenOrders";
 
 
 function OaxacaApp() {
@@ -61,7 +62,8 @@ function OaxacaApp() {
         waiter: ['Waiter'],
         kitchenstaff: ['Kitchen Staff'],
         manager: ['Admin'],
-        adduser: ['Admin']
+        adduser: ['Admin'],
+        kitchenorders: ['Kitchen Staff']
     };
 
     const userHasPermission = (permission) => {
@@ -99,6 +101,9 @@ function OaxacaApp() {
                     )}
                     {userHasPermission('adduser') && (
                         <Route path="adduser" element={<AddUser />} />
+                    )}
+                    {userHasPermission('kitchenorders') && (
+                        <Route path="kitchenorders" element={<KitchenOrders />} />
                     )}
                     <Route path="*" element={<NotFound />} />
                 </Route>
