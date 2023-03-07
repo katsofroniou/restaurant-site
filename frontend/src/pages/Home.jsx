@@ -10,7 +10,7 @@ import "../styling/Home.css";
 function Home () {
     return(
         <>
-            <img style={{ width: 1440, height: 860 }} src={image}></img> 
+            <img background-size= "background" src={image}></img> 
             <div className="infoBoxContainer">
               <div className="infoBox">
                 <img style={{ width: 300, height: 250,}} src={image2}></img> 
