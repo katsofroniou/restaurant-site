@@ -31,6 +31,7 @@ function Basket() {
     if (updatedItems[index].quantity > 1) {
       updatedItems[index].quantity--;
       setBasketItems(updatedItems);
+      localStorage.setItem("basket", JSON.stringify(updatedItems));
     }
   };
 
@@ -38,6 +39,7 @@ function Basket() {
     const updatedItems = [...basketItems];
     updatedItems[index].quantity++;
     setBasketItems(updatedItems);
+    localStorage.setItem("basket", JSON.stringify(updatedItems));
   };
 
   return (
