@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Link, redirect} from "react-router-dom";
 import axios from 'axios';
 import "./styling/Navbar.css";
 import Logo from '../src/Images/OaxacaLogo.png'
+import Bell from './Images/NotifBell.png'
 
 function Navbar() {
     const token = localStorage.getItem('access_token');
@@ -52,7 +53,7 @@ function Navbar() {
         }
         return allowedGroups.some(p => groups.includes(p));
     };
-
+    
     return (
         <>
             <nav class="navbar">
@@ -101,6 +102,11 @@ function Navbar() {
                             <Link to='/adduser' class="navbar_links">Add User</Link>
                         </li>
                     )}
+                    {userHasPermission('waiter') && (
+                        <div class="navbar_item">
+                            <img className="navbar_notifbell" src={Bell} ></img>
+                        </div>
+                    )}
                     {!token && (
                         <li class="navbar_btn">
                             <Link to='/Login' class="navbar_button">Log in</Link>
@@ -111,6 +117,7 @@ function Navbar() {
                             <Link to='/Login' onClick={handleLogOut} class="navbar_button">Log Out</Link>
                         </li>
                     )}
+                    
                 </ul>
             </nav>
         </>
