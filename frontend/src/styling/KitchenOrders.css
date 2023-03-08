@@ -27,13 +27,13 @@
 }
 
 /*These need to be updated to fit naming convention */
-td{
+.Kitchenorder_Table td{
     text-align: center;
     padding: 0.2rem;
     border: 1px solid;
 }
 
-th{
+.Kitchenorder_Table th{
     align-items: center;
     height: 50px;
     border: 1px solid;
@@ -41,7 +41,7 @@ th{
     padding: 0.5rem;
 }
 
-tr:hover td{
+.Kitchenorder_Table tr:hover td{
     background-color: rgba(95, 18, 190, 0.273);
     transition: all 0.4s ease;
 }
