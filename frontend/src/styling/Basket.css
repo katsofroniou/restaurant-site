@@ -1,0 +1,141 @@
+.basket-header {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    color: #ff6347;
+    letter-spacing: 0.2rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 0.5rem;
+}
+
+.table-wrapper {
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+@media (min-width: 1024px) {
+    .table-wrapper {
+        margin-left: 25%;
+        margin-right: 25%;
+    }
+}
+
+.basket-table,
+.basket-total-table {
+    border-collapse: collapse;
+    width: auto;
+    margin: 0 auto;
+    table-layout: fixed;
+    width: 100%;
+}
+
+.basket-table th,
+.basket-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.basket-table th {
+    text-align: center;
+    background-color: #f2f2f2;
+}
+
+.quantity-buttons,
+.price-container {
+    text-align: center;
+}
+
+.quantity-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    margin: 0 0.5rem;
+    cursor: pointer;
+}
+
+.quantity-btn:hover {
+    border-color: #aaa;
+}
+
+.remove-btn,
+.place-order-button {
+    border: none;
+    background-color: #ff6347;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.remove-btn:hover,
+.place-order-button:hover {
+    background-color: #cc3227;
+}
+
+.remove-btn-container {
+    justify-content: center;
+    text-align: center;
+}
+
+.basket-table td.item-price {
+    font-weight: bold;
+    text-align: center;
+}
+
+.basket-container {
+    display: flex;
+    justify-content: center;
+}
+
+.basket-total-table,
+.basket-container {
+    margin-top: 1rem;
+
+    color: #fff;
+}
+
+.basket-total-table th {
+    text-align: right;
+    padding: 0.5rem 1rem;
+    background-color: #ff6347;
+}
+
+.total-price-container {
+    text-align: right;
+}
+
+.place-order-button {
+    margin-top: 1rem;
+}
+
+.basket-table th:nth-child(4),
+.basket-table td:nth-child(4) {
+    width: 100px;
+}
+
+.basket-table th:nth-child(1),
+.basket-table td:nth-child(1),
+.basket-table th:nth-child(2),
+.basket-table td:nth-child(2),
+.basket-table th:nth-child(3),
+.basket-table td:nth-child(3) {
+    width: calc((50% - 100px) / 3);
+    text-align: center;
+}
+
+* {
+    transition: all 250ms ease;
+    -webkit-transition: all 250ms ease;
+    -moz-transition: all 250ms ease;
+    -o-transition: all 250ms ease;
+    -ms-transition: all 250ms ease;  
+}
