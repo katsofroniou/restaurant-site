@@ -6,6 +6,7 @@ function Menu() {
     const [dish, setDish] = useState([])
     const [searchTerm, setSearchTerm] = useState("");
     const [calories, setCalories] = useState(false);
+    const [basketItems, setBasketItems] = useState(JSON.parse(localStorage.getItem('basket')) || []);
 
     useEffect(() => {
         getDishFiltered();
@@ -49,6 +50,33 @@ function Menu() {
         setQuantity(updatedQuantity);
     }
 
+    const addToBasket = () => {
+        const itemsToAdd = dish.reduce((acc, currentDish, index) => {
+            if (quantity[index] > 0) {
+                const existingItem = basketItems.find(
+                    (item) => item.dish.name === currentDish.name
+                );
+                if (existingItem) {
+                    // The dish already exists in the basket, so update its quantity
+                    existingItem.quantity += quantity[index];
+                } else {
+                    // The dish doesn't exist in the basket, so add it
+                    acc.push({
+                        dish: currentDish,
+                        quantity: quantity[index]
+                    });
+                }
+            }
+            return acc;
+        }, []);
+
+        setBasketItems((prevBasketItems) => [...prevBasketItems, ...itemsToAdd]);
+    };
+
+    useEffect(() => {
+        localStorage.setItem('basket', JSON.stringify(basketItems));
+    }, [basketItems]);
+
     return (
         <>
             <div className="menu-container">
@@ -65,7 +93,7 @@ function Menu() {
                     <div class="menu-button-container">
                         <button class="menu_button" onClick={handleToggle}>Show Calories</button>
                         <button class="menu_button">Call waiter</button>
-                        <button class="menu_button">Add To Basket</button>
+                        <button class="menu_button" onClick={addToBasket}>Add To Basket</button>
                     </div>
                 </div>
 
