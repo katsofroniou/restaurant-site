@@ -24,7 +24,8 @@ function Basket() {
       ...basketItems.slice(index + 1),
     ];
     setBasketItems(updatedItems);
-  };
+    localStorage.setItem("basket", JSON.stringify(updatedItems));
+  };  
 
   const decreaseQuantity = (index) => {
     const updatedItems = [...basketItems];
