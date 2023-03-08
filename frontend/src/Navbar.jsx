@@ -104,7 +104,10 @@ function Navbar() {
                     )}
                     {userHasPermission('waiter') && (
                         <div class="navbar_item">
-                            <img className="navbar_notifbell" src={Bell} ></img>
+                            <div className="navbar_notifications">
+                                <img className="navbar_notifbell" src={Bell} ></img>
+                                <div className="navbar_notifcounter">2</div>
+                            </div>
                         </div>
                     )}
                     {!token && (
