@@ -1,10 +1,6 @@
 import json
 from channels.generic.websocket import WebsocketConsumer
-from django.core import serializers
 from asgiref.sync import async_to_sync
-from notification.models import Notification
-from django.contrib.auth.models import User, Group
-from .views import ViewLogin
 
 
 
@@ -59,6 +55,4 @@ class NotificationConsumer(WebsocketConsumer):
         }))
         
         
-        """notification = Notification.objects.get(id=event['id'])
-        serialized_notification = serializers.serialize('json', [notification])
-        self.send(text_data=serialized_notification)"""
+
