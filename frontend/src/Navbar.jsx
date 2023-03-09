@@ -119,7 +119,7 @@ function Navbar({notification, setNotification}) {
                             <Link to='/adduser' class="navbar_links">Add User</Link>
                         </li>
                     )}
-                    {userHasPermission('waiter') && (
+                    
                         <div class="navbar_item">
                             <div className="navbar_notifications">
                                 <img className="navbar_notifbell" src={Bell} onClick={()=> setOpen(!open)}></img>
@@ -135,7 +135,7 @@ function Navbar({notification, setNotification}) {
                             </div>
                             
                         </div>
-                    )}
+                    
                     {!token && (
                         <li class="navbar_btn">
                             <Link to='/Login' class="navbar_button">Log in</Link>

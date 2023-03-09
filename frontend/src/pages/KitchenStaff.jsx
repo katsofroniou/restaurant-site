@@ -4,27 +4,47 @@ import { w3cwebsocket as W3CWebSocket } from "websocket";
 import { useState, useEffect } from "react";
 import "../styling/KitchenStaff.css";
 
-function KitchenStaff (props) {
+
+
+
+
+function KitchenStaff ({notification, setNotification}) {
     const [filledForm, setFilledForm] = useState(false);
     const [value, setValue] = useState('order ready');
     const [name, setName] = useState('kitchen');
     const [room, setRoom] = useState('test');
-    const client = new W3CWebSocket('ws://127.0.0.1:8000/ws/' + room + '/');
-    const { notification, setNotification } = props;
 
+    const client = new W3CWebSocket('ws://127.0.0.1:8000/ws/test/');
+
+    console.log("test");
+
+    
 
     useEffect(() => {
+        // initialize previousMessages to an empty array
+        let previousNotifications = [];
+      
         client.onopen = () => {
-        console.log("WebSocket Client Connected");
+          console.log("WebSocket Client Connected");
         };
-
-
-        return () => {
-        client.close();
+      
+        client.onmessage = (message) => {
+          const dataFromServer = JSON.parse(message.data);
+          if (dataFromServer) {
+            // update previousNotifications with the latest message
+            previousNotifications = [        ...previousNotifications,        {          msg: dataFromServer.text,          name: dataFromServer.sender,        },      ];
+      
+            // update notification state with previousMessages
+            setNotification(previousNotifications);
+          }
         };
-    }, [room]);
+      
+        ;
+      }, []); 
+      
 
     const onButtonClicked = (e) => {
+        
         client.send(
         JSON.stringify({
             type: "notify",
@@ -32,7 +52,8 @@ function KitchenStaff (props) {
             sender: name,
         })
         );
-        setNotification([...notification, { msg: value, name: name, type:"notify" }]);
+        setNotification(prevNotifications => [...prevNotifications, notification]);
+
 
         e.preventDefault();
     };

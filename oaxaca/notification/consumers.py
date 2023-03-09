@@ -5,9 +5,6 @@ from asgiref.sync import async_to_sync
 
 
 class NotificationConsumer(WebsocketConsumer):
-    def __init__(self, *args, **kwargs):
-        super().__init__(args, kwargs)
-        self.room_name = None
 
     def connect(self):
         self.room_name = self.scope['url_route']['kwargs']['room_name']
