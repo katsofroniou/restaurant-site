@@ -65,47 +65,6 @@ function Waiter() {
         }
     };
 
-    const handleDeliveredClick = async () => {
-        // Get the access_token from local storage
-        const access_token = localStorage.getItem('access_token');
-
-        // If access_token is null or empty, the user is not authenticated
-        if (!access_token) {
-            console.log('User not authenticated');
-            return;
-        }
-
-        // Delivered the selected items
-        const deliveredItems = [];
-
-        Object.keys(selectedItems).forEach((name) => {
-            if (selectedItems[name]) {
-                deliveredItems.push(name);
-            }
-        });
-
-        if (deliveredItems.length > 0) {
-            try {
-                await Promise.all(deliveredItems.map(dish => {
-                    return axios({
-                        method: 'PATCH', //may change this to delete
-                        url: `http://127.0.0.1:8000/menu/api/${dish}`,
-                        headers: {
-                            'Authorization': `Bearer ${access_token}`
-                        },
-                    });
-                }));
-
-                // Update the state to remove the deleted items
-                const newDish = dish.filter((d) => !deliveredItems.includes(d.name));
-                SetDish(newDish);
-
-            } catch (error) {
-                console.error(error);
-            }
-        }
-    };
-
     return (
         <>
 
@@ -121,7 +80,6 @@ function Waiter() {
                     <th>Cost</th>
                     <th>Available</th>
                     <th>Delete?</th>
-                    <th>Delivered</th>
                 </tr>
                 {dish.map((dish, index) => (
                     <tr>
@@ -137,13 +95,6 @@ function Waiter() {
                         <td>£{dish.price.toLocaleString("en-GB", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
                         {dish.available === true && <td>Yes</td>}
                         {dish.available === false && <td>No</td>}
-                        <td>
-                            <input
-                                type="checkbox"
-                                checked={selectedItems[dish.name] || false}
-                                onChange={() => handleItemSelect(dish)}
-                            />
-                        </td>
                         <td>
                             <input
                                 type="checkbox"
@@ -170,9 +121,6 @@ function Waiter() {
             </button>
             <button className="waiter_add_button" onClick={handleDeleteClick}>
                 <Link to='/waiter' class="waiter_button_link">Delete From Menu</Link>
-            </button>
-            <button className="waiter_add_button" onClick={handleDeliveredClick}>
-                <Link to='/waiter' class="waiter_button_link">Order Delivered</Link>
             </button>
         </>
     );
