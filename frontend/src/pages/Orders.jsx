@@ -50,16 +50,16 @@ function Orders() {
                 await Promise.all(deliveredItems.map(dish => {
                     return axios({
                         method: 'PATCH', //may change this to delete
-                        url: `http://127.0.0.1:8000/menu/api/${dish}`,
+                        url: `http://127.0.0.1:8000/menu/api/${orders}`,
                         headers: {
                             'Authorization': `Bearer ${access_token}`
                         },
                     });
                 }));
 
-                // Update the state to remove the deleted items
-                const newDish = orders.filter((d) => !deliveredItems.includes(d.name));
-                setOrders(newDish);
+                // Update the state to remove the delivered orders
+                const newOrders = orders.filter((d) => !deliveredItems.includes(d.name));
+                setOrders(newOrders);
 
             } catch (error) {
                 console.error(error);
