@@ -7,8 +7,8 @@ import axios from 'axios';
 
 function UpdateOrders() {
     const [orders, setOrders] = useState([]);
-    const [selectedConfirmedItems, setSelectedConfirmedItems] = useState({});
-    const [selectedReadyItems, setSelectedReadyItems] = useState({});
+    const [selectedConfirmedItems, setSelectedConfirmedItems] = useState([]);
+    const [selectedReadyItems, setSelectedReadyItems] = useState([]);
     const [selectedCompleteItems, setSelectedCompleteItems] = useState({});
 
     const getOrder = async () => {
@@ -21,17 +21,16 @@ function UpdateOrders() {
     }, [])
 
     const handleConfirmSelect = (selectedOrder) => {
-        setSelectedConfirmedItems(prevState => ({
-            ...prevState,
-            [selectedOrder.confirmed]: !prevState[selectedOrder.confirmed],
-        }));
+        setSelectedConfirmedItems(
+            selectedConfirmedItems => [...selectedConfirmedItems, selectedOrder]
+        );
     };
     
     const handleReadySelect = (selectedOrder) => {
-        setSelectedReadyItems(prevState => ({
-            ...prevState,
-            [selectedOrder.orderReady]: !prevState[selectedOrder.orderReady],
-        }));
+        //console.log(selectedOrder); //DEBUGS
+        setSelectedReadyItems(
+            selectedReadyItems => [...selectedReadyItems, selectedOrder]
+        );
     };
 
     const handleCompleteSelect = (selectedOrder) => {
@@ -56,24 +55,44 @@ function UpdateOrders() {
         const updateReady = [];
         const updateComplete = [];
 
-        Object.keys(selectedConfirmedItems).forEach((confirmed) => {
-            if (selectedConfirmedItems[confirmed]) {
-                updateConfirmed.push(confirmed);
-            }
-        });
+        //Object.keys(selectedConfirmedItems).forEach((confirmed) => {
+        //    if (selectedConfirmedItems[confirmed]) {
+        //      //console.log(selectedConfirmedItems); //DEBUG
+        //        updateConfirmed.push(confirmed);
+        //    }
+        //});
 
-        Object.keys(selectedReadyItems).forEach((orderReady) => {
-            if (selectedReadyItems[orderReady]) {
-                updateReady.push(orderReady);
-            }
-        });
+        for( let i = 0; i < selectedConfirmedItems; i++ ) {
+            let confirmObj = selectedConfirmedItems[i]
+            confirmObj.confirmed = !confirmObj.confirmed;
+            updateConfirmed.push(confirmObj)
+        }
+        //Object.keys(selectedReadyItems).forEach((orderReady) => {
+            //if (selectedReadyItems[orderReady]) {
+            //    updateReady.push(orderReady);
+            //}
+            
+        //});
+
+        for( let i = 0; i < selectedReadyItems.length; i++ ) {
+            let currObj = selectedReadyItems[i]
+            currObj.orderReady = !currObj.orderReady;
+            updateReady.push(currObj)
+        }
         
-        Object.keys(selectedCompleteItems).forEach((OrderComplete) => {
-            if (selectedCompleteItems[OrderComplete]) {
-                updateComplete.push(OrderComplete);
-            }
-        });
+        //Object.keys(selectedCompleteItems).forEach((OrderComplete) => {
+        //    if (selectedCompleteItems[OrderComplete]) {
+        //        updateComplete.push(OrderComplete);
+        //    }
+        //});
 
+        for( let i = 0; i < selectedCompleteItems.length; i++ ) {
+            let compObj = selectedCompleteItems[i]
+            compObj.OrderComplete = !compObj.OrderComplete;
+            updateComplete.push(compObj)
+        }
+
+        console.log("sending...", updateConfirmed); //DEBUG
         if (updateConfirmed.length > 0) {
             try {
                 await Promise.all(updateConfirmed.map(order => {
@@ -90,6 +109,7 @@ function UpdateOrders() {
             }
         }
 
+        console.log("sending...", updateReady); //DEBUG
         if (updateReady.length > 0) {
             try {
                 await Promise.all(updateReady.map(order => {
@@ -106,6 +126,7 @@ function UpdateOrders() {
             }
         }
 
+        console.log("sending...", updateComplete); //DEBUG
         if (updateComplete.length > 0) {
             try {
                 await Promise.all(updateComplete.map(order => {
@@ -147,7 +168,7 @@ function UpdateOrders() {
                                 <td class="updateOrder_td">
                                     <input 
                                         type = "checkbox"
-                                        checked = {selectedConfirmedItems[order.confirmed] || false}
+                                        //checked = {selectedConfirmedItems[order.confirmed] || false}
                                         onChange = {() => handleConfirmSelect(order)}
                                     />
                                 </td>
@@ -156,7 +177,7 @@ function UpdateOrders() {
                                 <td class="updateOrder_td">
                                     <input 
                                         type = "checkbox"
-                                        checked = {selectedReadyItems[order.orderReady] || false}
+                                        //checked = {order.orderReady}
                                         onChange = {() => handleReadySelect(order)}
                                     />
                                 </td>
@@ -165,7 +186,7 @@ function UpdateOrders() {
                                 <td class="updateOrder_td">
                                     <input
                                         type = "checkbox"
-                                        checked = {selectedCompleteItems[order.OrderComplete] || false}
+                                        //checked = {selectedCompleteItems[order.OrderComplete] || false}
                                         onChange = {() => handleCompleteSelect(order)} 
                                     />
                                 </td>
