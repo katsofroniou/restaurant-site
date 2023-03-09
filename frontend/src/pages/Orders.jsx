@@ -9,7 +9,9 @@ import { useState, useEffect } from 'react';
 
 function Orders() {
     const [orders, setOrders] = useState([]);
-    const [selectedRow, setSelectedRow] = useState(-1);
+    const [cancelOrder, setCancelOrder] = useState({});
+    const [deliveredOrder, setDeliveredOrder] = useState({});
+    const [selectedRow, setSelectedRow] = useState({});
 
     useEffect(() => {
         axios.get('http://127.0.0.1:8000/orders/api')
@@ -17,12 +19,20 @@ function Orders() {
             .catch(error => console.log(error));
     }, []);
 
-    const handleOrderSelect = (selectedOrder) => {
-        setSelectedRow(prevState => ({
+    const handleCancelOrderSelect = (selectedOrder) => {
+        setCancelOrder(prevState => ({
             ...prevState,
             [selectedOrder.id]: !prevState[selectedOrder.id],
         }));
     };
+
+    const handleDeliveredOrderSelect = (selectedOrder) => {
+        setDeliveredOrder(prevState => ({
+            ...prevState,
+            [selectedOrder.id]: !prevState[selectedOrder.id],
+        }));
+    };
+
 
     const handleCancelClick = async () => {
         // get access token from local storage
@@ -36,8 +46,8 @@ function Orders() {
 
         // delete selected orders
         const deleteOrders = [];
-        Object.keys(selectedRow).forEach((id) => {
-            if (selectedRow[id]) {
+        Object.keys(cancelOrder).forEach((id) => {
+            if (cancelOrder[id]) {
                 deleteOrders.push(id);
             }
         });
@@ -64,6 +74,46 @@ function Orders() {
         }
     };
 
+    const handleDeliverClick = async () => {
+        // get access token from local storage
+        const access_token = localStorage.getItem('access_token');
+
+        //if access token is null or empty, user is not authenticated
+        if (!access_token) {
+            console.log('User not authenticated');
+            return;
+        }
+
+        // delete selected orders
+        const deliveredOrders = [];
+        Object.keys(deliveredOrder).forEach((id) => {
+            if (deliveredOrder[id]) {
+                deliveredOrders.push(id);
+            }
+        });
+
+        if (deliveredOrders.length > 0) {
+            try {
+                await Promise.all(deliveredOrders.map(order => {
+                    return axios ({
+                        method: 'DELETE',
+                        url: `http://127.0.0.1:8000/orders/api/${order}`,
+                        headers: {
+                            'Authorization': `Bearer ${access_token}`
+                        },
+                    });
+                }));
+                
+                // update state to remove deleted orders
+                const newOrder = orders.filter((d) => !deliveredOrders.includes(d.id));
+                setOrders(newOrder);
+
+            } catch (error) {
+                console.error(error);
+            }
+        }
+    };
+
     return (
         <>
             <div class="order_torso">
@@ -76,6 +126,7 @@ function Orders() {
                             <th>Confirmed</th>
                             <th>Order Ready</th>
                             <th>Cancel Order</th>
+                            <th>Order Delivered</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -89,8 +140,15 @@ function Orders() {
                                 <td>
                                     <input 
                                         type="checkbox" 
-                                        checked={selectedRow[order.id] || false}
-                                        onChange={() => handleOrderSelect(order)}
+                                        checked={cancelOrder[order.id] || false}
+                                        onChange={() => handleCancelOrderSelect(order)}
+                                    />
+                                </td>
+                                <td>
+                                    <input 
+                                        type="checkbox" 
+                                        checked={deliveredOrder[order.id] || false}
+                                        onChange={() => handleDeliveredOrderSelect(order)}
                                     />
                                 </td>
                             </tr>
@@ -98,6 +156,7 @@ function Orders() {
                     </tbody>
                 </Table>
                 <button class="order_button" type="submit" onClick={handleCancelClick} >Cancel Order</button>
+                <button class="order_button" type="submit" onClick={handleDeliverClick} >Mark Delivered</button>
             </div>
         </>
     );
