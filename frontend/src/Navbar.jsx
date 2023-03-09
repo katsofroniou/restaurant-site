@@ -6,9 +6,12 @@ import "./styling/Navbar.css";
 import Logo from '../src/Images/OaxacaLogo.png'
 import Bell from './Images/NotifBell.png'
 
-function Navbar() {
+function Navbar({notification, setNotification}) {
     const token = localStorage.getItem('access_token');
     const [groups, setGroups] = useState([]);
+    const [open, setOpen] = useState(false);
+
+
 
     const handleLogOut = () => {
         localStorage.removeItem('access_token');
@@ -53,7 +56,21 @@ function Navbar() {
         }
         return allowedGroups.some(p => groups.includes(p));
     };
-    
+    const displayNotifications = ({type, name, msg}) => {
+        let action;
+        if (type === 'notify') {
+            action="yes";
+        }
+        return(
+            <span className="navbar_notification"> {`${name} says ${msg}`}</span>
+        )
+    }
+
+    const markRead = () => {
+        setNotification([]);
+        setOpen(false);
+    }
+
     return (
         <>
             <nav class="navbar">
@@ -105,9 +122,18 @@ function Navbar() {
                     {userHasPermission('waiter') && (
                         <div class="navbar_item">
                             <div className="navbar_notifications">
-                                <img className="navbar_notifbell" src={Bell} ></img>
-                                <div className="navbar_notifcounter">2</div>
+                                <img className="navbar_notifbell" src={Bell} onClick={()=> setOpen(!open)}></img>
+                                {notification.length > 0 &&
+                                <div className="navbar_notifcounter">{notification.length}</div>
+                                }
+                                {open && (
+                                <div className="navbar_notifContainer">
+                                    {notification.map((n) => (displayNotifications(n)))}
+                                    <button className="navbar_read" onClick={markRead}> X </button>
+                                </div>
+                                )}
                             </div>
+                            
                         </div>
                     )}
                     {!token && (
