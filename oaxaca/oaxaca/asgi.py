@@ -8,9 +8,18 @@ https://docs.djangoproject.com/en/4.1/howto/deployment/asgi/
 """
 
 import os
-
+from channels.routing import ProtocolTypeRouter, URLRouter
+from asgiref.sync import sync_to_async
 from django.core.asgi import get_asgi_application
+from oaxaca.routing import websocket_urlpatterns
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'oaxaca.settings')
 
-application = get_asgi_application()
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings')
+
+application = ProtocolTypeRouter({
+    'http': get_asgi_application(),
+    'websocket': URLRouter(websocket_urlpatterns),
+    
+    
+    
+})

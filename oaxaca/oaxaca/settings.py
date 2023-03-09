@@ -17,11 +17,30 @@ SECRET_KEY = 'django-insecure-)_c4pvy*f+e+x=hwl5^4o1p5!ct#4yc=8a5x%2vn(onf8ioazu
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
 ALLOWED_HOSTS = []
 
+CHANNEL_LAYERS = {
+    'default': {
+
+        ### Method 2: Via local Redis
+         #'BACKEND': 'channels_redis.core.RedisChannelLayer',
+         #'CONFIG': {
+          #    "hosts": [('127.0.0.1', 6379)],
+         #},
+
+        ### Method 3: Via In-memory channel layer
+        ## Using this method.
+        "BACKEND": "channels.layers.InMemoryChannelLayer",
+        
+        
+    },
+}
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -31,6 +50,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'menu',
     'orders',
+    'notification',
+    'oaxaca',
 ]
 
 REST_FRAMEWORK = {
@@ -83,8 +104,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'oaxaca.wsgi.application'
-
+ASGI_APPLICATION = 'oaxaca.asgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases

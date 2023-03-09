@@ -6,7 +6,7 @@ import axios from 'axios';
 function Waiter() {
     const [dish, SetDish] = useState([])
     const [selectedItems, setSelectedItems] = useState({});
-
+    
     const getDish = async () => {
         const response = await axios.get('http://127.0.0.1:8000/menu/api')
         SetDish(response.data)

@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from 'axios';
+import { w3cwebsocket as W3CWebSocket } from "websocket";
 
 
 //Page Imports:
@@ -20,23 +21,14 @@ import KitchenOrders from "./pages/KitchenOrders";
 
 
 function OaxacaApp() {
-    // const [username, setUsername] = useState("");
-    // const [user, setUser] = useState("");
 
-     const [groups, setGroups] = useState([]);
-     const accessToken = localStorage.getItem('access_token');
 
-    // const[socket, setSocket] = useState(null);
+ 
+    const [groups, setGroups] = useState([]);
+ 
+    const accessToken = localStorage.getItem('access_token');
+
     
-    // useEffect(() => {
-    //     setSocket(io('http://localhost:5000'));
-        
-    // },[]);
-
-    // useEffect(() => {
-    //     socket?.emit("newUser", user);
-        
-    // },[socket, user]);
 
     useEffect(() => {
         axios.get('http://localhost:8000/@me/', {
@@ -71,13 +63,16 @@ function OaxacaApp() {
         return pagePermissions[permission].some(p => groups.includes(p));
     };
 
+    const [notification, setNotification] = useState([]);
+
+
     //To add a page to the WebApp please route it as follows: <Route path="name" element={<Name />} />
     //Please note: Add the newly added page before the NotFound Page route as this is the 404 page not found route and should be the last one
     //Also make sure you make it visible to the right permissions and add it to navbar as necessary
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Layout />}>
+                <Route path="/" element={<Layout notification={notification} setNotification={setNotification}/>}>
                     <Route index element={<Home />} />
                     <Route path="menu" element={<Menu />} />
                     {userHasPermission('orders') && (
@@ -94,7 +89,7 @@ function OaxacaApp() {
                         <Route path="waiter" element={<Waiter />} />
                     )}
                     {userHasPermission('kitchenstaff') && (
-                        <Route path="kitchenstaff" element={<KitchenStaff />} />
+                        <Route path="kitchenstaff" element={<KitchenStaff notification={notification} setNotification={setNotification}/>} />
                     )}
                     {userHasPermission('manager') && (
                         <Route path="manager" element={<Manager />} />
