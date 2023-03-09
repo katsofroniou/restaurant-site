@@ -1,7 +1,6 @@
 import React from "react";
 import { Table } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import "../styling/KitchenOrders.css";
 import axios from 'axios';
 
@@ -10,7 +9,6 @@ import axios from 'axios';
 
 function Orders() {
     const [orders, setOrders] = useState([]);
-    const [selectedRow, setSelectedRow] = useState({});
 
     const getOrder = async () => {
         const response = await axios.get('http://127.0.0.1:8000/orders/api')
