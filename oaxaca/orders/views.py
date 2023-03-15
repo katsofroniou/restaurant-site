@@ -3,8 +3,6 @@ from rest_framework.response import Response
 from rest_framework import status, permissions
 from .models import Order
 from .serializers import OrderSerializer
-from django.shortcuts import render
-from django.http import JsonResponse
 
 class OrderApiView(APIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
@@ -49,10 +47,10 @@ class OrderApiView(APIView):
                 {"res": "No items deleted"},
                 status = status.HTTP_400_BAD_REQUEST
             )
-            return Response(
-                {"res": f"Deleted {deleted_count} items"},
-                status = status.HTTP_200_OK
-            )
+        return Response(
+            {"res": f"Deleted {deleted_count} items"},
+            status = status.HTTP_200_OK
+        )
 
         
 
@@ -67,7 +65,7 @@ class OrderDetailApiView(APIView):
 
 
     def get(self, request, OrderVal, *args, **kwargs):
-        order = self.get_object(OrderVal)
+        order = self.get_object(str(OrderVal))
         
         if not order:
             return Response (
@@ -121,8 +119,4 @@ class OrderDetailApiView(APIView):
             {"res": "Order deleted!"},
             status=status.HTTP_200_OK
         )
-
-def waiterViewOrders(request):
-    orders = Order.objects.order_by('orderTime')
-    serializer = OrderSerializer(orders, many=True)
-    return JsonResponse(serializer.data, safe=False)
+    
