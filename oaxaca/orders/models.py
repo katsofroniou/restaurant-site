@@ -3,7 +3,7 @@ from menu.models import Dish
 
 #database for storing orders
 class Order(models.Model):
-    orderTime = models.DateTimeField(auto_now_add=True)
+    orderTime = models.TimeField(auto_now_add=True)
     tableNumber = models.IntegerField(default="0")
     items = models.ManyToManyField(Dish)
     confirmed = models.BooleanField(help_text="True / False")
@@ -11,7 +11,7 @@ class Order(models.Model):
     OrderComplete = models.BooleanField(help_text="True / False")
     
     def __str__(self):
-        return str(self.orderTime)
+        return f"{self.orderTime.strftime('%H-%M-%S')}"
 
 class Meta:
-    ordering = ['orderTime']
+    ordering = [str('orderTime')]
