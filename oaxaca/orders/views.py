@@ -65,7 +65,7 @@ class OrderDetailApiView(APIView):
 
 
     def get(self, request, OrderVal, *args, **kwargs):
-        order = self.get_object(str(OrderVal))
+        order = self.get_object(OrderVal)
         
         if not order:
             return Response (
