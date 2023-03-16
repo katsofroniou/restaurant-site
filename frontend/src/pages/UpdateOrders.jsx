@@ -10,6 +10,7 @@ function UpdateOrders() {
     const [selectedConfirmedItems, setSelectedConfirmedItems] = useState([]);
     const [selectedReadyItems, setSelectedReadyItems] = useState([]);
     const [selectedCompleteItems, setSelectedCompleteItems] = useState({});
+    const [selectedRow, setSelectedRow] = useState({});
 
     const getOrder = async () => {
         const response = await axios.get('http://127.0.0.1:8000/orders/api')
@@ -55,36 +56,36 @@ function UpdateOrders() {
         const updateReady = [];
         const updateComplete = [];
 
-        //Object.keys(selectedConfirmedItems).forEach((confirmed) => {
-        //    if (selectedConfirmedItems[confirmed]) {
-        //      //console.log(selectedConfirmedItems); //DEBUG
-        //        updateConfirmed.push(confirmed);
-        //    }
-        //});
+        // Object.keys(selectedConfirmedItems).forEach((confirmed) => {
+        //     if (selectedConfirmedItems[confirmed]) {
+        //       //console.log(selectedConfirmedItems); //DEBUG
+        //         updateConfirmed.push(confirmed);
+        //     }
+        // });
 
         for( let i = 0; i < selectedConfirmedItems; i++ ) {
-            let confirmObj = selectedConfirmedItems[i]
-            confirmObj.confirmed = !confirmObj.confirmed;
-            updateConfirmed.push(confirmObj)
+           let confirmObj = selectedConfirmedItems[i]
+           confirmObj.confirmed = !confirmObj.confirmed;
+           updateConfirmed.push(confirmObj)
         }
-        //Object.keys(selectedReadyItems).forEach((orderReady) => {
-            //if (selectedReadyItems[orderReady]) {
-            //    updateReady.push(orderReady);
-            //}
+        // Object.keys(selectedReadyItems).forEach((orderReady) => {
+        //     if (selectedReadyItems[orderReady]) {
+        //         updateReady.push(orderReady);
+        //     }
             
-        //});
+        // });
 
         for( let i = 0; i < selectedReadyItems.length; i++ ) {
-            let currObj = selectedReadyItems[i]
-            currObj.orderReady = !currObj.orderReady;
-            updateReady.push(currObj)
+           let currObj = selectedReadyItems[i]
+           currObj.orderReady = !currObj.orderReady;
+           updateReady.push(currObj)
         }
         
-        //Object.keys(selectedCompleteItems).forEach((OrderComplete) => {
+        // Object.keys(selectedCompleteItems).forEach((OrderComplete) => {
         //    if (selectedCompleteItems[OrderComplete]) {
         //        updateComplete.push(OrderComplete);
         //    }
-        //});
+        // });
 
         for( let i = 0; i < selectedCompleteItems.length; i++ ) {
             let compObj = selectedCompleteItems[i]
@@ -96,13 +97,16 @@ function UpdateOrders() {
         if (updateConfirmed.length > 0) {
             try {
                 await Promise.all(updateConfirmed.map(order => {
+                    order = 10;
                     return axios({
                         method: 'PUT',
-                        url: `http://127.0.0.1:8000/orders/api/${order}`,
+                        url: `http://127.0.0.1:8000/orders/api/${order}/`,
                         headers: {
                             'Authorization' : `Bearer ${access_token}`
                         },
-                    });
+                        data: {
+                          confirmed: true,
+                        }}); 
                 }));
             } catch (error) {
                 console.error(error);
@@ -113,13 +117,16 @@ function UpdateOrders() {
         if (updateReady.length > 0) {
             try {
                 await Promise.all(updateReady.map(order => {
+                    order = 10;
                     return axios({
                         method: 'PUT',
-                        url: `http://127.0.0.1:8000/orders/api/${order}`,
+                        url: `http://127.0.0.1:8000/orders/api/${order}/`,
                         headers: {
                             'Authorization' : `Bearer ${access_token}`
                         },
-                    });
+                        data: {
+                          orderReady: true,
+                        }});
                 }));
             } catch (error) {
                 console.error(error);
@@ -130,18 +137,22 @@ function UpdateOrders() {
         if (updateComplete.length > 0) {
             try {
                 await Promise.all(updateComplete.map(order => {
+                    order = 10;
                     return axios({
                         method: 'PUT',
-                        url: `http://127.0.0.1:8000/orders/api/${order}`,
+                        url: `http://127.0.0.1:8000/orders/api/${order}/`,
                         headers: {
                             'Authorization' : `Bearer ${access_token}`
                         },
-                    });
+                        data: {
+                          OrderComplete: true,
+                        }});
                 }));
             } catch (error) {
                 console.error(error);
             }
         }
+        //window.location = "/updateorders";
     };
 
     return (
@@ -149,18 +160,20 @@ function UpdateOrders() {
             <div class="updateOrder_torso">
                 <Table class="updateOrder_Table">
                     <thead>
-                        <th class="updateOrder_th">Order ID</th>
-                        <th class="updateOrder_th">Table Number</th>
-                        <th class="updateOrder_th">Confirmed</th>
-                        <th class="updateOrder_th">Update Confirmed?</th>
-                        <th class="updateOrder_th">Order Ready</th>
-                        <th class="updateOrder_th">Update Ready?</th>
-                        <th class="updateOrder_th">Order Complete</th>
-                        <th class="updateOrder_th">Update Complete?</th>
+                        <tr>
+                            <th class="updateOrder_th">Order ID</th>
+                            <th class="updateOrder_th">Table Number</th>
+                            <th class="updateOrder_th">Confirmed</th>
+                            <th class="updateOrder_th">Update Confirmed?</th>
+                            <th class="updateOrder_th">Order Ready</th>
+                            <th class="updateOrder_th">Update Ready?</th>
+                            <th class="updateOrder_th">Order Complete</th>
+                            <th class="updateOrder_th">Update Complete?</th>
+                        </tr>
                     </thead>
                     <tbody>
                         {orders.map((order, index) => (
-                            <tr>
+                            <tr key={order.id}>
                                 <td class="updateOrder_td">{order.id}</td>
                                 <td class="updateOrder_td">{order.tableNumber}</td>
                                 {order.confirmed === true && <td class="updateOrder_td">Confirmed</td>}
