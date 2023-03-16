@@ -5,19 +5,6 @@ import { Link } from 'react-router-dom';
 import "../styling/Orders.css";
 import axios from 'axios';
 
-
-/*
-                </Table>
-                <button class="order_button" type="submit" onClick={handleCancelClick} >Cancel Order</button>
-                <button class="order_button" type="submit" onClick={handleDeliverClick} >Mark Delivered</button>
-            </div>
-        </>
-    );
-}
-
-export default Orders;
-*/
-
 // This page will only be visible to waiter and kitchen staff - not to the customer
 
 function Orders() {
