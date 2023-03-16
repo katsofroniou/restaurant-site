@@ -185,7 +185,7 @@ function Orders() {
                     <Link to='/orders' class="order_buttonlink">Delete order</Link>
                 </button>
                 <button class="order_button" type="submit" onClick={handleDeliveredClick}>
-                    <Link to='/orders' class="order_buttonlink">Delete order</Link>
+                    <Link to='/orders' class="order_buttonlink">Order Delivered</Link>
                 </button>
             </div>
         </>
