@@ -1,9 +1,22 @@
 import React from "react";
-import "../styling/Orders.css";
-import axios from 'axios';
 import { Table } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import "../styling/Orders.css";
+import axios from 'axios';
 
+
+/*
+                </Table>
+                <button class="order_button" type="submit" onClick={handleCancelClick} >Cancel Order</button>
+                <button class="order_button" type="submit" onClick={handleDeliverClick} >Mark Delivered</button>
+            </div>
+        </>
+    );
+}
+
+export default Orders;
+*/
 
 // This page will only be visible to waiter and kitchen staff - not to the customer
 
@@ -13,11 +26,14 @@ function Orders() {
     const [deliveredOrder, setDeliveredOrder] = useState({});
     const [selectedRow, setSelectedRow] = useState({});
 
+    const getOrder = async () => {
+        const response = await axios.get('http://127.0.0.1:8000/orders/api')
+        setOrders(response.data)
+    }
+
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/orders/api')
-            .then(response => setOrders(response.data))
-            .catch(error => console.log(error));
-    }, []);
+        getOrder();
+    }, [])
 
     const handleCancelOrderSelect = (selectedOrder) => {
         setCancelOrder(prevState => ({
@@ -32,8 +48,7 @@ function Orders() {
             [selectedOrder.id]: !prevState[selectedOrder.id],
         }));
     };
-
-
+    
     const handleCancelClick = async () => {
         // get access token from local storage
         const access_token = localStorage.getItem('access_token');
@@ -46,6 +61,8 @@ function Orders() {
 
         // delete selected orders
         const deleteOrders = [];
+
+        
         Object.keys(cancelOrder).forEach((id) => {
             if (cancelOrder[id]) {
                 deleteOrders.push(id);
@@ -72,9 +89,10 @@ function Orders() {
                 console.error(error);
             }
         }
+        window.location = "/orders";
     };
 
-    const handleDeliverClick = async () => {
+    const handleDeliveredClick = async () => {
         // get access token from local storage
         const access_token = localStorage.getItem('access_token');
 
@@ -85,16 +103,18 @@ function Orders() {
         }
 
         // delete selected orders
-        const deliveredOrders = [];
+        const deleteOrders = [];
+
+        
         Object.keys(deliveredOrder).forEach((id) => {
             if (deliveredOrder[id]) {
-                deliveredOrders.push(id);
+                deleteOrders.push(id);
             }
         });
 
-        if (deliveredOrders.length > 0) {
+        if (deleteOrders.length > 0) {
             try {
-                await Promise.all(deliveredOrders.map(order => {
+                await Promise.all(deleteOrders.map(order => {
                     return axios ({
                         method: 'DELETE',
                         url: `http://127.0.0.1:8000/orders/api/${order}`,
@@ -105,13 +125,14 @@ function Orders() {
                 }));
                 
                 // update state to remove deleted orders
-                const newOrder = orders.filter((d) => !deliveredOrders.includes(d.id));
+                const newOrder = orders.filter((d) => !deleteOrders.includes(d.id));
                 setOrders(newOrder);
 
             } catch (error) {
                 console.error(error);
             }
         }
+        window.location = "/orders";
     };
 
     return (
@@ -120,33 +141,38 @@ function Orders() {
                 <Table class="order_Table">
                     <thead>
                         <tr>
-                            <th>Order Time</th>
-                            <th>Order ID</th>
-                            <th>Table Number</th>
-                            <th>Confirmed</th>
-                            <th>Order Ready</th>
-                            <th>Cancel Order</th>
-                            <th>Order Delivered</th>
+                            <th class="order_th">Order Time</th>
+                            <th class="order_th">Order ID</th>
+                            <th class="order_th">Table Number</th>
+                            <th class="order_th">Confirmed</th>
+                            <th class="order_th">Order Ready</th>
+                            <th class="order_th">Order Complete</th>
+                            <th class="order_th">Cancel Order</th>
+                            <th class="order_th">Order Delivered</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {orders.map(order => (
-                            <tr key={order.id} onClick={() => setSelectedRow(order.id)} className={"clickable-row".concat(selectedRow === order.id ? "selected" : "")}>
-                                <td>{order.orderTime.substring(0, 8)}</td>
-                                <td onClick={() => console.log('cell %{order.id} was clicked')}>{order.id}</td>
-                                <td>{order.tableNumber}</td>
-                                <td><input type="checkbox"></input></td>
-                                <td><input type="checkbox"></input></td>
-                                <td>
-                                    <input 
-                                        type="checkbox" 
+                        {orders.map((order, index) => (
+                            <tr>
+                                <td class="order_td">{order.orderTime.substring(0, 8)}</td>
+                                <td class="order_td">{order.id}</td>
+                                <td class="order_td">{order.tableNumber}</td>
+                                {order.confirmed === true && <td class="order_td">Confirmed</td>}
+                                {order.confirmed === false && <td class="order_td">Unconfirmed</td>}
+                                {order.orderReady === true && <td class="order_td">Ready</td>}
+                                {order.orderReady === false && <td class="order_td">Not Ready</td>}
+                                {order.OrderComplete === true && <td class="order_td">Complete</td>}
+                                {order.OrderComplete === false && <td class="order_td">Not Complete</td>}
+                                <td class="order_td">
+                                    <input
+                                        type="checkbox"
                                         checked={cancelOrder[order.id] || false}
                                         onChange={() => handleCancelOrderSelect(order)}
                                     />
                                 </td>
-                                <td>
-                                    <input 
-                                        type="checkbox" 
+                                <td class="order_td">
+                                    <input
+                                        type="checkbox"
                                         checked={deliveredOrder[order.id] || false}
                                         onChange={() => handleDeliveredOrderSelect(order)}
                                     />
@@ -155,8 +181,12 @@ function Orders() {
                         ))}
                     </tbody>
                 </Table>
-                <button class="order_button" type="submit" onClick={handleCancelClick} >Cancel Order</button>
-                <button class="order_button" type="submit" onClick={handleDeliverClick} >Mark Delivered</button>
+                <button class="order_button" type="submit" onClick={handleCancelClick}>
+                    <Link to='/orders' class="order_buttonlink">Delete order</Link>
+                </button>
+                <button class="order_button" type="submit" onClick={handleDeliveredClick}>
+                    <Link to='/orders' class="order_buttonlink">Delete order</Link>
+                </button>
             </div>
         </>
     );
