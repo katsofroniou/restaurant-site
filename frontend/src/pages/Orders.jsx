@@ -68,6 +68,7 @@ function Orders() {
                 console.error(error);
             }
         }
+        window.location = "/orders";
     };
 
 
