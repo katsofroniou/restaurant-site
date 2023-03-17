@@ -52,7 +52,12 @@ INSTALLED_APPS = [
     'orders',
     'notification',
     'oaxaca',
+    'payments',
 ]
+
+STRIPE_PUBLIC_KEY = ""
+STRIPE_PRIVATE_KEY = ""
+STRIP_WEBHOOK_SECRET = ""
 
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': [
