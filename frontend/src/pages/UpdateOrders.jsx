@@ -65,6 +65,7 @@ function UpdateOrders() {
         } catch (error) {
             console.log(error);
         }
+        window.location = "/orders";
     };
 
     return (
