@@ -7,16 +7,21 @@ from django.shortcuts import render
 from django.http import JsonResponse
 import requests
 
+# CLass for all orders api
 class OrderApiView(APIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def get(self, request, *args, **kwargs):
         orders = Order.objects
+        # Converts data into JSON
         serializer = OrderSerializer(orders, many=True)
 
+        # Returns serialized data and ok status
         return Response(serializer.data, status = status.HTTP_200_OK)
 
     def post(self, request, *args, **kwargs):
+        # Defines data to be posted
+        # Get's details of data from the request
         data = {
             'id': request.data.get('id'),
             'orderTime': request.data.get('orderTime'),
@@ -27,8 +32,11 @@ class OrderApiView(APIView):
             'OrderComplete': request.data.get('OrderComplete')
         }
 
+        # Converts the data into JSON
         serializer = OrderSerializer(data = data)
 
+        # If the data is valid it's added to the database
+        # Otherwise, an error is returned
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status = status.HTTP_201_CREATED)
@@ -37,6 +45,7 @@ class OrderApiView(APIView):
             return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
         
     def delete(self, request, *args, **kwargs):
+        # Checks if the order actually exists in the database
         items = request.query_params.getlist('items')
         if not items:
             return Response(
@@ -44,6 +53,9 @@ class OrderApiView(APIView):
                 status = status.HTTP_400_BAD_REQUEST
             )
         
+        # Deletes all items sent in request
+        # If none are sent, nothing is deleted and a 400 error is returned
+        # Otherwise, a deletion message and ok status is returned
         deleted_count, _ = Order.objects.filter(name_in=items).delete()
         if deleted_count == 0:
             return Response(
@@ -67,16 +79,19 @@ class OrderApiView(APIView):
         }
 
 
+# Class for single order's details api
 class OrderDetailApiView(APIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
+    # Get's the order and returns it if it exists
     def get_object(self, OrderVal, *args, **kwargs):
         try:
             return Order.objects.get(id=OrderVal)
         except:
             return None
 
-
+    # Return JSON serialization of order requested if it exists
+    # Otherwise, an error message and bad request is returned
     def get(self, request, OrderVal, *args, **kwargs):
         order = self.get_object(OrderVal)
         
@@ -89,7 +104,8 @@ class OrderDetailApiView(APIView):
         serializer = OrderSerializer(order)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-
+    # Updates order details if order exists
+    # Otherwise, returns error message and bad request
     def put(self, request, OrderVal, *args, **kwargs):
         order = self.get_object(OrderVal)
         
@@ -117,7 +133,8 @@ class OrderDetailApiView(APIView):
         
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    
+    # Deletes single dish if it exists
+    # Otherwise, returns error message and bad request
     def delete(self, request, OrderVal, *args, **kwargs):
         order_instance = self.get_object(OrderVal)
         

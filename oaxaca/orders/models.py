@@ -1,7 +1,7 @@
 from django.db import models
 from menu.models import Dish
 
-#database for storing orders
+# defines Order table in database
 class Order(models.Model):
     orderTime = models.DateTimeField(auto_now_add=True)
     tableNumber = models.IntegerField(default="0")
@@ -14,4 +14,5 @@ class Order(models.Model):
         return str(self.orderTime)
 
 class Meta:
+    # orders orders by the order time
     ordering = ['orderTime']
