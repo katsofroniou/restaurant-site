@@ -1,4 +1,4 @@
-.order_torso{
+.updateOrder_torso{
     --color-primary: rgb(236, 180, 137);
     --color-primary-dark: rgb(48, 88, 90);
     --color-secondary: rgb(0, 0, 0);
@@ -16,7 +16,7 @@
     background-size: cover;
 }
 
-.order_Table{
+.updateOrder_Table{
     margin-top: 20px;
     border: 1px solid;
     border-collapse: collapse;
@@ -26,13 +26,7 @@
     overflow:auto;
 }
 
-.order_td{
-    text-align: center;
-    padding: 0.2rem;
-    border: 1px solid;
-}
-
-.order_th{
+.updateOrder_th{
     align-items: center;
     height: 50px;
     border: 1px solid;
@@ -40,12 +34,18 @@
     padding: 0.5rem;
 }
 
-tr:hover td.order_td{
+.updateOrder_td{
+    text-align: center;
+    padding: 0.2rem;
+    border: 1px solid;
+}
+
+tr:hover td.updateOrder_td{
     background-color: rgba(95, 18, 190, 0.273);
     transition: all 0.4s ease;
 }
 
-.order_button{
+.updateOrder_button{
     appearance: none;
     background-color:  rgb(0, 0, 0);
     border-radius: 6px;
@@ -64,7 +64,15 @@ tr:hover td.order_td{
 
 }
 
-.order_buttonlink{
+.updateOrder_button:hover{
+    background:green;
+}
+
+.updateOrder_button:active{
+    transform: scale(0.98);
+}
+
+.updateOrder_buttonlink{
     color: #fff;
     display: inline-block;
     font-size: 14px;
@@ -73,12 +81,4 @@ tr:hover td.order_td{
     padding: 6px 16px;
     background-color: transparent;
     text-decoration: none;
-}
-
-.order_button:hover{
-    background:green;
-}
-
-.order_button:active{
-    transform: scale(0.98);
 }

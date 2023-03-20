@@ -10,6 +10,7 @@ import Home from "./pages/Home";
 import Menu from "./pages/Menu";
 import Basket from "./pages/Basket";
 import Orders from "./pages/Orders";
+import UpdateOrders from "./pages/UpdateOrders";
 import Login from "./pages/Login";
 import Waiter from "./pages/Waiter";
 import KitchenStaff from "./pages/KitchenStaff";
@@ -48,6 +49,7 @@ function OaxacaApp() {
     // Define permissions for each page
     const pagePermissions = {
         orders: ['Waiter', 'Kitchen Staff'],
+        updateorders: ['Waiter', 'Kitchen Staff'],
         addItem: ['Waiter', 'Kitchen Staff', 'Admin'],
         menu: ['Waiter', 'Kitchen Staff', 'Customer', 'Admin'],
         basket: ['Customer'],
@@ -77,6 +79,9 @@ function OaxacaApp() {
                     <Route path="menu" element={<Menu />} />
                     {userHasPermission('orders') && (
                         <Route path="orders" element={<Orders />} />
+                    )}
+                    {userHasPermission('updateorders') && (
+                        <Route path="updateorders" element={<UpdateOrders />} />
                     )}
                     {userHasPermission('basket') && (
                         <Route path="Basket" element={<Basket />} />

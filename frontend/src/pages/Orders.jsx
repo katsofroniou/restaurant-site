@@ -1,21 +1,25 @@
 import React from "react";
-import "../styling/Orders.css";
-import axios from 'axios';
 import { Table } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import "../styling/Orders.css";
+import axios from 'axios';
 
 
 // This page will only be visible to waiter and kitchen staff - not to the customer
 
 function Orders() {
     const [orders, setOrders] = useState([]);
-    const [selectedRow, setSelectedRow] = useState(-1);
+    const [selectedRow, setSelectedRow] = useState({});
+
+    const getOrder = async () => {
+        const response = await axios.get('http://127.0.0.1:8000/orders/api')
+        setOrders(response.data)
+    }
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/orders/api')
-            .then(response => setOrders(response.data))
-            .catch(error => console.log(error));
-    }, []);
+        getOrder();
+    }, [])
 
     const handleOrderSelect = (selectedOrder) => {
         setSelectedRow(prevState => ({
@@ -36,6 +40,7 @@ function Orders() {
 
         // delete selected orders
         const deleteOrders = [];
+        
         Object.keys(selectedRow).forEach((id) => {
             if (selectedRow[id]) {
                 deleteOrders.push(id);
@@ -62,7 +67,9 @@ function Orders() {
                 console.error(error);
             }
         }
+        window.location = "/orders";
     };
+
 
     return (
         <>
@@ -70,25 +77,30 @@ function Orders() {
                 <Table class="order_Table">
                     <thead>
                         <tr>
-                            <th>Order Time</th>
-                            <th>Order ID</th>
-                            <th>Table Number</th>
-                            <th>Confirmed</th>
-                            <th>Order Ready</th>
-                            <th>Cancel Order</th>
+                            <th class="order_th">Order Time</th>
+                            <th class="order_th">Order ID</th>
+                            <th class="order_th">Table Number</th>
+                            <th class="order_th">Confirmed</th>
+                            <th class="order_th">Order Ready</th>
+                            <th class="order_th">Order Complete</th>
+                            <th class="order_th">Cancel Order</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {orders.map(order => (
-                            <tr key={order.id} onClick={() => setSelectedRow(order.id)} className={"clickable-row".concat(selectedRow === order.id ? "selected" : "")}>
-                                <td>{order.orderTime.substring(0, 8)}</td>
-                                <td onClick={() => console.log('cell %{order.id} was clicked')}>{order.id}</td>
-                                <td>{order.tableNumber}</td>
-                                <td><input type="checkbox"></input></td>
-                                <td><input type="checkbox"></input></td>
-                                <td>
-                                    <input 
-                                        type="checkbox" 
+                        {orders.map((order, index) => (
+                            <tr>
+                                <td class="order_td">{order.orderTime.substring(0, 8)}</td>
+                                <td class="order_td">{order.id}</td>
+                                <td class="order_td">{order.tableNumber}</td>
+                                {order.confirmed === true && <td class="order_td">Confirmed</td>}
+                                {order.confirmed === false && <td class="order_td">Unconfirmed</td>}
+                                {order.orderReady === true && <td class="order_td">Ready</td>}
+                                {order.orderReady === false && <td class="order_td">Not Ready</td>}
+                                {order.OrderComplete === true && <td class="order_td">Complete</td>}
+                                {order.OrderComplete === false && <td class="order_td">Not Complete</td>}
+                                <td class="order_td">
+                                    <input
+                                        type="checkbox"
                                         checked={selectedRow[order.id] || false}
                                         onChange={() => handleOrderSelect(order)}
                                     />
@@ -97,7 +109,9 @@ function Orders() {
                         ))}
                     </tbody>
                 </Table>
-                <button class="order_button" type="submit" onClick={handleCancelClick} >Cancel Order</button>
+                <button class="order_button" type="submit" onClick={handleCancelClick}>
+                    <Link to='/orders' class="order_buttonlink">Delete order</Link>
+                </button>
             </div>
         </>
     );
