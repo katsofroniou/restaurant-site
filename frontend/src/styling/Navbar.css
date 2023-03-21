@@ -1,5 +1,5 @@
 .navbar{
-    background: rgb(255, 255, 255);
+    background: #ff6347;
     height: 120px;
     display: flex;
     justify-content: center;
@@ -19,7 +19,7 @@
     max-width: 1300px;
     margin: 0 auto;
     padding: 0 50px;
-    background-color: white;
+    background-color: #ff6347;
 }
 
 #navbar_logo{
@@ -44,7 +44,7 @@
     align-items: center;
     list-style: none;
     text-align: center;
-    background-color: white;
+    background-color: #ff6347;
     width: 100%;
     margin-right: 35px;
 
@@ -53,19 +53,19 @@
 .navbar_item{
     height: 80px;
     padding: 25px;
-    background-color: white;
+    background-color: #ff6347;
     position: relative;
 }
 
 .navbar_links{
-    color: rgb(0, 0, 0);
+    color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
     text-decoration: none;
     padding: 0 1rem;
     height: 100%;
-    background-color: white;
+    background-color: #ff6347;
     font-size: 30px;
     font-weight: 600;
 }
@@ -76,7 +76,7 @@
     align-items: center;
     padding: 0 1rem;
     width: 100%;
-    background-color: rgb(255, 255, 255);
+    background-color: #ff6347;
 }
 
 .navbar_button{
@@ -92,23 +92,24 @@
     border-radius: 4px;
     font-size: 30px;
     font-weight: 600;
-    background: rgb(0, 0, 0);
+    background: rgb(166, 44, 0);
     color: rgb(255, 255, 255);
 }
 
 .navbar_button:hover{
-    background: rgb(255, 111, 0);
+    background: rgb(255, 255, 255);
+    color: rgb(166, 44, 0);
     transition: all 0.3s ease;   
 }
 
 .navbar_links:hover{
-    color:rgb(255, 111, 0);
+    color:rgb(166, 44, 0);
     transition: all 0.3s ease;
 }
 
 .navbar_notifications{
     position: relative;
-    background-color: white;
+    background-color: #ff6347;
 }
 
 .navbar_notifbell{
@@ -117,7 +118,7 @@
     position: relative;
     bottom: 7px;
     right: 10px;
-    background-color: white;
+    background-color: #ff6347;
 }
 .navbar_notifbell:hover{
     cursor: pointer;
