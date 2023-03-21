@@ -3,13 +3,13 @@ import "../styling/Menu.css";
 import axios from 'axios';
 /**
  * @file Menu.jsx contains the frontend page of the Menu.
- * @author Katerina.Sofroniou
+ * @author Katerina Sofroniou
  * @author Natalia Widmann
 */
 
 /**
  * @function Menu
- * @returns Returns the constructed page for the Menu.
+ * @returns {void} Returns the constructed page for the Menu.
 */
 function Menu() {
     /**
