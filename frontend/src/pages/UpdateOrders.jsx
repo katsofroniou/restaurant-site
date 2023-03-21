@@ -50,6 +50,15 @@ function UpdateOrders() {
         });
     };
 
+    const handleDeliveredSelect = (orderToUpdate) => {
+        const updatedOrders = orders.map(order => {
+            if (order.id === orderToUpdate.id) {
+                order.orderDelivered = !order.orderDelivered;
+            }
+            return order;
+        });
+    };
+
     const handleUpdateClick = async () => {
         try {
             for (let i = 0; i < orders.length; i++) {
@@ -82,6 +91,8 @@ function UpdateOrders() {
                             <th class="updateOrder_th">Update Ready?</th>
                             <th class="updateOrder_th">Order Complete</th>
                             <th class="updateOrder_th">Update Complete?</th>
+                            <th class="updateOrder_th">Order Delivered</th>
+                            <th class="updateOrder_th">Update Delivered?</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -111,6 +122,14 @@ function UpdateOrders() {
                                     <input
                                         type="checkbox"
                                         onChange={() => handleCompleteSelect(order)}
+                                    />
+                                </td>
+                                {order.orderDelivered === true && <td class="updateOrder_td">Delivered</td>}
+                                {order.orderDelivered === false && <td class="updateOrder_td">Not Delivered</td>}
+                                <td class="updateOrder_td">
+                                    <input
+                                        type="checkbox"
+                                        onChange={() => handleDeliveredSelect(order)}
                                     />
                                 </td>
                             </tr>

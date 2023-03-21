@@ -83,6 +83,7 @@ function Orders() {
                             <th class="order_th">Confirmed</th>
                             <th class="order_th">Order Ready</th>
                             <th class="order_th">Order Complete</th>
+                            <th class="order_th">Order Delivered</th>
                             <th class="order_th">Cancel Order</th>
                         </tr>
                     </thead>
@@ -98,6 +99,8 @@ function Orders() {
                                 {order.orderReady === false && <td class="order_td">Not Ready</td>}
                                 {order.OrderComplete === true && <td class="order_td">Complete</td>}
                                 {order.OrderComplete === false && <td class="order_td">Not Complete</td>}
+                                {order.orderDelivered === true && <td class="order_td">Delivered</td>}
+                                {order.orderDelivered === false && <td class="order_td">Not Delivered</td>}
                                 <td class="order_td">
                                     <input
                                         type="checkbox"

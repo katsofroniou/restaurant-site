@@ -5,4 +5,4 @@ class OrderSerializer(serializers.ModelSerializer):
     # Allows serialization of Order objects into JSON format
     class Meta:
         model = Order
-        fields = ["id", "orderTime", "tableNumber", "items", "confirmed", "orderReady", "orderDelivered", "OrderComplete"]
+        fields = ["id", "orderTime", "tableNumber", "items", "confirmed", "orderReady", "OrderComplete", "orderDelivered"]

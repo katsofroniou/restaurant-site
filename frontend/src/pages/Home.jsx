@@ -72,8 +72,8 @@ function Home () {
                     <div className="orderStatus">
                         <p>Confirmed: {orderInfo.confirmed ? "Yes" : "No"}</p>
                         <p>Order Ready: {orderInfo.orderReady ? "Yes" : "No"}</p>
-                        <p>Order Delivered: {orderInfo.OrderDelivered ? "Yes" : "No"}</p>
                         <p>Order Complete: {orderInfo.OrderComplete ? "Yes" : "No"}</p>
+                        <p>Order Delivered: {orderInfo.orderDelivered ? "Yes" : "No"}</p>
                     </div>
                     </div>
                 )}
