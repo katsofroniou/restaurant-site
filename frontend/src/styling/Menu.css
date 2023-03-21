@@ -57,13 +57,13 @@
 
 .menu_table th,
 .menu_table td {
-    border: 1px solid #ddd;
+    border: 1px solid #ff6347;
     padding: 8px;
 }
 
 .menu_table th {
     text-align: center;
-    background-color: #f2f2f2;
+    background-color: #ff6347;
 }
 
 .menu_table td {
@@ -76,14 +76,14 @@
     justify-content: center;
     width: 1.5rem;
     height: 1.5rem;
-    border: 1px solid #ccc;
+    border: 1px solid #ff6347;
     border-radius: 50%;
     margin: 0 0.5rem;
     cursor: pointer;
 }
 
 .menu_table td>button:hover {
-    border-color: #aaa;
+    border-color: rgb(166, 44, 0);
 }
 
 .menu_table td>span {
@@ -102,7 +102,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 2px solid #ddd;
+    border-bottom: 2px solid rgb(166, 44, 0);
     margin-bottom: 1%;
 }
 
@@ -112,7 +112,7 @@
     padding: 0.5rem 1rem;
     font-size: 0.8rem;
     transition: all 0.2s;
-    background-color: #fff;
+    background-color: #ffffff;
     color: #000;
     width: 22.5%;
 }
