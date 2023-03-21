@@ -25,7 +25,7 @@ function Basket() {
     ];
     setBasketItems(updatedItems);
     localStorage.setItem("basket", JSON.stringify(updatedItems));
-  };  
+  };
 
   const decreaseQuantity = (index) => {
     const updatedItems = [...basketItems];
@@ -42,6 +42,10 @@ function Basket() {
     setBasketItems(updatedItems);
     localStorage.setItem("basket", JSON.stringify(updatedItems));
   };
+
+  const handleSubmit = () => {
+    window.location.href = '/checkout';
+  }
 
   return (
     <div className="table-wrapper">
@@ -84,7 +88,7 @@ function Basket() {
           </tr>
           <tr>
             <td class="total-price-container">
-              <button class="place-order-button">Place Order</button>
+              <button class="place-order-button" onClick={handleSubmit}>Place Order</button>
             </td>
           </tr>
         </thead>
