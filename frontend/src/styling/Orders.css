@@ -1,5 +1,4 @@
 .order_torso{
-    --color-primary: rgb(236, 180, 137);
     --color-primary-dark: rgb(48, 88, 90);
     --color-secondary: rgb(0, 0, 0);
     --color-error: red;
@@ -17,31 +16,30 @@
 }
 
 .order_Table{
-    margin-top: 20px;
-    border: 1px solid;
     border-collapse: collapse;
     width: auto;
+    margin: 0 auto;
+    table-layout: fixed;
+    width: 100%;
+    padding: 0 1rem;
     text-align: center;
-    padding: 0.25rem;
-    overflow:auto;
 }
 
 .order_td{
+    border: 1px solid #ff6347;
+    padding: 8px;
     text-align: center;
-    padding: 0.2rem;
-    border: 1px solid;
 }
 
 .order_th{
-    align-items: center;
-    height: 50px;
-    border: 1px solid;
+    border: 1px solid #ff6347;
+    padding: 8px;
     text-align: center;
-    padding: 0.5rem;
+    background-color: #ff6347;
 }
 
 tr:hover td.order_td{
-    background-color: rgba(95, 18, 190, 0.273);
+    background-color: #fab7aa;
     transition: all 0.4s ease;
 }
 
@@ -57,11 +55,8 @@ tr:hover td.order_td{
     font-weight: 600;
     line-height: 20px;
     padding: 6px 16px;
-    position: relative;
     text-align: center;
     touch-action: manipulation;
-    vertical-align: middle;
-
 }
 
 .order_buttonlink{
