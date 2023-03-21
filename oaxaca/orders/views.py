@@ -1,11 +1,8 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status, permissions
-from .models import Order
-from .serializers import OrderSerializer
-from django.shortcuts import render
-from django.http import JsonResponse
-import requests
+from .models import Order, OrderDish
+from .serializers import OrderSerializer, OrderDishSerializer
 
 class OrderApiView(APIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
@@ -132,3 +129,26 @@ class OrderDetailApiView(APIView):
             {"res": "Order deleted!"},
             status=status.HTTP_200_OK
         )
+        
+class OrderDishApiView(APIView):
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+    def get(self, request, *args, **kwargs):
+        order_dishes = OrderDish.objects.all()
+        serializer = OrderDishSerializer(order_dishes, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def post(self, request, *args, **kwargs):
+        data = {
+            'order': request.data.get('order'),
+            'dish': request.data.get('dish'),
+            'quantity': request.data.get('quantity')
+        }
+
+        serializer = OrderDishSerializer(data=data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
