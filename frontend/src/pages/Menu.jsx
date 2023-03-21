@@ -1,13 +1,50 @@
 import React, { useState, useEffect } from "react";
 import "../styling/Menu.css";
 import axios from 'axios';
+/**
+ * @file Menu.jsx contains the frontend page of the Menu.
+ * @author Katerina.Sofroniou
+ * @author Natalia Widmann
+*/
 
+/**
+ * @function Menu
+ * @returns Returns the constructed page for the Menu.
+*/
 function Menu() {
+    /**
+     * Stateful value of a dish.
+     * @typedef {any[]} DishState - Array of objects representing the dishes.
+     * @type {DishState}
+    */
     const [dish, setDish] = useState([])
+    /**
+     * Stateful value of a searchTerm.
+     * @typedef {String[]} SearchTermState - Array of string representing the search terms.
+     * @type {SearchTermState}
+    */
     const [searchTerm, setSearchTerm] = useState("");
+    /**
+     * Stateful value of calories.
+     * It's used to determine when calories should and should not be displayed.
+     * @typedef {Boolean} CaloriesState - Boolean representing the toggle of the calories display.
+     * @type {CaloriesState}
+    */
     const [calories, setCalories] = useState(false);
+    /**
+     * Stateful value of the basket items in a React component.
+     * @typedef {any[]} BasketItemsState - Array of objects representing the items in the basket.
+     * @type {BasketItemsState}
+    */
     const [basketItems, setBasketItems] = useState(JSON.parse(localStorage.getItem('basket')) || []);
 
+    /**
+     * useEffect hook to fetch a filtered list of dishes and update the dish stateful value in a React component.
+     * @function
+     * @name useGetDishFilteredEffect
+     * @param {string} searchTerm - The search term used to filter the list of dishes.
+     * @returns {void}
+     */
     useEffect(() => {
         getDishFiltered();
     }, [])
@@ -26,16 +63,31 @@ function Menu() {
         getDishFiltered();
     }, [searchTerm]);
 
+    /**
+     * Sets calories to the opposite of the current state value.
+     */
     const handleToggle = () => {
         setCalories((current) => !current);
     };
 
+    /**
+     * useState hook for the quantity of each dish in the component.
+     * @type {Array}
+     * */
     const [quantity, setQuantity] = useState([]);
 
+    /**
+     * useEffect hook to set the initial quantity of each dish to 0 when the dish prop is updated
+     * @param {Array} dish - the array of dishes
+     */
     useEffect(() => {
         setQuantity(dish.map(() => 0));
     }, [dish]);
 
+    /**
+     * Event handler to decrease the quantity of a dish
+     * @param {number} index - the index of the dish to decrease the quantity of
+     * */
     const handleDecrease = (index) => {
         if (quantity[index] > 0) {
             const updatedQuantity = [...quantity];
@@ -44,12 +96,19 @@ function Menu() {
         }
     }
 
+    /**
+     * Event handler to increase the quantity of a dish
+     * @param {number} index - the index of the dish to increase the quantity of
+     */
     const handleIncrease = (index) => {
         const updatedQuantity = [...quantity];
         updatedQuantity[index] = updatedQuantity[index] + 1;
         setQuantity(updatedQuantity);
     }
 
+    /**
+     * Function to add items to the basket
+     */
     const addToBasket = () => {
         const itemsToAdd = dish.reduce((acc, currentDish, index) => {
             if (quantity[index] > 0) {
@@ -73,6 +132,9 @@ function Menu() {
         setBasketItems((prevBasketItems) => [...prevBasketItems, ...itemsToAdd]);
     };
 
+    /**
+     * useEffect hook to save the basketItems state to local storage when it is updated
+     */
     useEffect(() => {
         localStorage.setItem('basket', JSON.stringify(basketItems));
     }, [basketItems]);
