@@ -14,6 +14,7 @@ function KitchenStaff ({notification, setNotification}) {
     const [name, setName] = useState('kitchen');
     const [room, setRoom] = useState('test');
 
+    // initialise a new websocket connection at the specified URL
     const client = new W3CWebSocket('ws://127.0.0.1:8000/ws/test/');
 
     console.log("test");
@@ -44,7 +45,7 @@ function KitchenStaff ({notification, setNotification}) {
       
 
     const onButtonClicked = (e) => {
-        
+        //convert javascript object to json string and send it to the server.
         client.send(
         JSON.stringify({
             type: "notify",
@@ -53,6 +54,7 @@ function KitchenStaff ({notification, setNotification}) {
         })
         );
         setNotification(prevNotifications => [...prevNotifications, notification]);
+        //prevNotifications is used to keep track of old notifications and not clear array
 
 
         e.preventDefault();

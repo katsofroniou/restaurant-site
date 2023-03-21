@@ -1,7 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from 'axios';
-import { w3cwebsocket as W3CWebSocket } from "websocket";
 
 
 //Page Imports:
@@ -65,6 +64,7 @@ function OaxacaApp() {
         return pagePermissions[permission].some(p => groups.includes(p));
     };
 
+    // This hook is created here so we can pass it as a prop to the relevant pages
     const [notification, setNotification] = useState([]);
 
 

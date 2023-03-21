@@ -58,6 +58,10 @@ function Navbar({notification, setNotification}) {
         }
         return allowedGroups.some(p => groups.includes(p));
     };
+
+
+    // This hook handles displaying the notification for users
+    // by simply adding a span to the page.
     const displayNotifications = ({type, name, msg}) => {
         let action;
         if (type === 'notify') {
@@ -68,6 +72,7 @@ function Navbar({notification, setNotification}) {
         )
     }
 
+    //will clear the notification array
     const markRead = () => {
         setNotification([]);
         setOpen(false);
