@@ -26,6 +26,7 @@ class OrderApiView(APIView):
             'items': request.data.get('items'),
             'confirmed': request.data.get('confirmed'),
             'orderReady': request.data.get('orderReady'),
+            'orderDelivered': request.data.get('orderDelivered'),
             'OrderComplete': request.data.get('OrderComplete')
         }
 
@@ -139,6 +140,7 @@ class OrderDetailApiView(APIView):
             'items': request.data.get('items'),
             'confirmed': request.data.get('confirmed'),
             'orderReady': request.data.get('orderReady'),
+            'orderDelivered': request.data.get('orderDelivered'),
             'OrderComplete': request.data.get('OrderComplete')
         }
         
