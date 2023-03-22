@@ -11,7 +11,7 @@ import "../styling/AddItem.css";
 
 /**
  * @function AddItem
- * @returns {void} Returns the constructed page for AddItem.
+ * @returns {JSX.Element} Returns the constructed page for AddItem.
  */
 function AddItem () {
     /**

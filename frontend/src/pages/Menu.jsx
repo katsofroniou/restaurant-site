@@ -9,7 +9,7 @@ import axios from 'axios';
 
 /**
  * @function Menu
- * @returns {void} Returns the constructed page for the Menu.
+ * @returns {JSX.Element} Returns the constructed page for the Menu.
 */
 function Menu() {
     /**

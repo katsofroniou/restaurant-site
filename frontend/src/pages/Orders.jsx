@@ -15,7 +15,7 @@ import axios from 'axios';
 
 /**
  * @function Orders
- * @returns {void} Returns the constructed page for Orders.
+ * @returns {JSX.Element} Returns the constructed page for Orders.
  */
 function Orders() {
     /**

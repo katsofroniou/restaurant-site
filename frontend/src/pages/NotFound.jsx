@@ -7,7 +7,7 @@ import React from "react";
 
 /**
  * @function NotFound
- * @returns {void} Returns the constructed PageNotFound page.
+ * @returns {JSX.Element} Returns the constructed PageNotFound page.
  */
 function NotFound() {
     return(
