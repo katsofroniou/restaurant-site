@@ -1,6 +1,7 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useState, useEffect } from "react";
 import { API_BASE } from "../api";
+import { Link } from 'react-router-dom';
 
 const CheckoutForm = () => {
     const [error, setError] = useState(null);
@@ -120,7 +121,7 @@ const CheckoutForm = () => {
                 </div>
 
                 <button type="submit" className="submit-btn">
-                    Submit Payment
+                    <Link to='/' className="submit-btn"> Submit Payment </Link>
                 </button>
             </form></>
     );
