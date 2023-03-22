@@ -2,10 +2,36 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios";
 import "../styling/AddUser.css";
+/**
+ * @author Natalia Widmann
+ * @author Katerina Sofroniou
+ * @file AddUser.jsx contains the frontend page used to create new users.
+ */
 
+/**
+ * @function AddUser
+ * @returns {JSX.Element}
+ */
 function AddUser() {
+    /**
+     * An array containing the valid user groups.
+     * @type {string[]}
+     */
     const validGroups = ["Kitchen Staff", "Waiter", "Customer"]
 
+    /**
+     * An object representing the user registration form data.
+     * @typedef {Object} FormData
+     * @property {string} username - The user's username.
+     * @property {string} email - The user's email.
+     * @property {string} group - The user's group. Must be one of the validGroups.
+     * @property {string} password - The user's password.
+     */
+
+    /**
+     * The stateful object that stores the form data.
+     * @type {[FormData, function]}
+     */
     const [formData, setFormData] = useState({
         username: '',
         email: '',
@@ -13,6 +39,10 @@ function AddUser() {
         password: ''
     });
 
+    /**
+     * Handles changes to the form data state.
+     * @param {object} event - The event object.
+     */
     const handleChange = event => {
         const { name, value } = event.target;
 
@@ -22,6 +52,11 @@ function AddUser() {
         });
     }
 
+    /**
+     * Handles the form submission to create a new user
+     * @param {Event} event - The event object for the form submission
+     * @returns {void}
+     */
     const handleSubmit = async event => {
         event.preventDefault();
 
@@ -74,10 +109,23 @@ function AddUser() {
     const [show, setShow] = useState();
     var hidden = show ? "form form-hidden" : "form";
     var hidden2 = show ? "form" : "form form-hidden";
+    /**
+     * Toggles the visibility of the form.
+     * @function
+     * @name toggleShow
+     * @returns {void}
+     */
     function toggleShow() {
         setShow(!show);
     }
 
+    /**
+     * Handles changes to the confirm password field.
+     * @function
+     * @name handleConfirmPasswordChange
+     * @param {object} event - The change event object.
+     * @returns {void}
+     */
     const [confirmPassword, setConfirmPassword] = useState("");
 
     const handleConfirmPasswordChange = (event) => {
