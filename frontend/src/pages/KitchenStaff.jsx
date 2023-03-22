@@ -3,12 +3,25 @@ import axios from 'axios'
 import { w3cwebsocket as W3CWebSocket } from "websocket";
 import { useState, useEffect } from "react";
 import "../styling/KitchenStaff.css";
+/**
+ * @author Natalia Widmann
+ * @author Davit Gevorgyan
+ * @file KitchenStaff.jsx contains the KitchenStaff page and related functions.
+ */
 
-
-
-
-
+/**
+ * @function KitchenStaff
+ * @param {*} notification 
+ * @param {*} setNotification
+ * @return {JSX.Element} Returns constructed kitchen staff page.
+ */
 function KitchenStaff ({notification, setNotification}) {
+  /**
+   * Initialises and manages a WebSocket connection with a server, and sends/receives notification messages through it.
+   * @function
+   * @name useWebSocketNotifications
+   * @return {Array} An array containing four state variables: filledForm, value, name, and room, managed by useState.
+   */
     const [filledForm, setFilledForm] = useState(false);
     const [value, setValue] = useState('order ready');
     const [name, setName] = useState('kitchen');
