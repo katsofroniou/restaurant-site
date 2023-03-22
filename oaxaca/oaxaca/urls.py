@@ -21,6 +21,9 @@ urlpatterns = [
     # Sets up Django admin interface
     path('admin/', admin.site.urls),
     
+    # Sets up payment api page
+    path('payments/', include('payments.urls')),
+    
     # Sets up endpoint for obtaining JWT token
     path('token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     

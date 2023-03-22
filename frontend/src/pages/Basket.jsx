@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../styling/Basket.css";
+import { Link } from 'react-router-dom';
 
 function Basket() {
   const [basketItems, setBasketItems] = useState([]);
@@ -84,7 +85,9 @@ function Basket() {
           </tr>
           <tr>
             <td class="total-price-container">
-              <button class="place-order-button">Place Order</button>
+              <button class="place-order-button">
+                <Link to='/checkout' class="place-order-button">Place Order</Link>
+              </button>
             </td>
           </tr>
         </thead>

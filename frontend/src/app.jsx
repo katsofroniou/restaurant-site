@@ -1,8 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from 'axios';
-import { w3cwebsocket as W3CWebSocket } from "websocket";
-
 
 //Page Imports:
 import Layout from "./pages/Layout";
@@ -20,16 +18,15 @@ import AddUser from "./pages/AddUser";
 import NotFound from "./pages/NotFound";
 import KitchenOrders from "./pages/KitchenOrders";
 
+import Checkout from "./pages/Checkout";
+import {loadStripe} from "@stripe/stripe-js/pure";
+
+const accessToken = localStorage.getItem('access_token');
+const stripePromise = loadStripe('pk_test_51Mm1OUGHCVd3YY0Z0qddQGTs0mndGS26E7ooPejSxkUGOxgPQs0BBF6pz5V5Oxf9gcJlP4vphcyhpPxqAtqQqkyd00QO4WujFi');
 
 function OaxacaApp() {
-
-
- 
     const [groups, setGroups] = useState([]);
- 
     const accessToken = localStorage.getItem('access_token');
-
-    
 
     useEffect(() => {
         axios.get('http://localhost:8000/@me/', {
@@ -66,7 +63,6 @@ function OaxacaApp() {
     };
 
     const [notification, setNotification] = useState([]);
-
 
     //To add a page to the WebApp please route it as follows: <Route path="name" element={<Name />} />
     //Please note: Add the newly added page before the NotFound Page route as this is the 404 page not found route and should be the last one
@@ -105,6 +101,7 @@ function OaxacaApp() {
                     {userHasPermission('kitchenorders') && (
                         <Route path="kitchenorders" element={<KitchenOrders />} />
                     )}
+                    <Route path="checkout" element={<Checkout />} />
                     <Route path="*" element={<NotFound />} />
                 </Route>
             </Routes>
