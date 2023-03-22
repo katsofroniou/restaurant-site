@@ -7,7 +7,7 @@ import axios from 'axios';
 
 // This page will only be visible to waiter and kitchen staff - not to the customer
 
-function Orders() {
+function KitchenOrders() {
     const [orders, setOrders] = useState([]);
 
     const getOrder = async () => {
@@ -45,4 +45,4 @@ function Orders() {
     );
 }
 
-export default Orders;
+export default KitchenOrders;
