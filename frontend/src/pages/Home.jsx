@@ -5,8 +5,18 @@ import image2 from '../Images/seating.jpeg'
 import image3 from '../Images/food.jpeg'
 import image4 from '../Images/table.jpeg'
 import "../styling/Home.css";
+/**
+ * @author Jubai-Khalil Owusu-Afriyie
+ * @author Natalia Widmann
+ * @author Katerina Sofroniou
+ * @author Jonathan Lloyd
+ * @file Home.jsx contains the home page.
+ */
 
-
+/**
+ * @function Home
+ * @returns {JSX.Element} Returns the home page.
+ */
 function Home () {
     return(
         <>

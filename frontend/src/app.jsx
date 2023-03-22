@@ -62,6 +62,7 @@ function OaxacaApp() {
         return pagePermissions[permission].some(p => groups.includes(p));
     };
 
+    // This hook is created here so we can pass it as a prop to the relevant pages
     const [notification, setNotification] = useState([]);
 
     //To add a page to the WebApp please route it as follows: <Route path="name" element={<Name />} />
