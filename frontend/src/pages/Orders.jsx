@@ -20,7 +20,7 @@ import axios from 'axios';
 function Orders() {
     /**
      * A stateful value of an order
-     * @typedef {any[]} OrdersState- Array of objects representing the orders.
+     * @typedef {any[]} OrdersState - Array of objects representing the orders.
      * @type {OrdersState}
      */
     const [orders, setOrders] = useState([]);
