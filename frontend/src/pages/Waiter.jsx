@@ -2,20 +2,55 @@ import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import "../styling/Waiter.css";
 import axios from 'axios';
+/**
+ * @author Natalia Widmann
+ * @author Davit Gevorgyan
+ * @author Katerina Sofroniou
+ * @file Waiter.jsx contains the frontend page with the menu where the waiters can delete items off of it.
+ */
 
+/**
+ * @function Waiter
+ * @returns {JSX.Element} Returns the constructed page for Waiters.
+ */
 function Waiter() {
+    /**
+     * State hook for storing the list of dishes.
+     * @type {[Object[], function]} An array containing the list of dishes and a function to update it.
+     */
     const [dish, SetDish] = useState([])
+
+    /**
+     * State hook for storing the selected items.
+     * @type {[Object, function]} An object containing the selected items and a function to update it.
+     */
     const [selectedItems, setSelectedItems] = useState({});
     
+    /**
+     * Fetches the list of dishes from the server using Axios.
+     * @async
+     * @function
+     * @returns {Promise<void>} A Promise that resolves when the dishes have been fetched and stored in the state.
+     */
     const getDish = async () => {
         const response = await axios.get('http://127.0.0.1:8000/menu/api')
         SetDish(response.data)
     }
 
+    /**
+     * Runs the getDish function when the component mounts.
+     * @effect
+     * @param {[]} An empty array that ensures this effect only runs once.
+     */
     useEffect(() => {
         getDish();
     }, [])
 
+    /**
+     * Handles selection of a dish item.
+     * @param {object} selectedDish - The selected dish object.
+     * @param {string} selectedDish.name - The name of the selected dish.
+     */
     const handleItemSelect = (selectedDish) => {
         setSelectedItems(prevState => ({
             ...prevState,
@@ -23,6 +58,10 @@ function Waiter() {
         }));
     };
 
+    /**
+     * Handles deletion of selected dish items.
+     */
+    
     const handleDeleteClick = async () => {
         // Get the access_token from local storage
         const access_token = localStorage.getItem('access_token');
