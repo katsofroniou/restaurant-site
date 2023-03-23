@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../styling/Basket.css";
+import { Link } from "react-router-dom";
 
 function Basket() {
   const [basketItems, setBasketItems] = useState([]);
@@ -43,10 +44,6 @@ function Basket() {
     localStorage.setItem("basket", JSON.stringify(updatedItems));
   };
 
-  const handleSubmit = () => {
-    window.location.href = '/checkout';
-  }
-
   return (
     <div className="table-wrapper">
       <h1 className="basket-header">Your Basket</h1>
@@ -88,7 +85,11 @@ function Basket() {
           </tr>
           <tr>
             <td class="total-price-container">
-              <button class="place-order-button" onClick={handleSubmit}>Place Order</button>
+              <button class="place-order-button">
+                <Link to='/checkout' className="place-order-button">
+                  Go to Checkout
+                </Link>
+              </button>
             </td>
           </tr>
         </thead>
