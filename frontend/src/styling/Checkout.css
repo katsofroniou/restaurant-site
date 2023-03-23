@@ -1,136 +1,111 @@
-.stripe-payment #root {
+.page-wrapper {
   display: flex;
-  align-items: center;
-}
-
-.stripe-payment {
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  height: 50vh;
-  width: 100vw;
-}
-
-.stripe-payment form {
-  width: 30vw;
-  min-width: 500px;
-  align-self: center;
-  box-shadow: 0px 0px 0px 0.5px rgba(50, 50, 93, 0.1),
-    0px 2px 5px 0px rgba(50, 50, 93, 0.1), 0px 1px 1.5px 0px rgba(0, 0, 0, 0.07);
-  border-radius: 7px;
-  padding: 40px;
+  flex-direction: column;
 }
 
 
-.stripe-payment #payment-message {
-  color: rgb(105, 115, 134);
-  font-size: 16px;
-  line-height: 20px;
-  padding-top: 12px;
+.checkout-basket-header {
+  font-size: 2rem;
+  font-weight: bold;
   text-align: center;
+  text-transform: uppercase;
+  color: #ff6347;
+  letter-spacing: 0.2rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 0.5rem;
 }
 
-.stripe-payment #payment-element {
-  margin-bottom: 24px;
+.checkout-wrapper,
+.stripe-form {
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 10%;
 }
 
-/* Buttons and links */
-.stripe-payment button {
-  background: #5469d4;
-  font-family: Arial, sans-serif;
-  color: #ffffff;
-  border-radius: 4px;
-  border: 0;
-  padding: 12px 16px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  display: block;
-  transition: all 0.2s ease;
-  box-shadow: 0px 4px 5.5px 0px rgba(0, 0, 0, 0.07);
+@media (min-width: 1024px) {
+
+  .checkout-wrapper,
+  .stripe-form {
+    margin-left: 25%;
+    margin-right: 25%;
+  }
+}
+
+.checkout-basket-table {
+  border-collapse: collapse;
+  width: auto;
+  margin: 0 auto;
+  table-layout: fixed;
   width: 100%;
 }
 
-.stripe-payment button:hover {
-  filter: contrast(115%);
+.checkout-basket-table th,
+.checkout-basket-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
 }
 
-.stripe-payment button:disabled {
-  opacity: 0.5;
-  cursor: default;
+.checkout-basket-table th {
+  text-align: center;
+  background-color: #f2f2f2;
 }
 
-/* spinner/processing state, errors */
-.spinner,
-.spinner:before,
-.spinner:after {
-  border-radius: 50%;
+.checkout-basket-table td.item-price {
+  font-weight: bold;
+  text-align: center;
 }
 
-.spinner {
-  color: #ffffff;
-  font-size: 22px;
-  text-indent: -99999px;
-  margin: 0px auto;
-  position: relative;
-  width: 20px;
-  height: 20px;
-  box-shadow: inset 0 0 0 2px;
-  -webkit-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  transform: translateZ(0);
+.total-checkout-price-container {
+  text-align: right;
 }
 
-.spinner:before,
-.spinner:after {
-  position: absolute;
-  content: '';
+.form-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
 }
 
-.spinner:before {
-  width: 10.4px;
-  height: 20.4px;
-  background: #5469d4;
-  border-radius: 20.4px 0 0 20.4px;
-  top: -0.2px;
-  left: -0.2px;
-  -webkit-transform-origin: 10.4px 10.2px;
-  transform-origin: 10.4px 10.2px;
-  -webkit-animation: loading 2s infinite ease 1.5s;
-  animation: loading 2s infinite ease 1.5s;
+.form-row>label {
+  display: inline-block;
+  width: 30%;
+  text-align: left;
 }
 
-.spinner:after {
-  width: 10.4px;
-  height: 10.2px;
-  background: #5469d4;
-  border-radius: 0 10.2px 10.2px 0;
-  top: -0.1px;
-  left: 10.2px;
-  -webkit-transform-origin: 0px 10.2px;
-  transform-origin: 0px 10.2px;
-  -webkit-animation: loading 2s infinite ease;
-  animation: loading 2s infinite ease;
+.form-row>input {
+  display: inline-block;
+  width: 60%;
+  text-align: left;
 }
 
-@keyframes loading {
-  0% {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-
-  100% {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
+.button-container {
+  display: flex;
+  justify-content: space-between;
 }
 
-@media only screen and (max-width: 600px) {
-  .stripe-payment form {
-    width: 80vw;
-    min-width: initial;
-  }
+.submit-button {
+  margin-top: 1rem;
+  border: none;
+  background-color: #ff6347;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.submit-button:hover {
+  background-color: #cc3227;
+}
+
+* {
+  transition: all 250ms ease;
+  -webkit-transition: all 250ms ease;
+  -moz-transition: all 250ms ease;
+  -o-transition: all 250ms ease;
+  -ms-transition: all 250ms ease;
 }
