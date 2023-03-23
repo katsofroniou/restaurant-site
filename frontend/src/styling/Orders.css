@@ -45,18 +45,17 @@ tr:hover td.order_td{
 
 .order_button{
     appearance: none;
-    background-color:  rgb(0, 0, 0);
+    background-color:  #ff6347;
     border-radius: 6px;
     box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
     box-sizing: border-box;
     color: #fff;
-    display: inline-block;
+    display: block;
     font-size: 14px;
     font-weight: 600;
     line-height: 20px;
     padding: 6px 16px;
     text-align: center;
-    touch-action: manipulation;
 }
 
 .order_buttonlink{
@@ -66,14 +65,17 @@ tr:hover td.order_td{
     font-weight: 600;
     line-height: 20px;
     padding: 6px 16px;
+    margin-right: 2%;
     background-color: transparent;
     text-decoration: none;
 }
 
 .order_button:hover{
-    background:green;
+    background: #ff7a62;
 }
 
-.order_button:active{
-    transform: scale(0.98);
+.order_table_container {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 2%;
 }
