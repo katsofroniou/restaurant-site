@@ -1,6 +1,12 @@
 import { useEffect, useState, useRef } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from 'axios';
+/**
+ * @author Natalia Widmann
+ * @author Davit Gevorgyan
+ * @author Kayleigh Reid
+ * @file app.jsx contains the starting point of the application.
+ */
 
 //Page Imports:
 import Layout from "./pages/Layout";
@@ -24,10 +30,32 @@ import {loadStripe} from "@stripe/stripe-js/pure";
 const accessToken = localStorage.getItem('access_token');
 const stripePromise = loadStripe('pk_test_51Mm1OUGHCVd3YY0Z0qddQGTs0mndGS26E7ooPejSxkUGOxgPQs0BBF6pz5V5Oxf9gcJlP4vphcyhpPxqAtqQqkyd00QO4WujFi');
 
+/**
+ * @function OaxacaApp
+ * @returns {JSX.Element} Returns the constructed page for OaxacaApp.
+ */
 function OaxacaApp() {
+
+
+    /**
+     * A Stateful object that represents the different groups
+     * @typedef {groups, setGroup} groupState - An array of objects representing the groups
+     * @type {groupState}
+    */
+    
     const [groups, setGroups] = useState([]);
+ 
+    /**
+     * A token checking the authorization of a users login.
+     * @constant
+     * 
+     * @type {string}
+     */
     const accessToken = localStorage.getItem('access_token');
 
+    
+
+    // check what authaurization level a user has access to.
     useEffect(() => {
         axios.get('http://localhost:8000/@me/', {
             headers: {
