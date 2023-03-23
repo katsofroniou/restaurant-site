@@ -154,7 +154,6 @@ function Menu() {
 
                     <div class="menu-button-container">
                         <button class="menu_button" onClick={handleToggle}>Show Calories</button>
-                        <button class="menu_button">Call waiter</button>
                         <button class="menu_button" onClick={addToBasket}>Add To Basket</button>
                     </div>
                 </div>
