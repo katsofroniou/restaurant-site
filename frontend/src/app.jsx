@@ -25,7 +25,7 @@ import NotFound from "./pages/NotFound";
 import KitchenOrders from "./pages/KitchenOrders";
 
 import Checkout from "./pages/Checkout";
-import {loadStripe} from "@stripe/stripe-js/pure";
+import { loadStripe } from "@stripe/stripe-js/pure";
 
 const accessToken = localStorage.getItem('access_token');
 const stripePromise = loadStripe('pk_test_51Mm1OUGHCVd3YY0Z0qddQGTs0mndGS26E7ooPejSxkUGOxgPQs0BBF6pz5V5Oxf9gcJlP4vphcyhpPxqAtqQqkyd00QO4WujFi');
@@ -35,7 +35,6 @@ const stripePromise = loadStripe('pk_test_51Mm1OUGHCVd3YY0Z0qddQGTs0mndGS26E7ooP
  * @returns {JSX.Element} Returns the constructed page for OaxacaApp.
  */
 function OaxacaApp() {
-
 
     /**
      * A Stateful object that represents the different groups
@@ -99,7 +98,7 @@ function OaxacaApp() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Layout notification={notification} setNotification={setNotification}/>}>
+                <Route path="/" element={<Layout notification={notification} setNotification={setNotification} />}>
                     <Route index element={<Home />} />
                     <Route path="menu" element={<Menu />} />
                     {userHasPermission('orders') && (
@@ -109,7 +108,10 @@ function OaxacaApp() {
                         <Route path="updateorders" element={<UpdateOrders />} />
                     )}
                     {userHasPermission('basket') && (
-                        <Route path="Basket" element={<Basket />} />
+                        <Route path="Basket" element={<Basket />}/>
+                    )}
+                    {userHasPermission('basket') && (
+                        <Route path="checkout" element={<Checkout />} />
                     )}
                     <Route path="login" element={<Login />} />
                     {userHasPermission('addItem') && (
@@ -119,7 +121,7 @@ function OaxacaApp() {
                         <Route path="waiter" element={<Waiter />} />
                     )}
                     {userHasPermission('kitchenstaff') && (
-                        <Route path="kitchenstaff" element={<KitchenStaff notification={notification} setNotification={setNotification}/>} />
+                        <Route path="kitchenstaff" element={<KitchenStaff notification={notification} setNotification={setNotification} />} />
                     )}
                     {userHasPermission('manager') && (
                         <Route path="manager" element={<Manager />} />
@@ -130,7 +132,6 @@ function OaxacaApp() {
                     {userHasPermission('kitchenorders') && (
                         <Route path="kitchenorders" element={<KitchenOrders />} />
                     )}
-                    <Route path="checkout" element={<Checkout />} />
                     <Route path="*" element={<NotFound />} />
                 </Route>
             </Routes>

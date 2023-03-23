@@ -1,4 +1,5 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { API_BASE } from "../api";
 import { Link } from 'react-router-dom';
@@ -11,6 +12,8 @@ const CheckoutForm = () => {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [basket, setBasket] = useState([]);
     const [price, setPrice] = useState(0);
+    const [tableNum, setTableNum] = useState(0);
+
     const stripe = useStripe();
     const elements = useElements();
 
@@ -35,6 +38,22 @@ const CheckoutForm = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         const card = elements.getElement(CardElement);
+        const access_token = localStorage.getItem('access_token');
+
+        setTableNum(Math.floor(Math.random() * 40) + 1);
+
+        const ordersResponse = await fetch('http://127.0.0.1:8000/orders/api');
+        const orders = await ordersResponse.json();
+        let tableNumExists = false;
+        while (!tableNumExists) {
+            for (const existingOrder of orders) {
+                if (existingOrder.tableNumber === tableNum) {
+                    setTableNum(Math.floor(Math.random() * 40) + 1);
+                    break;
+                }
+            }
+            tableNumExists = true;
+        }
 
         const { paymentMethod, error } = await stripe.createPaymentMethod({
             type: 'card',
@@ -53,13 +72,71 @@ const CheckoutForm = () => {
             },
         };
 
-        fetch(`${API_BASE}/payments/test-intent/`, {
-            method: "POST",
-            body: JSON.stringify(data),
-        })
-            .then((resp) => resp.json())
-            .then((json) => console.log(json))
-            .catch((err) => console.error(err));
+        try {
+            const response = await axios.post(`${API_BASE}/payments/test-intent/`, data);
+            console.log(response.data);
+        } catch (error) {
+            console.error(error);
+        }
+
+        const dishes = [];
+
+        basket.forEach(item => {
+            const dish = item.dish.id;
+            dishes.push(dish);
+        });
+
+        console.log(dishes)
+        const time = new Date().toLocaleTimeString('en-GB', { hour12: false, timeZone: 'Europe/London' });
+
+        const orderConfig = {
+            headers: { Authorization: `Bearer ${access_token}` },
+            method: 'POST',
+            url: 'http://127.0.0.1:8000/orders/api',
+            data: {
+                items: dishes,
+                orderTime: time,
+                tableNumber: tableNum,
+                confirmed: false,
+                orderReady: false,
+                OrderComplete: false,
+                orderDelivered: false
+            }
+        }
+
+        let orderId;
+
+        try {
+            const response = await axios(orderConfig);
+            console.log(response.data);
+            orderId = response.data.id;
+        } catch (error) {
+            console.error(error);
+        }
+
+        const orderDishes = basket.map((item) => {
+            return {
+                order: orderId,
+                dish: item.dish.id,
+                quantity: item.quantity,
+            };
+        });
+
+        const promises = orderDishes.map((orderDish) => {
+            return axios.post('http://127.0.0.1:8000/orders/orderDish/', orderDish, {
+                headers: { Authorization: `Bearer ${access_token}` },
+            });
+        });
+
+        axios.all(promises)
+            .then((results) => {
+                console.log(results);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+
+        localStorage.removeItem('basket');
     }
 
     return (
@@ -101,13 +178,13 @@ const CheckoutForm = () => {
                 </div>
                 <div className="form-row">
                     <label>Last Name</label>
-                    <input className="form-input" id="name" type="text" placeholder="Rosen" required 
-                    value={lastName} onChange={(event) => { setLastName(event.target.value); }} />
+                    <input className="form-input" id="name" type="text" placeholder="Rosen" required
+                        value={lastName} onChange={(event) => { setLastName(event.target.value); }} />
                 </div>
                 <div className="form-row">
                     <label>Phone Number</label>
                     <input className="form-input" id="number" type="" placeholder="07283758294" required
-                    value={phoneNumber} onChange={(event) => { setPhoneNumber(event.target.value); }} />
+                        value={phoneNumber} onChange={(event) => { setPhoneNumber(event.target.value); }} />
                 </div>
                 <div className="form-row">
                     <label htmlFor="email">Email Address</label>

@@ -6,12 +6,18 @@ class Order(models.Model):
     orderTime = models.TimeField(auto_now_add=True)
     tableNumber = models.IntegerField(default="0")
     items = models.ManyToManyField(Dish)
-    confirmed = models.BooleanField(help_text="True / False")
-    orderReady = models.BooleanField(help_text="True / False")
-    OrderComplete = models.BooleanField(help_text="True / False")
+    confirmed = models.BooleanField(help_text="True / False", default=False, null=True)
+    orderReady = models.BooleanField(help_text="True / False", default=False, null=True)
+    OrderComplete = models.BooleanField(help_text="True / False", default=False, null=True)
+    orderDelivered = models.BooleanField(help_text="True / False", default=False, null=True)
     
     def __str__(self):
-        return f"{self.orderTime.strftime('%H-%M-%S')}"
+        return self.orderTime
+    
+class OrderDish(models.Model):
+    order = models.ForeignKey(Order, on_delete=models.CASCADE)
+    dish = models.ForeignKey(Dish, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1)
 
 class Meta:
     # orders orders by the order time
