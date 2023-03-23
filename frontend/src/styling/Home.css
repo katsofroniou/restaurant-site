@@ -3,16 +3,19 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin-top: 15%;
+  margin-top: 2%;
 }
 
 .infoBox {
   background-color: #ffffff;
+  align-items: center;
   justify-content: center;
   width: 25%;
   height: 50%;
   margin-left: 5%;
   margin-right: 5%;
+  border-radius: 5%;
+  padding: 5%;
 }
 
 .title{
@@ -40,8 +43,4 @@
   font-size: 1.1rem;
   color: rgb(91, 91, 91);
   background-color: rgba(255, 255, 255, 0);
-}
-
-.background{
-  background-size: contain;
 }
