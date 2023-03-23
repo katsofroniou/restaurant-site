@@ -9,6 +9,7 @@ class Order(models.Model):
     confirmed = models.BooleanField(help_text="True / False", default=False, null=True)
     orderReady = models.BooleanField(help_text="True / False", default=False, null=True)
     OrderComplete = models.BooleanField(help_text="True / False", default=False, null=True)
+    orderDelivered = models.BooleanField(help_text="True / False", default=False, null=True)
     
     def __str__(self):
         return str(self.orderTime)
