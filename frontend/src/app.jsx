@@ -1,6 +1,12 @@
 import { useEffect, useState, useRef } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from 'axios';
+/**
+ * @author Natalia Widmann
+ * @author Davit Gevorgyan
+ * @author Kayleigh Reid
+ * @file app.jsx contains the starting point of the application.
+ */
 
 
 //Page Imports:
@@ -20,16 +26,32 @@ import NotFound from "./pages/NotFound";
 import KitchenOrders from "./pages/KitchenOrders";
 
 
+/**
+ * @function OaxacaApp
+ * @returns {JSX.Element} Returns the constructed page for OaxacaApp.
+ */
 function OaxacaApp() {
 
 
- 
+    /**
+     * A Stateful object that represents the different groups
+     * @typedef {groups, setGroup} groupState - An array of objects representing the groups
+     * @type {groupState}
+    */
+    
     const [groups, setGroups] = useState([]);
  
+    /**
+     * A token checking the authorization of a users login.
+     * @constant
+     * 
+     * @type {string}
+     */
     const accessToken = localStorage.getItem('access_token');
 
     
 
+    // check what authaurization level a user has access to.
     useEffect(() => {
         axios.get('http://localhost:8000/@me/', {
             headers: {
@@ -68,9 +90,10 @@ function OaxacaApp() {
     const [notification, setNotification] = useState([]);
 
 
-    //To add a page to the WebApp please route it as follows: <Route path="name" element={<Name />} />
-    //Please note: Add the newly added page before the NotFound Page route as this is the 404 page not found route and should be the last one
-    //Also make sure you make it visible to the right permissions and add it to navbar as necessary
+    /**To add a page to the WebApp please route it as follows: <Route path="name" element={<Name />} />
+        Please note: Add the newly added page before the NotFound Page route as this is the 404 page not found route and should be the last one
+        Also make sure you make it visible to the right permissions and add it to navbar as necessary
+    */
     return (
         <BrowserRouter>
             <Routes>
