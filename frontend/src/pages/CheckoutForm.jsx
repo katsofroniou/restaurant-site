@@ -3,6 +3,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { API_BASE } from "../api";
 import { Link } from 'react-router-dom';
+import "../styling/Checkout.css"
 
 const CheckoutForm = () => {
     const [error, setError] = useState(null);
@@ -146,8 +147,8 @@ const CheckoutForm = () => {
     }
 
     return (
-        <>
-            <div className="order">
+        <div className="page-wrapper">
+            <div className="checkout-wrapper">
                 <h1 className="checkout-basket-header">Your Order</h1>
                 <table className="checkout-basket-table">
                     <thead>
@@ -159,21 +160,16 @@ const CheckoutForm = () => {
                     </thead>
                     <tbody>
                         {basket.map((item, index) => (
-                            <tr key={index} className="basket-item">
+                            <tr key={index} className="checkout-basket-item">
                                 <td>{item.dish.name}</td>
                                 <td>
-                                    <span className="item-quantity">{item.quantity}</span>
+                                    <span className="checkout-item-quantity">{item.quantity}</span>
                                 </td>
-                                <td className="price-container">£{(item.dish.price * item.quantity).toFixed(2)}</td>
+                                <td className="checkout-price-container">£{(item.dish.price * item.quantity).toFixed(2)}</td>
                             </tr>
                         ))}
                     </tbody>
                 </table>
-            </div>
-
-            <div className="price">
-                <p>Total Price</p>
-                <p>{price}</p>
             </div>
 
             <form onSubmit={handleSubmit} className="stripe-form">
@@ -197,15 +193,19 @@ const CheckoutForm = () => {
                     <input className="form-input" id="email" name="name" type="email" placeholder="jenny.rosen@example.com" required
                         value={email} onChange={(event) => { setEmail(event.target.value); }} />
                 </div>
-                <div className="form-row">
+                <div className="card-element-wrapper">
                     <label htmlFor="card-element">Credit or debit card</label>
-                    <CardElement id="card-element" onChange={handleChange} />
+                    <CardElement className="card-element" onChange={handleChange} />
                     <div className="card-errors" role="alert">{error}</div>
                 </div>
 
-                <button type="submit" className="submit-btn">Submit Payment
-                </button>
-            </form></>
+                <div className="button-container">
+                    <button type="submit" className="submit-button">Submit Payment
+                    </button>
+                </div>
+            </form>
+        </div>
+
     );
 };
 
