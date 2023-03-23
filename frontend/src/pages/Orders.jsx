@@ -114,41 +114,43 @@ function Orders() {
     return (
         <>
             <div class="order_torso">
-                <Table class="order_Table">
-                    <thead>
-                        <tr>
-                            <th class="order_th">Order Time</th>
-                            <th class="order_th">Order ID</th>
-                            <th class="order_th">Table Number</th>
-                            <th class="order_th">Confirmed</th>
-                            <th class="order_th">Order Ready</th>
-                            <th class="order_th">Order Complete</th>
-                            <th class="order_th">Cancel Order</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {orders.map((order, index) => (
+                <div class="order_table_container">
+                    <Table class="order_Table">
+                        <thead>
                             <tr>
-                                <td class="order_td">{order.orderTime.substring(0, 8)}</td>
-                                <td class="order_td">{order.id}</td>
-                                <td class="order_td">{order.tableNumber}</td>
-                                {order.confirmed === true && <td class="order_td">Confirmed</td>}
-                                {order.confirmed === false && <td class="order_td">Unconfirmed</td>}
-                                {order.orderReady === true && <td class="order_td">Ready</td>}
-                                {order.orderReady === false && <td class="order_td">Not Ready</td>}
-                                {order.OrderComplete === true && <td class="order_td">Complete</td>}
-                                {order.OrderComplete === false && <td class="order_td">Not Complete</td>}
-                                <td class="order_td">
-                                    <input
-                                        type="checkbox"
-                                        checked={selectedRow[order.id] || false}
-                                        onChange={() => handleOrderSelect(order)}
-                                    />
-                                </td>
+                                <th class="order_th">Order Time</th>
+                                <th class="order_th">Order ID</th>
+                                <th class="order_th">Table Number</th>
+                                <th class="order_th">Confirmed</th>
+                                <th class="order_th">Order Ready</th>
+                                <th class="order_th">Order Complete</th>
+                                <th class="order_th">Cancel Order</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </Table>
+                        </thead>
+                        <tbody>
+                            {orders.map((order, index) => (
+                                <tr>
+                                    <td class="order_td">{order.orderTime.substring(0, 8)}</td>
+                                    <td class="order_td">{order.id}</td>
+                                    <td class="order_td">{order.tableNumber}</td>
+                                    {order.confirmed === true && <td class="order_td">Confirmed</td>}
+                                    {order.confirmed === false && <td class="order_td">Unconfirmed</td>}
+                                    {order.orderReady === true && <td class="order_td">Ready</td>}
+                                    {order.orderReady === false && <td class="order_td">Not Ready</td>}
+                                    {order.OrderComplete === true && <td class="order_td">Complete</td>}
+                                    {order.OrderComplete === false && <td class="order_td">Not Complete</td>}
+                                    <td class="order_td">
+                                        <input
+                                            type="checkbox"
+                                            checked={selectedRow[order.id] || false}
+                                            onChange={() => handleOrderSelect(order)}
+                                        />
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </Table>
+                </div>
                 <button class="order_button" type="submit" onClick={handleCancelClick}>
                     <Link to='/orders' class="order_buttonlink">Delete order</Link>
                 </button>

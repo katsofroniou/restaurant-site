@@ -107,28 +107,30 @@ function Manager () {
 
     return(
         <>
-            <table class="user_menu_table">
-                <tr>
-                    <th>Id</th>
-                    <th>Username</th>
-                    <th>Email</th>
-                    <th>Delete?</th>
-                </tr>
-                {user.map((user, index) => (
+            <div class="users_container">
+                <table class="user_menu_table">
                     <tr>
-                        <td>{user.id}</td>
-                        <td>{user.username}</td>
-                        <td>{user.email}</td>
-                        <td>
-                            <input
-                                type="checkbox"
-                                checked={selectedUser[user.name] || false}
-                                onChange={() => handleUserSelect(user)}
-                            />
-                        </td>
+                        <th>Id</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Delete?</th>
                     </tr>
-                ))}
-            </table>
+                    {user.map((user, index) => (
+                        <tr>
+                            <td>{user.id}</td>
+                            <td>{user.username}</td>
+                            <td>{user.email}</td>
+                            <td>
+                                <input
+                                    type="checkbox"
+                                    checked={selectedUser[user.name] || false}
+                                    onChange={() => handleUserSelect(user)}
+                                />
+                            </td>
+                        </tr>
+                    ))}
+                </table>
+            </div>
             <button class="manager_add_button" onClick={handleDeleteUserClick}>
                 <Link to='/Manager' class="manager_button_link">Delete User</Link>
             </button>
