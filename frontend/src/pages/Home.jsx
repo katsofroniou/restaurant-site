@@ -1,6 +1,5 @@
 import React from "react";
 import "../styling/Home.css";
-import image from '../Images/homepage_image2.png'
 import image2 from '../Images/seating.jpeg'
 import image3 from '../Images/food.jpeg'
 import image4 from '../Images/table.jpeg'
@@ -10,7 +9,6 @@ import "../styling/Home.css";
 function Home () {
     return(
         <>
-            <img background-size= "background" src={image}></img> 
             <div className="infoBoxContainer">
               <div className="infoBox">
                 <img style={{ width: 300, height: 250,}} src={image2}></img> 
