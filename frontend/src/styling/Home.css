@@ -1,29 +1,21 @@
 .infoBoxContainer{
   display: flex;
-  justify-content: space-around;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
-  margin-top: 50px;
-  width: 300px;
-  height: 300px;
-  background-color: rgba(255, 255, 255, 0);
-  margin: 0 auto;
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  margin-top: 15%;
 }
 
 .infoBox {
-  width: 500px;
-  height: 600px;
   background-color: #ffffff;
-  margin: 20px;
-  padding: 20%;
-  border-radius: 10px;
+  justify-content: center;
+  width: 25%;
+  height: 50%;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 .title{
-  margin-top: -8.5em;
   text-align: center;
   color: rgb(40, 90, 32);
   background-color: rgba(255, 255, 255, 0);
@@ -31,7 +23,6 @@
 }
 
 .title2{
-  margin-top: -8.5em;
   text-align: center;
   color: rgb(207, 77, 33);
   background-color: rgba(255, 255, 255, 0);
@@ -39,54 +30,13 @@
   }
 
 .title3{
-  margin-top: -8.5em;
   text-align: center;
   color: rgb(213, 169, 12);
   background-color: rgba(255, 255, 255, 0);
   font-size: 36px;
 }
 
-.button{
-  width: 71%;
-  margin-top: 35px;
-  margin-left: 45px;
-  padding: 1rem 2rem;
-  font-weight: bold;
-  font-size: 1.1rem;
-  color: white;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  background: rgb(213, 169, 12);
-}
-
-.button2{
-  width: 71%;
-  margin-top: 35px;
-  margin-left: 45px;
-  padding: 1rem 2rem;
-  font-weight: bold;
-  font-size: 1.1rem;
-  color: white;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  background: rgb(40, 90, 32);
-}
-
-.button3{
-  width: 71%;
-  margin-top: 35px;
-  margin-left: 45px;
-  padding: 1rem 2rem;
-  font-weight: bold;
-  font-size: 1.1rem;
-  color: white;
-  border-radius: var(--border-radius);
-  cursor: pointer;
-  background: rgb(207, 77, 33);
-}
-
 .description{
-  margin-top: 300px;
   font-size: 1.1rem;
   color: rgb(91, 91, 91);
   background-color: rgba(255, 255, 255, 0);
