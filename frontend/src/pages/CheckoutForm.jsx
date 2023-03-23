@@ -170,6 +170,14 @@ const CheckoutForm = () => {
                         ))}
                     </tbody>
                 </table>
+
+                <table class="checkout-total-table">
+                    <thead>
+                        <tr>
+                            <th class="checkout-price-container">Total - £{price.toFixed(2)}</th>
+                        </tr>
+                    </thead>
+                </table>
             </div>
 
             <form onSubmit={handleSubmit} className="stripe-form">
