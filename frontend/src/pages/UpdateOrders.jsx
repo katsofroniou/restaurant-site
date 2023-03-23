@@ -4,8 +4,23 @@ import { Link } from 'react-router-dom';
 import { Table } from 'react-bootstrap';
 import "../styling/UpdateOrders.css";
 import axios from 'axios';
+/**
+ * @author Natalia Widmann
+ * @author Katerina Sofroniou 
+ * @author Kayleigh Reid
+ * @file UpdateOrders.jsx contains the frontend page for changing the status of an order.
+ */
 
+/**
+ * @function UpdateOrders
+ * @returns {JSX.Element}
+ */
 function UpdateOrders() {
+    /**
+     * A stateful value of an order
+     * @typedef {any[]} OrdersState - Array of objects representing the orders.
+     * @type {OrdersState}
+     */
     const [orders, setOrders] = useState([]);
 
     const access_token = localStorage.getItem('access_token');
@@ -23,6 +38,13 @@ function UpdateOrders() {
         getOrders();
     }, [])
 
+    /**
+     * Handles selecting/unselecting the confirmation status of an order.
+     * @param {Object} orderToUpdate - The order to update.
+     * @param {boolean} orderToUpdate.id - The ID of the order to update.
+     * @param {boolean} orderToUpdate.confirmed - The confirmation status of the order to update.
+     * @returns {Array<Object>} - An array of updated orders.
+     */
     const handleConfirmSelect = (orderToUpdate) => {
         const updatedOrders = orders.map(order => {
             if (order.id === orderToUpdate.id) {
@@ -32,6 +54,13 @@ function UpdateOrders() {
         });
     };
 
+    /**
+     * Handles selecting/unselecting the ready status of an order.
+     * @param {Object} orderToUpdate - The order to update.
+     * @param {boolean} orderToUpdate.id - The ID of the order to update.
+     * @param {boolean} orderToUpdate.orderReady - The ready status of the order to update.
+     * @returns {Array<Object>} - An array of updated orders.
+     */
     const handleReadySelect = (orderToUpdate) => {
         const updatedOrders = orders.map(order => {
             if (order.id === orderToUpdate.id) {
@@ -41,6 +70,13 @@ function UpdateOrders() {
         });
     };
 
+    /**
+     * Handles selecting/unselecting the completion status of an order.
+     * @param {Object} orderToUpdate - The order to update.
+     * @param {boolean} orderToUpdate.id - The ID of the order to update.
+     * @param {boolean} orderToUpdate.OrderComplete - The completion status of the order to update.
+     * @returns {Array<Object>} - An array of updated orders.
+     */
     const handleCompleteSelect = (orderToUpdate) => {
         const updatedOrders = orders.map(order => {
             if (order.id === orderToUpdate.id) {
@@ -50,6 +86,13 @@ function UpdateOrders() {
         });
     };
 
+    /**
+     * Handles the click event of the Update button to update all orders in the database.
+     * @async
+     * @function handleUpdateClick
+     * @returns {Promise<void>} A Promise that resolves when all orders have been updated.
+     * @throws {Error} If there's an error while updating the orders.
+     */
     const handleUpdateClick = async () => {
         try {
             for (let i = 0; i < orders.length; i++) {

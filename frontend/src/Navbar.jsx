@@ -5,14 +5,38 @@ import axios from 'axios';
 import "./styling/Navbar.css";
 import Logo from '../src/Images/OaxacaLogo.png'
 import Bell from './Images/NotifBell.png'
+/**
+ * @author Natalia Widmann
+ * @author Davit Gevorgyan
+ * @author Kayleigh Reid
+ * @author Jonathan Lloyd
+ * @file Navbar.jsx contains the Navbar so Layout file can render it.
+ */
 
+/**
+ * @function Navbar
+ * @param {*} notification
+ * @param {*} setNotification
+ * @returns {JSX.Element} Returns the Navigation bar.
+ */
 function Navbar({notification, setNotification}) {
+    /**
+     * Retrieves an access token from the browser's local storage and initializes two state variables.
+     * @constant
+     * @name useTokenAndState
+     * @type {Array} An array containing two state variables: groups and open, managed by useState.
+     * @throws {TypeError} If no access token is found in the local storage.
+     */
     const token = localStorage.getItem('access_token');
     const [groups, setGroups] = useState([]);
     const [open, setOpen] = useState(false);
 
-
-
+    /**
+     * Handles logging out the user by removing access and refresh tokens from the browser's local storage and redirecting the user to the login page.
+     * @function
+     * @name handleLogOut
+     * @returns {void}
+     */
     const handleLogOut = () => {
         localStorage.removeItem('access_token');
         localStorage.removeItem('refresh_token');
@@ -20,6 +44,14 @@ function Navbar({notification, setNotification}) {
         return window.location = "/Login";
     }
 
+    /**
+     * Fetches data from the server about the currently logged-in user's groups using an axios GET request, and updates the state variable "groups" with the retrieved data.
+     * @function
+     * @name useFetchGroups
+     * @param {string} token - The access token retrieved from the local storage.
+     * @returns {void}
+     * @throws {Error} If the GET request fails.
+     */
     useEffect(() => {
         axios.get('http://localhost:8000/@me/', {
             headers: {
@@ -35,7 +67,10 @@ function Navbar({notification, setNotification}) {
             });
     }, []);
 
-    // Define permissions for each page
+    /**
+     * An object containing the permissions required to access different pages of the application.
+     * @type {Object.<string, string[]>}
+     */
     const pagePermissions = {
         orders: ['Waiter', 'Kitchen Staff'],
         updateorders: ['Waiter', 'Kitchen Staff'],
@@ -48,7 +83,12 @@ function Navbar({notification, setNotification}) {
         adduser: ['Admin'],
         kitchenorders: ['Kitchen Staff']
       };
-
+    
+    /**
+     * Checks if the user has permission to access a page based on their group.
+     * @param {string} permission - The permission required to access the page.
+     * @returns {boolean} - A boolean indicating whether the user has permission to access the page or not.
+     */
     const userHasPermission = (permission) => {
         // Check if the user has any of the required permissions for the page
         const allowedGroups = pagePermissions[permission];
@@ -58,6 +98,16 @@ function Navbar({notification, setNotification}) {
         }
         return allowedGroups.some(p => groups.includes(p));
     };
+
+
+    /**
+     * A function that returns a React component for displaying notifications.
+     * @param {Object} props - The properties of the notification to be displayed.
+     * @param {string} props.type - The type of the notification.
+     * @param {string} props.name - The name of the person who sent the notification.
+     * @param {string} props.msg - The message in the notification.
+     * @returns {JSX.Element} - A React component for displaying the notification.
+     */
     const displayNotifications = ({type, name, msg}) => {
         let action;
         if (type === 'notify') {
@@ -68,6 +118,9 @@ function Navbar({notification, setNotification}) {
         )
     }
 
+    /**
+     * A function that marks all notifications as read and closes the notifications panel.
+     */
     const markRead = () => {
         setNotification([]);
         setOpen(false);

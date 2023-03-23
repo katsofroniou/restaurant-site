@@ -52,7 +52,12 @@ INSTALLED_APPS = [
     'orders',
     'notification',
     'oaxaca',
+    'payments',
 ]
+
+STRIPE_PUBLIC_KEY = "pk_test_51Mm1OUGHCVd3YY0Z0qddQGTs0mndGS26E7ooPejSxkUGOxgPQs0BBF6pz5V5Oxf9gcJlP4vphcyhpPxqAtqQqkyd00QO4WujFi"
+STRIPE_PRIVATE_KEY = "sk_test_51Mm1OUGHCVd3YY0Zi5XV9OIwxpmC8eQdQHhxAkf3BlgbpSKuHbNacK8fJGg2HckJE9GHA2RUbfoPNGdTiPbSjIZC00QEjHoiKm"
+STRIP_WEBHOOK_SECRET = ""
 
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': [

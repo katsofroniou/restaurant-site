@@ -3,7 +3,29 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import "../styling/AddItem.css";
 
+/**
+ * @file AddItem.jsx contains the frontend page to add items to the menu.
+ * @author Katerina Sofroniou
+ * @author Natalia Widmann
+ */
+
+/**
+ * @function AddItem
+ * @returns {JSX.Element} Returns the constructed page for AddItem.
+ */
 function AddItem () {
+    /**
+     * @typedef {Object} FormData
+     * @property {string} name - Name of the dish.
+     * @property {string} description - Description of the dish.
+     * @property {string} kcal - Total kilocalories of the dish.
+     * @property {string} vegetarian - Whether the dish is vegetarian or not.
+     * @property {string} vegan - Whether the dish is vegan or not.
+     * @property {string} allergens - List of allergens in the dish, separated by commas.
+     * @property {string} price - Price of the dish.
+     * @property {string} course - Course of the dish.
+     * @property {string} available - Whether the dish is available or not.
+     */
     const [formData, setFormData] = useState({
         name: '',
         description: '',
@@ -14,19 +36,33 @@ function AddItem () {
         price: '',
         course: '',
         available: ''
-      });      
-
-    const handleChange = event => {
+      });
+      /**
+       * @function handleChange
+       * @description Updates the form data state when a change event is triggered.
+       * @param {Event} event - The change event that was triggered.
+       * @returns {void}
+       */      
+      const handleChange = event => {
         setFormData({
             ...formData,
             [event.target.name]: event.target.value
         });
     };
-      
+    
+    /**
+     * @function handleSubmit
+     * @description Submits the form data to the backend API.
+     * @async
+     * @param {Event} event - The submit event that was triggered.
+     * @throws {console.error(error);}
+     * @returns {void}
+     */
     const handleSubmit = async event => {
         event.preventDefault();
         console.log(formData);
-    
+
+        // Formats form data with correct types
         const allergensArray = formData.allergens ? formData.allergens.split(',').map(allergen => allergen.trim().charAt(0).toUpperCase() + allergen.trim().slice(1)) : [];
         const kcal = parseInt(formData.kcal);
         const price = parseFloat(formData.price);

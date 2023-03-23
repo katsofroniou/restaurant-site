@@ -4,23 +4,56 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import "../styling/Orders.css";
 import axios from 'axios';
+/**
+ * @author Natalia Widmann
+ * @author Jubai-Khalil Owusu-Afriyie
+ * @author Davit Gevorgyan
+ * @author Jonathan Lloyd
+ * @author Kayleigh Reid
+ * @file Orders.jsx contains the frontend page with the orders and their statuses.
+ */
 
-
-// This page will only be visible to waiter and kitchen staff - not to the customer
-
+/**
+ * @function Orders
+ * @returns {JSX.Element} Returns the constructed page for Orders.
+ */
 function Orders() {
+    /**
+     * A stateful value of an order
+     * @typedef {any[]} OrdersState - Array of objects representing the orders.
+     * @type {OrdersState}
+     */
     const [orders, setOrders] = useState([]);
+    /**
+     * Stateful vaule of a Row.
+     * @typedef {any[]} RowState - Array of objects representing the rows.
+     * @type {RowState}
+     */
     const [selectedRow, setSelectedRow] = useState({});
 
+    /**
+     * Fetches orders from the server and sets orders state with the response data.
+     * @async
+     * @function getOrder
+     * @returns {Promise<void>}
+     */
     const getOrder = async () => {
         const response = await axios.get('http://127.0.0.1:8000/orders/api')
         setOrders(response.data)
     }
 
+    // Run getOrder on component mount
     useEffect(() => {
         getOrder();
     }, [])
 
+    /**
+     * Selects an order and updates the selected row state.
+     * @function handleOrderSelect
+     * @param {Object} selectedOrder - The selected order object
+     * @param {number} selectedOrder.id - The id of the selected order
+     * @returns {void}
+     */
     const handleOrderSelect = (selectedOrder) => {
         setSelectedRow(prevState => ({
             ...prevState,
@@ -28,6 +61,13 @@ function Orders() {
         }));
     };
 
+    /**
+     * Handles cancel button click event
+     * Retrieves access token from local storage
+     * Deletes selected orders with the help of axios library
+     * If delete operation is successful, updates the state of the component
+     * @returns {Promise<void>}
+     */
     const handleCancelClick = async () => {
         // get access token from local storage
         const access_token = localStorage.getItem('access_token');

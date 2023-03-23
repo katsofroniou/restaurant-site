@@ -16,10 +16,11 @@ from oaxaca.routing import websocket_urlpatterns
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'settings')
 
+# Define the ASGI application using a ProtocolTypeRouter that maps "http" and "websocket" protocols to their respective handlers
 application = ProtocolTypeRouter({
     'http': get_asgi_application(),
     'websocket': URLRouter(websocket_urlpatterns),
-    
+    # Handle WebSocket requests using the URL routing defined in the "websocket_urlpatterns" list
     
     
 })
