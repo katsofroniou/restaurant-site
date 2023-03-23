@@ -21,7 +21,7 @@ function Home () {
         <>
             <div className="infoBoxContainer">
               <div className="infoBox">
-                <img style={{ width: 300, height: 250,}} src={image2}></img> 
+                <img style={{ width: 300, height: 250 }} src={image2}></img> 
                 <h3 className="title">WELCOME</h3>
                 <p className="description">Join us for lunch or dinner at Oaxaca, where the vibrancy of the Mexican market meets the contemporary coolness of a modern-day restaurant in an explosion of colors and textures. In addition, we pride ourselves on the integrity of our flavors and the sourcing of our products.</p>
               </div>
