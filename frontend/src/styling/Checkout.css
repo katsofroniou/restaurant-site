@@ -69,12 +69,33 @@
   text-align: center;
 }
 
+/* Total Table */
+.checkout-total-table {
+  padding: 0.25rem;
+  margin-top: 1rem;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+}
+
+.checkout-total-table>th {
+  padding: 0.5rem 1rem;
+}
+
+.checkout-total-table>thead,
+.checkout-total-table,
+.checkout-total-table>th,
+.checkout-price-container {
+  background-color: #ff6347;
+  text-align: center;
+}
+
 /* Stripe Form */
-.stripe-form, 
+.stripe-form,
 .form-row,
-.form-row > label,
+.form-row>label,
 .card-element-wrapper,
-.card-element-wrapper > label,
+.card-element-wrapper>label,
 .button-container {
   background-color: #f2f2f2;
 }
@@ -108,7 +129,7 @@
   display: flex;
   text-align: left;
   box-sizing: border-box;
-  outline:#ff6347;
+  outline: #ff6347;
   transition: background 0.2s, border-color 0.2s;
   background-color: #f2f2f2;
 }
