@@ -1,0 +1,68 @@
+.users_container{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 2%;
+}
+
+.user_menu_table{
+    border-collapse: collapse;
+    width: auto;
+    margin: 0 auto;
+    table-layout: fixed;
+    width: 100%;
+    padding: 0 1rem;
+    text-align: center;
+}
+
+.user_menu_table th,
+.user_menu_table td {
+    border: 1px solid #ff6347;
+    padding: 8px;
+}
+
+.user_menu_table th {
+    text-align: center;
+    background-color: #ff6347;
+}
+
+.user_menu_table td {
+    text-align: center;
+}
+
+.user_menu_table td>span {
+    margin: 0 0.5rem;
+}
+
+* {
+    transition: all 250ms ease;
+    -webkit-transition: all 250ms ease;
+    -moz-transition: all 250ms ease;
+    -o-transition: all 250ms ease;
+    -ms-transition: all 250ms ease;
+}
+
+.manager_add_button {
+    height: 5%;
+    width: 30%;
+    margin-top: 2%;
+    margin-left: 60%;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    background: #ff6347;
+}
+
+.manager_add_button:hover {
+    background-color: #ff7a62;
+}
+
+.manager_button_link{
+    color: #fff;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 6px 16px;
+    background-color: transparent;
+    text-decoration: none;
+}
