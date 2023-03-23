@@ -134,6 +134,8 @@ const CheckoutForm = () => {
             .catch((error) => {
                 console.error(error);
             });
+
+        localStorage.removeItem('basket');
     }
 
     return (
