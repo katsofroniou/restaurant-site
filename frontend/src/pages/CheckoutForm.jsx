@@ -25,6 +25,27 @@ const CheckoutForm = () => {
         );
         setPrice(calculatedPrice);
         setBasket(storedBasket);
+
+        const fetchOrders = async () => {
+            const ordersResponse = await fetch('http://127.0.0.1:8000/orders/api');
+            const orders = await ordersResponse.json();
+            let tableNumExists = false;
+            while (!tableNumExists) {
+                for (const existingOrder of orders) {
+                    if (existingOrder.tableNumber === tableNum) {
+                        setTableNum(Math.floor(Math.random() * 40) + 1);
+                        break;
+                    }
+                }
+                tableNumExists = true;
+            }
+        };
+
+        if (tableNum === 0) {
+            setTableNum(Math.floor(Math.random() * 40) + 1);
+        } else {
+            fetchOrders();
+        }
     }, []);
 
     const handleChange = (event) => {
@@ -37,23 +58,9 @@ const CheckoutForm = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        localStorage.removeItem('basket');
         const card = elements.getElement(CardElement);
         const access_token = localStorage.getItem('access_token');
-
-        setTableNum(Math.floor(Math.random() * 40) + 1);
-
-        const ordersResponse = await fetch('http://127.0.0.1:8000/orders/api');
-        const orders = await ordersResponse.json();
-        let tableNumExists = false;
-        while (!tableNumExists) {
-            for (const existingOrder of orders) {
-                if (existingOrder.tableNumber === tableNum) {
-                    setTableNum(Math.floor(Math.random() * 40) + 1);
-                    break;
-                }
-            }
-            tableNumExists = true;
-        }
 
         const { paymentMethod, error } = await stripe.createPaymentMethod({
             type: 'card',
@@ -128,15 +135,14 @@ const CheckoutForm = () => {
             });
         });
 
-        axios.all(promises)
-            .then((results) => {
-                console.log(results);
-            })
-            .catch((error) => {
-                console.error(error);
-            });
+        try {
+            await Promise.all(promises);
+            console.log("All requests completed");
+        } catch (error) {
+            console.error(error);
+        }
 
-        localStorage.removeItem('basket');
+        window.location.href = '/';
     }
 
     return (
@@ -197,8 +203,7 @@ const CheckoutForm = () => {
                     <div className="card-errors" role="alert">{error}</div>
                 </div>
 
-                <button type="submit" className="submit-btn">
-                    <Link to='/' className="submit-btn"> Submit Payment </Link>
+                <button type="submit" className="submit-btn">Submit Payment
                 </button>
             </form></>
     );
