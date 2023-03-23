@@ -6,7 +6,7 @@ from .serializers import OrderSerializer, OrderDishSerializer
 
 class OrderApiView(APIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-
+    
     def get(self, request, *args, **kwargs):
         orders = Order.objects
         serializer = OrderSerializer(orders, many=True)
@@ -139,16 +139,8 @@ class OrderDishApiView(APIView):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def post(self, request, *args, **kwargs):
-        data = {
-            'order': request.data.get('order'),
-            'dish': request.data.get('dish'),
-            'quantity': request.data.get('quantity')
-        }
-
-        serializer = OrderDishSerializer(data=data)
-
+        serializer = OrderDishSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
-
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
