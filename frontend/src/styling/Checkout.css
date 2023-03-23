@@ -1,9 +1,20 @@
+/* All */
+* {
+  transition: all 250ms ease;
+  -webkit-transition: all 250ms ease;
+  -moz-transition: all 250ms ease;
+  -o-transition: all 250ms ease;
+  -ms-transition: all 250ms ease;
+}
+
 .page-wrapper {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-
+/* Basket Table */
 .checkout-basket-header {
   font-size: 2rem;
   font-weight: bold;
@@ -17,17 +28,14 @@
   padding-bottom: 0.5rem;
 }
 
-.checkout-wrapper,
-.stripe-form {
+.checkout-wrapper {
   margin-left: 10%;
   margin-right: 10%;
-  margin-bottom: 10%;
+  margin-bottom: 3%;
 }
 
 @media (min-width: 1024px) {
-
-  .checkout-wrapper,
-  .stripe-form {
+  .checkout-wrapper {
     margin-left: 25%;
     margin-right: 25%;
   }
@@ -57,8 +65,28 @@
   text-align: center;
 }
 
-.total-checkout-price-container {
-  text-align: right;
+.checkout-basket-item {
+  text-align: center;
+}
+
+/* Stripe Form */
+.stripe-form, 
+.form-row,
+.form-row > label,
+.card-element-wrapper,
+.card-element-wrapper > label,
+.button-container {
+  background-color: #f2f2f2;
+}
+
+.stripe-form {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  border: solid 1px;
+  border-color: #ff6347;
+  border-radius: 3%;
+  padding: 1%;
 }
 
 .form-row {
@@ -66,24 +94,37 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1rem;
+  padding: 0.5%;
 }
 
 .form-row>label {
-  display: inline-block;
-  width: 30%;
+  margin-right: 2%;
+  display: flex;
   text-align: left;
 }
 
 .form-row>input {
-  display: inline-block;
   width: 60%;
+  display: flex;
   text-align: left;
+  box-sizing: border-box;
+  outline:#ff6347;
+  transition: background 0.2s, border-color 0.2s;
+  background-color: #f2f2f2;
+}
+
+.form-row>input:focus {
+  background: #ff634785;
+}
+
+.card-element-wrapper {
+  margin-top: 5%;
 }
 
 .button-container {
   display: flex;
-  justify-content: space-between;
+  margin-top: 2%;
+  justify-content: center;
 }
 
 .submit-button {
@@ -100,12 +141,4 @@
 
 .submit-button:hover {
   background-color: #cc3227;
-}
-
-* {
-  transition: all 250ms ease;
-  -webkit-transition: all 250ms ease;
-  -moz-transition: all 250ms ease;
-  -o-transition: all 250ms ease;
-  -ms-transition: all 250ms ease;
 }
