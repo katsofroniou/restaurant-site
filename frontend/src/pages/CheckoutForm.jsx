@@ -149,7 +149,7 @@ const CheckoutForm = () => {
     return (
         <div className="page-wrapper">
             <div className="checkout-wrapper">
-                <h1 className="checkout-basket-header">Your Order</h1>
+                <h1 className="checkout-basket-header">Checkout</h1>
                 <table className="checkout-basket-table">
                     <thead>
                         <tr>
@@ -163,9 +163,9 @@ const CheckoutForm = () => {
                             <tr key={index} className="checkout-basket-item">
                                 <td>{item.dish.name}</td>
                                 <td>
-                                    <span className="checkout-item-quantity">{item.quantity}</span>
+                                    <span>{item.quantity}</span>
                                 </td>
-                                <td className="checkout-price-container">£{(item.dish.price * item.quantity).toFixed(2)}</td>
+                                <td>£{(item.dish.price * item.quantity).toFixed(2)}</td>
                             </tr>
                         ))}
                     </tbody>
@@ -195,7 +195,16 @@ const CheckoutForm = () => {
                 </div>
                 <div className="card-element-wrapper">
                     <label htmlFor="card-element">Credit or debit card</label>
-                    <CardElement className="card-element" onChange={handleChange} />
+                    <CardElement className="card-element" options={{
+                        style: {
+                            base: {
+                                backgroundColor: '#f2f2f2',
+                                ':focus': {
+                                    backgroundColor: '#ff634785',
+                                },
+                            },
+                        },
+                    }} onChange={handleChange} />
                     <div className="card-errors" role="alert">{error}</div>
                 </div>
 
