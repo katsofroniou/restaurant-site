@@ -4,8 +4,11 @@ import { useState, useEffect } from 'react';
 import "../styling/KitchenOrders.css";
 import axios from 'axios';
 /**
- * @author Kayleigh Reid
+ * @author Natalia Widmann
+ * @author Jubai-Khalil Owusu-Afriyie
+ * @author Davit Gevorgyan
  * @author Jonathan Lloyd
+ * @author Kayleigh Reid
  * @file KitchenOrders.jsx contains the frontend page with the Kitchen Staff display of orders.
  */
 
