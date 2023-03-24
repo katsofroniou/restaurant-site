@@ -1,3 +1,18 @@
+"""
+This model represents a notification sent from one user to another in the system.
+It contains information about the sender, the recipient, the notification message, 
+and the time the notification was sent.
+
+Attributes:
+    - sender: The user who sent the notification.
+    - recipient: The user who received the notification.
+    - message: The message contained in the notification.
+    - time: The time the notification was sent.
+
+Methods:
+    - str: Returns a string representation of the notification in the format '{sender} to {recipient}: {message}'.
+"""
+
 from django.db import models
 from django.contrib.auth.models import User
 

@@ -1,8 +1,24 @@
+"""
+Consumer that handles WebSocket connections and notifications between clients.
+
+This class is responsible for handling WebSocket connections between 
+clients and the server, and for broadcasting notifications to all 
+clients subscribed to the corresponding group.
+
+Attributes:
+    - room_name: The name of the room the client is connected to.
+    - room_group_name: The name of the group the client is subscribed to.
+
+Methods:
+    - connect: Called when a client connects to the WebSocket. Adds the client to the notification group and accepts the connection.
+    - disconnect: Called when a client disconnects from the WebSocket. Removes the client from the notification group.
+    - receive: Called when the client sends a notification to the server. Sends the notification to all clients in the corresponding group.
+    - notify: Called when a notification is sent to the group. Sends the notification to the client.
+"""
+
 import json
 from channels.generic.websocket import WebsocketConsumer
 from asgiref.sync import async_to_sync
-
-
 
 class NotificationConsumer(WebsocketConsumer):
 
