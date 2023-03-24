@@ -122,6 +122,11 @@ DATABASES = {
         'PASSWORD': 'ieziet',
         'HOST': 'localhost',
         'PORT': '9999',
+        'TEST': {
+            'NAME': 'CS2810/group13',
+            'USER': 'group13',
+            'PASSWORD': 'ieziet',
+        }, 
     }
 }
 
