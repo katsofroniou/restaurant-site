@@ -1,3 +1,25 @@
+"""
+Django urlpatterns that define the project's API endpoints and their associated views. 
+
+Endpoints:
+- Django admin interface: '/admin/'
+- Payment API page: '/payments/'
+- JWT token obtain endpoint: '/token/'
+- JWT token refresh endpoint: '/token/refresh/'
+- Menu app endpoints: '/menu/'
+- Orders app endpoints: '/orders/'
+- Accounts app endpoints: '/users/'
+- PermissionGroups endpoint: '/@me/'
+
+Views:
+- TokenObtainPairView: View that obtains a JWT token pair for a given user.
+- TokenRefreshView: View that refreshes an existing JWT token for a given user.
+- PermissionGroups: Viewset that handles CRUD operations for PermissionGroup objects.
+
+Router:
+- DefaultRouter: A simple, quick router that generates the endpoints for the PermissionGroups viewset based on the specified basename.
+"""
+
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
