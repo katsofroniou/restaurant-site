@@ -1,29 +1,48 @@
 .waiter_add_button {
-    appearance: none;
-    background-color:  rgb(0, 0, 0);
-    border-radius: 6px;
-    box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
-    box-sizing: border-box;
+    border: 2px solid #ff6347;
+    border-radius: 25px;
+    background-color: #ff6347;
     color: #fff;
-    display: inline-block;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 20px;
-    padding: 6px 16px;
-    position: relative;
-    text-align: center;
-    touch-action: manipulation;
-    vertical-align: middle;
+    padding: 1rem 1rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-left: 10%;
 }
 
+.waiter_button_div{
+    margin-left:30%
+}
 .waiter_add_button:hover {
-    background-color: #2c974b;
+    background-color: #ff7a62;
 }
 
 .waiter_menu_table{
-    display: block;
-    height: auto;
+    border-collapse: collapse;
     width: auto;
+    margin: 0 auto;
+    table-layout: fixed;
+    width: 80%;
+    padding: 0 1rem;
+    text-align: center;
+    margin-top: 5%;
+    margin-left:10%;
+}
+
+.waiter_menu_table th, 
+.waiter_menu_table td {
+    border: 1px solid #ff6347;
+    padding: 8px;
+}
+
+.waiter_menu_table th {
+    text-align: center;
+    background-color: #ff6347;
+}
+
+.waiter_menu_table td {
+    text-align: center;
 }
 
 .waiter_button_link{

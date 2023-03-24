@@ -105,61 +105,53 @@ function Waiter() {
 
     return (
         <>
-
-            <table class="waiter_menu_table">
-                <tr>
-                    <th>Course</th>
-                    <th>Dish</th>
-                    <th>Description</th>
-                    <th>Calories</th>
-                    <th>Vegetarian</th>
-                    <th>Vegan</th>
-                    <th>Allergens</th>
-                    <th>Cost</th>
-                    <th>Available</th>
-                    <th>Delete?</th>
-                </tr>
-                {dish.map((dish, index) => (
+            <div class="waiter_menu_container">
+                <table class="waiter_menu_table">
                     <tr>
-                        <td>{dish.course}</td>
-                        <td>{dish.name}</td>
-                        <td>{dish.description}</td>
-                        <td>{dish.kcal}</td>
-                        {dish.vegetarian === true && <td>Yes</td>}
-                        {dish.vegetarian === false && <td>No</td>}
-                        {dish.vegan === true && <td>Yes</td>}
-                        {dish.vegan === false && <td>No</td>}
-                        <td>{dish.allergens.join(", ")}</td>
-                        <td>£{dish.price.toLocaleString("en-GB", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
-                        {dish.available === true && <td>Yes</td>}
-                        {dish.available === false && <td>No</td>}
-                        <td>
-                            <input
-                                type="checkbox"
-                                checked={selectedItems[dish.name] || false}
-                                onChange={() => handleItemSelect(dish)}
-                            />
-                        </td>
+                        <th>Course</th>
+                        <th>Dish</th>
+                        <th>Description</th>
+                        <th>Calories</th>
+                        <th>Vegetarian</th>
+                        <th>Vegan</th>
+                        <th>Allergens</th>
+                        <th>Cost</th>
+                        <th>Available</th>
+                        <th>Delete?</th>
                     </tr>
-                ))}
-            </table>
-
-            <table>
-                <thead>
-                    <tr>
-                    <th>Table num</th>
-                    <th>Assistance Needed</th>
-                    <th>Completed?</th>
-                    </tr>
-                </thead>
-            </table>
-
-            <button class="waiter_add_button">
-                <Link to='/additem' class="waiter_button_link">Add to Menu</Link>
-            </button>
-            <button className="waiter_add_button" onClick={handleDeleteClick}>
-                <Link to='/waiter' class="waiter_button_link">Delete From Menu</Link>
-            </button>
+                    {dish.map((dish, index) => (
+                        <tr>
+                            <td>{dish.course}</td>
+                            <td>{dish.name}</td>
+                            <td>{dish.description}</td>
+                            <td>{dish.kcal}</td>
+                            {dish.vegetarian === true && <td>Yes</td>}
+                            {dish.vegetarian === false && <td>No</td>}
+                            {dish.vegan === true && <td>Yes</td>}
+                            {dish.vegan === false && <td>No</td>}
+                            <td>{dish.allergens.join(", ")}</td>
+                            <td>£{dish.price.toLocaleString("en-GB", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</td>
+                            {dish.available === true && <td>Yes</td>}
+                            {dish.available === false && <td>No</td>}
+                            <td>
+                                <input
+                                    type="checkbox"
+                                    checked={selectedItems[dish.name] || false}
+                                    onChange={() => handleItemSelect(dish)}
+                                />
+                            </td>
+                        </tr>
+                    ))}
+                </table>
+            </div>
+            <div class="waiter_button_div">
+                <button class="waiter_add_button">
+                    <Link to='/additem' class="waiter_button_link">Add to Menu</Link>
+                </button>
+                <button className="waiter_add_button" onClick={handleDeleteClick}>
+                    <Link to='/waiter' class="waiter_button_link">Delete From Menu</Link>
+                </button>
+            </div>
         </>
     );
 }
