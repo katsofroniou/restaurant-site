@@ -5,15 +5,22 @@ from accounts.serializers import UserSerializer
 from django.contrib.auth.models import User
 
 class UserCreate(APIView):
-    # Allows everyone to use safe api options - GET, HEAD, OPTIONS
-    # Allows authenticated users to use unsafe api options - POST, DELETE, PUT
+    """
+    API View to create a new user or retrieve a list of existing users.
+    
+    Permissions:
+        - Everyone can use safe API options (GET, HEAD, OPTIONS).
+        - Authenticated users can use unsafe API options (POST, DELETE, PUT).
+        
+    Methods:
+        - post: Creates a new user.
+        - get: Retrieves a list of all users.
+    """
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     
-    # Post api to create new user
     def post(self, request, format='json'):
         serializer = UserSerializer(data=request.data)
         
-        # Saves user to database if it is valid otherwise returns an error
         if serializer.is_valid():
             user = serializer.save()
             if user:
