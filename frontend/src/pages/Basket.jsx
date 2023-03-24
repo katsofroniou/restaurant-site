@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../styling/Basket.css";
 import { Link } from "react-router-dom";
 /**
- * @fle Basket.jsx contains the frontend page for the basket of items in an order.
+ * @file Basket.jsx contains the frontend page for the basket of items in an order.
  * @author Katerina Sofroniou
  * @author Jonathan Lloyd
  */
