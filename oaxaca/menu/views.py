@@ -79,7 +79,7 @@ class DishApiView(APIView):
         
     def delete(self, request, *args, **kwargs):
         """
-        Deletes multiple dishes from the database.
+        Deletes dishes from the database.
 
         Query Params:
             - items: A list of names of the dishes to be deleted.
