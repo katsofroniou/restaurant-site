@@ -54,7 +54,7 @@ function Manager () {
     const handleUserSelect = (selectedUser) => {
         setSelectedUser(prevState => ({
             ...prevState,
-            [selectedUser.name]: !prevState[selectedUser.name],
+            [selectedUser.id]: !prevState[selectedUser.id],
         }));
     };
 
@@ -123,7 +123,7 @@ function Manager () {
                             <td>
                                 <input
                                     type="checkbox"
-                                    checked={selectedUser[user.name] || false}
+                                    checked={selectedUser[user.id] || false}
                                     onChange={() => handleUserSelect(user)}
                                 />
                             </td>
