@@ -66,7 +66,7 @@ function Manager () {
      */
     const handleDeleteUserClick = async () => {
         // Get the access_token from local storage
-        const access_token = localStorage.getUser('access_token');
+        const access_token = localStorage.getItem('access_token');
 
         // If access_token is null or empty, the user is not authenticated
         if (!access_token) {
@@ -96,7 +96,7 @@ function Manager () {
                 }));
 
                 // Update the state to remove the deleted users
-                const newUser = user.filter((u) => !deleteUsers.includes(u.name));
+                const newUser = user.filter((u) => !deleteUsers.includes(u.id));
                 SetUser(newUser);
 
             } catch (error) {
