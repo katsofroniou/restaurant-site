@@ -37,11 +37,10 @@ const stripePromise = loadStripe('pk_test_51Mm1OUGHCVd3YY0Z0qddQGTs0mndGS26E7ooP
 function OaxacaApp() {
 
     /**
-     * A Stateful object that represents the different groups
-     * @typedef {groups, setGroup} groupState - An array of objects representing the groups
-     * @type {groupState}
-    */
-    
+     * A React state hook that declares a state variable "groups" initialized as an empty array "[]".
+     * "setGroups" is a function that can be used to update the "groups" state variable.
+     * @type {[Array, function]} An array containing the "groups" state variable and the "setGroups" function.
+     */    
     const [groups, setGroups] = useState([]);
  
     /**

@@ -1,10 +1,27 @@
 import React, { useState, useEffect } from "react";
 import "../styling/Basket.css";
 import { Link } from "react-router-dom";
+/**
+ * @fle Basket.jsx contains the frontend page for the basket of items in an order.
+ * @author Katerina Sofroniou
+ * @author Jonathan Lloyd
+ */
 
+
+/**
+ * @function Basket
+ * @returns {JSX.Element} Returns the constructed page for the Basket
+ */
 function Basket() {
+  /**
+   * @type {[BasketItem[], Function]} A state hook that stores the current basket items and the function to update them.
+   */
   const [basketItems, setBasketItems] = useState([]);
 
+  /**
+   * React effect hook that updates the basket items when the component mounts.
+   * Retrieves stored basket items from localStorage and maps them to a new format before updating the state.
+   */
   useEffect(() => {
     const storedBasket = JSON.parse(localStorage.getItem("basket")) || [];
     const newBasketItems = storedBasket.map((item) => ({
@@ -14,11 +31,20 @@ function Basket() {
     setBasketItems(newBasketItems);
   }, []);
 
+  /**
+   * The total price of all items in the basket.
+   * @type {number}
+   */
   const totalPrice = basketItems.reduce(
     (acc, item) => acc + item.dish.price * item.quantity,
     0
   );
 
+  /**
+   * Removes an item from the basket items array and updates local storage.
+   * @param {number} index - The index of the item to be removed.
+   * @returns {void}
+   */
   const removeItem = (index) => {
     const updatedItems = [
       ...basketItems.slice(0, index),
@@ -28,6 +54,11 @@ function Basket() {
     localStorage.setItem("basket", JSON.stringify(updatedItems));
   };
 
+  /**
+   * Decreases the quantity of an item in the basket items array by 1 and updates local storage.
+   * @param {number} index - The index of the item whose quantity is to be decreased.
+   * @returns {void}
+   */
   const decreaseQuantity = (index) => {
     const updatedItems = [...basketItems];
     if (updatedItems[index].quantity > 1) {
@@ -37,6 +68,11 @@ function Basket() {
     }
   };
 
+  /**
+   * Increases the quantity of an item in the basket items array by 1 and updates local storage.
+   * @param {number} index - The index of the item whose quantity is to be increased.
+   * @returns {void}
+   */
   const increaseQuantity = (index) => {
     const updatedItems = [...basketItems];
     updatedItems[index].quantity++;
