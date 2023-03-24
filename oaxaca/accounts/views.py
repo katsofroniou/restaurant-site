@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 class UserCreate(APIView):
     # Allows everyone to use safe api options - GET, HEAD, OPTIONS
     # Allows authenticated users to use unsafe api options - POST, DELETE, PUT
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     
     # Post api to create new user
     def post(self, request, format='json'):
